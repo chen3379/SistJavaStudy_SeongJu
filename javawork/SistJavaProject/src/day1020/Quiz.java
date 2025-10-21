@@ -27,15 +27,21 @@ public class Quiz {
 		// 3.출력
 		
 		// 1)
+		System.out.println("오늘의 퀴즈");
+		System.out.println("=============");
 		System.out.printf("상품명: %s\n수량: %d개\n가격: %d원\n총금액: %d원\n", name, num, price, total_price);
 
 		// 2)
-		System.out.printf("상품명: "+args[0]+"\n수량: "+args[1]+"개\n가격: "+args[2]+"원\n총금액: "+total_price+"원");
+		System.out.println("오늘의 퀴즈");
+		System.out.println("=============");
+		System.out.println("상품명: "+name+"\n수량: "+num+"개\n가격: "+price+"원\n총금액: "+total_price+"원");
 		
 		// 3)
-		System.out.println("\n상품명: "+args[0]);
-		System.out.println("수량: "+args[1]+"개");
-		System.out.println("가격: "+args[2]+"원");
+		System.out.println("오늘의 퀴즈");
+		System.out.println("=============");
+		System.out.println("상품명: "+name);
+		System.out.println("수량: "+num+"개");
+		System.out.println("가격: "+price+"원");
 		System.out.println("총금액: "+total_price+"원");
 	}
 
