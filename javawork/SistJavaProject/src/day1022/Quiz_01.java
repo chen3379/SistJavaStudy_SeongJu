@@ -29,7 +29,7 @@ public class Quiz_01 {
 		int total = n*price;
 		int sale = (int)(total*0.9);
 		
-		System.out.println("\n"+name+" "+n+"개는 총 "+n*price+"원입니다");
+		System.out.println("\n"+name+" "+n+"개는 총 "+total+"원입니다");
 		
 		// if 문
 		
