@@ -1,0 +1,127 @@
+package day1024;
+
+import java.util.Scanner;
+
+public class Quiz1024_10 {
+
+	public static void main(String[] args) {
+
+		quiz1();
+		quiz2();
+		quiz3();
+		quiz4();
+		quiz5();
+
+	}
+
+	public static void quiz1() {
+
+		// 1~10까지 중에서 짝수만 출력해 주세요 (for,if)
+		// 2 4 6 8 10
+
+		System.out.println("quiz1\n");
+
+		for(int i=1;i<=10;i++)
+			if(i%2==0)
+				System.out.print(i+" ");
+		System.out.println();
+
+	}
+
+	public static void quiz2() {
+
+		// 1~100까지의 숫자 중 3의 배수의 합과 개수를 구하시오
+		// 3의 배수의 합 = **
+		// 3의 배수의 개수 = **개
+
+		System.out.println("\nquiz2\n");
+
+		int sum=0,count=0;
+		for(int i=1;i<=100;i++) {
+			if(i%3==0) {
+				sum+=i;
+				count++;
+			}
+		}
+		System.out.println("3의 배수의 합 = "+sum+"\n3의 배수의 개수 = "+count);
+	}
+
+	public static void quiz3() {
+
+		// 1~5까지의 팩토리얼 구하기
+		// 1! = 1
+		// 2! = 2
+		// 3! = 6
+		// 4! = 24
+		// 5! = 120
+
+		System.out.println("\nquiz3\n");
+
+		int fac =1;
+		for(int i=1;i<=5;i++) {
+			fac*=i;
+			System.out.println(i+"! = "+fac);
+		}
+
+	}
+
+	public static void quiz4() {
+
+		// 숫자를 입력하다가 0을 입력하면 반복문을 빠져나온 후
+		// 양수의 개수: 3개
+		// 음수의 개수: 2개
+
+		System.out.println("\nquiz4\n");
+
+		int plus=0,minus=0;
+
+		Scanner sc = new Scanner(System.in);
+
+		while(true) {
+
+			System.out.print("숫자 입력: ");
+			int n= sc.nextInt();
+
+			if(n==0)
+				break;
+			else if(n>0)
+				plus++;
+			else
+				minus++;
+		}
+		System.out.println("양수의 개수: "+plus+"개");
+		System.out.println("음수의 개수: "+minus+"개");
+
+	}
+
+	public static void quiz5() {
+
+		// 구구단을 세로로 출력하는데 2~9단까지의 반복이 3까지만 나오도록 해주세요
+		// [2단]
+		// 2x1=2
+		// 2x2=4
+		// 2x3=6
+		//
+		// [3단]
+		// 3x1=3
+		// 3x2=6
+		// 3x3=9
+		// .
+		// .
+		// [9단]
+
+		System.out.println("\nquiz5");
+
+		for(int i=2;i<=9;i++) {
+
+			System.out.println("\n["+i+"단]");
+
+			for(int j=1;j<=3;j++) 
+				System.out.println(i+"x"+j+"="+i*j);
+
+		}
+
+	}
+
+
+}
