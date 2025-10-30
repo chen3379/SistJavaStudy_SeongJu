@@ -19,6 +19,7 @@ public class Array2Cha_05 {
 		}
 		
 		System.out.println("for~each로도 출력");
+		
 		for(int a[]:arr)
 		{
 			for(int num:a)
@@ -27,5 +28,8 @@ public class Array2Cha_05 {
 			}
 			System.out.println();
 		}
+		
+		
+		
 	}
 }

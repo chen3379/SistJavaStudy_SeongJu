@@ -28,6 +28,7 @@ public class KeyBoardin_07 {
 		city=sc.nextLine();
 		System.out.println("내가 사는 지역은 "+ city+"입니다");
 		
+		sc.close();
 	}
 
 }

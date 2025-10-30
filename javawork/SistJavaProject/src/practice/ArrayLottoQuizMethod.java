@@ -34,6 +34,7 @@ public class ArrayLottoQuizMethod {
 			System.out.println();
 
 		}
+		sc.close();
 
 	}
 	

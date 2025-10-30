@@ -14,7 +14,7 @@ public class CalAge_05 {
 		String name= args[0]; // 이름
 		int myYear=Integer.parseInt(args[1]); // 태어난 연도 정수 변환
 		// 계산(현재년도-본인생년)
-		int curYear=cal.get(cal.YEAR); // 현재 연도
+		int curYear=cal.get(Calendar.YEAR); // 현재 연도
 		
 		int myAge=curYear-myYear;
 		

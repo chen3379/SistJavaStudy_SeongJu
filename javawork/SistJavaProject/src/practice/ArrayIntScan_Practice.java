@@ -21,5 +21,7 @@ public class ArrayIntScan_Practice {
 		for(int i=0;i<a.length;i++)
 			System.out.println(1+i+"번째 인덱스 값: "+a[i]);
 		
+		sc.close();
 	}
+	
 }

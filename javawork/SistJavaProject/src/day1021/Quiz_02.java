@@ -34,7 +34,7 @@ public class Quiz_02 {
 		System.out.println("당신이 사는 지역은?");
 		city = sc.nextLine();
 
-		int age= cal.get(cal.YEAR)-myYear;
+		int age= cal.get(Calendar.YEAR)-myYear;
 
 		String myD = myYear%12==0?"원숭이":
 			myYear%12==1?"닭":
@@ -57,6 +57,7 @@ public class Quiz_02 {
 
 
 		System.out.println("띠: "+myD+"띠");
+		sc.close();
 
 	}
 }

@@ -28,6 +28,7 @@ public class Scanner_08 {
 		System.out.println("국어, 영어, 수학 점수: "+ kor+"점, "+ eng+"점, "+ math+"점");
 		System.out.println("====================================");
 		System.out.println("총점: "+totalScore+"\n평균: "+avg);
+		sc.close();
 	}
 
 }

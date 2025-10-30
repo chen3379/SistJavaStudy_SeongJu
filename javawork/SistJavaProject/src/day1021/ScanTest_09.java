@@ -30,7 +30,7 @@ public class ScanTest_09 {
 		
 		System.out.println("\t[결과출력]"); // 출력
 		System.out.println(name+"님은 "+grade+"학년이며 평점은 "+score+"점 입니다");
-		
+		sc.close();
 
 	}
 

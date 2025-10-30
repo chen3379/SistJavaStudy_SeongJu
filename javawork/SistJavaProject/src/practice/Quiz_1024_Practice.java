@@ -96,6 +96,7 @@ public class Quiz_1024_Practice {
 		System.out.println("양수의 개수: "+pl+"개");
 
 		System.out.println("음수의 개수: "+mi+"개");
+		sc.close();
 
 
 	}

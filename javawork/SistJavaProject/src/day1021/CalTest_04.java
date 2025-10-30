@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class CalTest_04 {
 
+	@SuppressWarnings({ "deprecation", "static-access" })
 	public static void main(String[] args) {
 		// 
 		

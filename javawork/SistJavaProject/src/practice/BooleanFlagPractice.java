@@ -29,7 +29,7 @@ public class BooleanFlagPractice {
 				System.out.println("존재하지 않는 숫자입니다\n");
 				continue;
 			}
-			
+
 			for(int i=0;i<a.length;i++) {
 
 				if(n==a[i]) {
@@ -38,8 +38,9 @@ public class BooleanFlagPractice {
 				}
 
 			}
-			
+
 
 		}
+		sc.close();
 	}
 }

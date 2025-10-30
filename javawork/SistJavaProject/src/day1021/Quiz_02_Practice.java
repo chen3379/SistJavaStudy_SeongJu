@@ -36,10 +36,11 @@ public class Quiz_02_Practice {
 		System.out.println("["+name+"님의 개인정보]");
 		System.out.println("지역: "+city);
 		
-		age=cal.get(cal.YEAR)-myYear;
+		age=cal.get(Calendar.YEAR)-myYear;
 		System.out.println("나이: "+age+"세");
 		
 
+		sc.close();
 	}
 
 }

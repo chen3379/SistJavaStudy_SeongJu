@@ -37,6 +37,7 @@ public class Quiz_01 {
 		System.out.println("두 수를 나누면 나머지는 "+(n1%n2)+" 입니다");
 		
 
+		sc.close();
 	}
 
 }
