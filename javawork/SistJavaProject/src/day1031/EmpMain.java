@@ -47,9 +47,11 @@ public class EmpMain {
 
 		for(Emp e:emp)
 			getEmpPay(e);
-	
+
 		for(int i=0;i<inwon;i++) {
 			getEmpPay(emp[i]);
 		}
+
+		sc.close();
 	}
 }

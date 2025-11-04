@@ -11,6 +11,10 @@ public class SwingBasic extends JFrame{
 	//변수
 	Container cp;
 	JButton btn1;	
+	JButton btn2;	
+	JButton btn3;	
+	JButton btn4;	
+	JButton btn5;	
 	
 	//생성
 	public SwingBasic(String title) {
@@ -29,17 +33,34 @@ public class SwingBasic extends JFrame{
 		
 		//버튼 생성
 		btn1=new JButton("버튼1");
+		btn2=new JButton("버튼2");
+		btn3=new JButton("버튼3");
+		btn4=new JButton("버튼4");
+		btn5=new JButton("버튼5");
 		
 		//프레임에 버튼 추가 - BorderLayout이 기본
 		this.add("North",btn1); //첫글자 대문자
-		this.add("South",new JButton("남쪽"));
-		this.add("East",new JButton("동쪽"));
-		this.add("West",new JButton("서쪽"));
-		this.add("Center",new JButton("중앙"));
+		this.add("South",btn2);
+		this.add("East",btn3);
+		this.add("West",btn4);
+		this.add("Center",btn5);
 		
 		//버튼 1에 속성
 		btn1.setBackground(Color.pink);
 		btn1.setForeground(Color.yellow);
+		btn1.setSize(30,30);
+		btn2.setBackground(Color.pink);
+		btn2.setForeground(Color.yellow);
+		btn2.setSize(40,50);
+		btn3.setBackground(Color.pink);
+		btn3.setForeground(Color.yellow);
+		btn3.setSize(30,20);
+		btn4.setBackground(Color.pink);
+		btn4.setForeground(Color.yellow);
+		btn4.setSize(40,40);
+		btn5.setBackground(Color.pink);
+		btn5.setForeground(Color.yellow);
+		btn5.setSize(20,50);
 
 	}
 	
