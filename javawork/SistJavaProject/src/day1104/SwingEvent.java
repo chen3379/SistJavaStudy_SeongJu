@@ -29,7 +29,7 @@ public class SwingEvent extends JFrame implements ActionListener{
 			//여기서 this는 JFrame을 의미
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //프레임 닫는 역할
 			this.setBounds(200, 100, 400, 300); //창 크기 지정 
-			cp.setBackground(new Color(140, 150, 180)); //RGB값 지정
+			cp.setBackground(new Color(255, 127, 80)); //RGB값 지정
 			
 			initDesign();
 			

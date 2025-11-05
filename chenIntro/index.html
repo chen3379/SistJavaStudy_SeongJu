@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chen Intro - Professional Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">Chen Intro</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#resume">Resume</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <button id="mode-toggle">
+            <span class="icon">&lt; / &gt;</span>
+            <span class="text">View Code</span>
+        </button>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Hello, I'm Chen.</h1>
+            <p class="subtitle">A creative developer building modern web experiences.</p>
+        </section>
+
+        <section id="about" class="content-section">
+            <div class="code-block">
+                <span class="code-comment">// about_me.json</span>
+                <pre class="code-content">
+{
+  "name": "Chen",
+  "bio": "I am a passionate developer with a strong eye for modern design. My goal is to build applications that are not only functional and efficient but also beautiful and intuitive to use. I thrive on solving complex problems and turning creative ideas into reality.",
+  "status": "Actively seeking new opportunities"
+}
+                </pre>
+            </div>
+            
+            <div class="canvas-block">
+                <h2>About Me</h2>
+                <p>I am a passionate developer with a strong eye for modern design. My goal is to build applications that are not only functional and efficient but also beautiful and intuitive to use. I thrive on solving complex problems and turning creative ideas into reality.</p>
+            </div>
+        </section>
+
+        <section id="skills" class="content-section">
+            <div class="code-block">
+                <span class="code-comment">// skills.js</span>
+                <pre class="code-content">
+const skills = {
+  "frontend": [ "HTML5", "CSS3", "JavaScript", "React" ],
+  "backend":  [ "Node.js", "Python", "Java", "Spring Boot" ],
+  "database": [ "SQL", "MongoDB", "PostgreSQL" ],
+  "tools":    [ "Git", "Docker", "Figma", "Jira" ]
+};
+                </pre>
+            </div>
+            <div class="canvas-block">
+                <h2>Skills & Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Frontend</h3>
+                        <ul>
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                            <li>React</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Backend</h3>
+                        <ul>
+                            <li>Node.js</li>
+                            <li>Python</li>
+                            <li>Java</li>
+                            <li>Spring Boot</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Database</h3>
+                        <ul>
+                            <li>SQL</li>
+                            <li>MongoDB</li>
+                            <li>PostgreSQL</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Tools</h3>
+                        <ul>
+                            <li>Git</li>
+                            <li>Docker</li>
+                            <li>Figma</li>
+                            <li>Jira</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="content-section">
+            <div class="code-block">
+                <span class="code-comment">// portfolio.html</span>
+                <pre class="code-content">
+&lt;!-- Project 1: Global Web App --&gt;
+&lt;div class="project-card"&gt;
+  &lt;h3&gt;Global Web App&lt;/h3&gt;
+  &lt;p&gt;A full-stack application...&lt;/p&gt;
+  &lt;a href="#"&gt;View on GitHub&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;!-- Project 2: E-commerce Site --&gt;
+&lt;div class="project-card"&gt;
+  &lt;h3&gt;E-commerce Site&lt;/h3&gt;
+  &lt;p&gt;A complete online store...&lt;/p&gt;
+  &lt;a href="#"&gt;View on GitHub&lt;/a&gt;
+&lt;/div&gt;
+                </pre>
+            </div>
+            <div class="canvas-block">
+                <h2>Portfolio</h2>
+                <div class="portfolio-grid">
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x250/f0f0f0/333?text=Project+1+Screenshot" alt="Project 1 Screenshot">
+                        <h3>Project One: Global Web App</h3>
+                        <p>A description of your project. What problem did it solve? What tech did you use?</p>
+                        <a href="#" class="btn-secondary">View Case Study</a>
+                        <a href="#" class="btn-github">GitHub</a>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x250/f0f0f0/333?text=Project+2+Screenshot" alt="Project 2 Screenshot">
+                        <h3>Project Two: E-commerce Site</h3>
+                        <p>A description of your project. What problem did it solve? What tech did you use?</p>
+                        <a href="#" class="btn-secondary">View Case Study</a>
+                        <a href="#" class="btn-github">GitHub</a>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x250/f0f0f0/333?text=Project+3+Screenshot" alt="Project 3 Screenshot">
+                        <h3>Project Three: Personal Blog</h3>
+                        <p>A description of your project. What problem did it solve? What tech did you use?</p>
+                        <a href="#" class="btn-secondary">View Case Study</a>
+                        <a href="#" class="btn-github">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resume" class="content-section">
+            <div class="code-block">
+                <span class="code-comment">// resume.txt</span>
+                <pre class="code-content">
+[ Experience ]
+
+  2023-Present: Software Developer @ Tech Solutions
+  - Did amazing work on key projects.
+  - Wrote code, debugged, and collaborated.
+
+  2021-2023: Junior Developer @ Web Widgets Inc.
+  - Learned the ropes, contributed to the codebase.
+
+[ Education ]
+
+  2017-2021: B.S. in Computer Science
+  - University of Technology
+                </pre>
+            </div>
+            <div class="canvas-block">
+                <h2>Resume</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>JAVA FULL-STACK Developer</h3>
+                        <span class="timeline-sub">Tech Solutions | 2025 - 2026</span>
+                        <p>Experience Java base to FULL-STACK procedure, team projects</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>JAVA FULL-STACK Developer</h3>
+                        <span class="timeline-sub">Web Widgets Inc. | 2025 - 2026</span>
+                        <p>Describe your role here. What did you learn? How did you contribute?</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>B.S. in Computer Science</h3>
+                        <span class="timeline-sub">University of Technology | 2020 - 2026</span>
+                        <p>List any relevant coursework, projects, or honors.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer id="contact">
+            <h2>Get In Touch</h2>
+            <p>I'm currently open to new opportunities. My inbox is always open!</p>
+            <a href="mailto:premium71712@gmail.com" class="btn-primary">Email Me</a>
+            <div class="social-links">
+                <a href="https://github.com/chen3379" target="_blank">GitHub</a>
+                </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
