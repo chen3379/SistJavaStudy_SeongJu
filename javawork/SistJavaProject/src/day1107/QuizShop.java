@@ -8,7 +8,7 @@ public class QuizShop {
 	private int num;
 	private int price;
 	
-	int totalPrice;
+	private int totalPrice;
 	
 	//setter getter
 	public String getName() {
