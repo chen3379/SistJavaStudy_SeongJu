@@ -243,7 +243,7 @@ select name 이름,pay 급여,nvl(bonus,0) 보너스,pay+nvl(bonus,0) 총급여 
 select gname 이름,point 포인트 from gogak where point between 300000 and 500000;
 
 --4.교수테이블에서 성이 김씨인 사람의 이름,직위,전공과목을 조회하시오
-select name 이름,position 직위 from professor where name like '김%';
+select name 이름,position 직위,deptno 전공과목 from professor where name like '김%';
 
 --5.emp에서 comm이 null인 사람의 이름과 급여를 출력하시오
 select ename 이름,sal 급여 from emp where comm is null;
@@ -262,3 +262,4 @@ select name 교수명,pay from professor where pay=(select pay from professor wh
 
 --10.교수테이블에서 조인형의 직급과 같은 직급을 가진 사람의 이름 급여 직급을 조회하시오
 select name 이름,pay 급여,position 직급 from professor where position=(select position from professor where name='조인형');
+
