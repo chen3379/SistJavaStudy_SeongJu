@@ -6,7 +6,7 @@ public class Ex3Exception {
 		
 		System.out.println("프로그램 시작!!");
 		try {
-			int num=3/0; //정수를 0으로 나누면 에러발생
+//			int num=3/0; //정수를 0으로 나누면 에러발생
 		} catch (Exception e) {
 			// 예외처리
 			//e.printStackTrace();//자세한 예외정보

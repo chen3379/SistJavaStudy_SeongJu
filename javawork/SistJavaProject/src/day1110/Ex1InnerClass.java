@@ -1,6 +1,6 @@
 package day1110;
 
-import day1110.OuterObj.InnerObj;
+//import day1110.OuterObj.InnerObj;
 
 //내부클래스: 클래스 안에 존재하는 클래스
 //특정클래스 내에서만 사용하는 클래스가 필요한 경우

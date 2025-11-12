@@ -52,6 +52,7 @@ public class ArrayLottoQuiz_03 {
 			System.out.println();
 			
 		}
+		sc.close();
 		
 	}
 

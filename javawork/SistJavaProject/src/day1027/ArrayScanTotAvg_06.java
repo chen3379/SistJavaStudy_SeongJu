@@ -53,5 +53,6 @@ public class ArrayScanTotAvg_06 {
 		System.out.println("평균: "+avg+"점");
 
 
+		sc.close();
 	}
 }

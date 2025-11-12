@@ -35,6 +35,7 @@ public class SwitchTest_03 {
 		
 		System.out.println(score+" --> " +grade);
 
+		sc.close();
 	}
 
 }

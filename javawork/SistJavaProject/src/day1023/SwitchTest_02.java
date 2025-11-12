@@ -26,6 +26,7 @@ public class SwitchTest_02 {
 			System.out.println(n+" is not 1 2 3");
 		}
 
+		sc.close();
 	}
 
 }

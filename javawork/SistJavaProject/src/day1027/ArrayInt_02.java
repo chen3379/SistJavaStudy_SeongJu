@@ -10,7 +10,6 @@ public class ArrayInt_02 {
 		int[]arr1,arr2; // 배열 선언
 		arr1=new int[3]; // 배열 생성... 메모리 할당
 		arr2=new int[4]; // 할당만 해도 값은 0으로 초기화
-		int[] arr3=new int[5];
 
 		// arr1: 할당만 하고 초기값 지정 없이 출력 가능
 		for(int i=0;i<arr1.length;i++)

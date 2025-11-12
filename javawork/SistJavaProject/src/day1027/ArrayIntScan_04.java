@@ -23,5 +23,7 @@ public class ArrayIntScan_04 {
 		for(int i=0;i<a.length;i++)
 			System.out.println(i+1+":"+a[i]);
 		System.out.println("합계: "+sum);
+		
+		sc.close();
 	}
 }

@@ -32,6 +32,6 @@ public class Equal_07 {
 		else
 			System.out.println("단어 목록에 없는 단어입니다");
 		
+		sc.close();
 	}
-
 }

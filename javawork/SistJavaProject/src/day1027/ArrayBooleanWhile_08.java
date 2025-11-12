@@ -41,6 +41,7 @@ public class ArrayBooleanWhile_08 {
 			
 
 		}
+		sc.close();
 	}
 
 }

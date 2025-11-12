@@ -11,7 +11,6 @@ public class ArrayQuiz_09 {
 
 		String menu[] = {"아보카도 샌드위치","에그샌드위치","콥샐러드","치아바타 샌드위치","스테이크 샐러드","까르보나라 파스타","토마토 파스타"};
 
-		String q;
 		boolean flag;
 
 		Scanner sc=new Scanner(System.in);
@@ -38,6 +37,7 @@ public class ArrayQuiz_09 {
 				System.out.println("해당 메뉴는 존재하지 않습니다\n");
 			
 		}
+		sc.close();
 
 	}
 }

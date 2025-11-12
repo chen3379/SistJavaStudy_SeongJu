@@ -73,6 +73,7 @@ public class Ex2InterCRUD {
 				System.out.println("메뉴를 종료합니다");
 				break;}
 		}
+		sc.close();
 	}
 
 }

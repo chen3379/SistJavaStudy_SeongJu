@@ -74,5 +74,6 @@ public class BingoGame_07 {
 				break;
 		}
 
+		sc.close();
 	}
 }

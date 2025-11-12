@@ -31,6 +31,6 @@ public class WhileQuiz_06 {
 		
 		System.out.printf("\n=============\n총 개수: %d\n총점: %d\n평균: %.2f",count,sum,avg);
 		
-		
+		sc.close();
 	}
 }

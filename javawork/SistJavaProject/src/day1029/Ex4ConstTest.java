@@ -19,6 +19,8 @@ public class Ex4ConstTest { // 클래스 헤더
 		
 		Ex4ConstTest con=new Ex4ConstTest();
 		Ex4ConstTest con2=new Ex4ConstTest();
+		System.out.println(con.count);
+		System.out.println(con2.count1);
 		
 		// 출력 static: 1 
 		// instance: 1 
