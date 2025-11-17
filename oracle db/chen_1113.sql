@@ -112,6 +112,36 @@ select company 회사명, addr 회사주소, c.phone 회사대표번호,name 거
 from company c,c_sawon s
 where c.companyid=s.companyid;
 
+--방법1
+select company 거래처회사,name 거래처사원,position 직위
+from company,c_sawon
+where company.companyid=c_sawon.companyid;
+
+--방법2
+select company 거래처회사,name 거래처사원,position 직위
+from company c,c_sawon s
+where c.companyid=s.companyid;
+
+--방법3
+select c.company 거래처회사,s.name 거래처사원,s.position 직위
+from company c,c_sawon s
+where c.companyid=s.companyid;
+
+--emp
+
+--사원명 부서명
+--smith 20번에 해당하는 실제부서명
+select e.ename 사원명,d.dname 부서명
+from emp e,dept d
+where e.deptno=d.deptno;
+
+--교수명      학과명
+--이수연 교수 영어영문학과
+select name||' 교수' 교수명,dname 학과명
+from professor p,department d
+where p.deptno=d.deptno;
+
+
 
 select * from company;
 select * from c_sawon;

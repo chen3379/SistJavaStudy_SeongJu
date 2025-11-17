@@ -1,0 +1,1 @@
+select gender, count(*), round(avg(age),1) from person group by gender;
