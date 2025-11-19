@@ -58,6 +58,7 @@ public class MyCarrot {
 		try {
 			conn = DriverManager.getConnection(ORACLE_URL, "test", "admin");
 			stmt = conn.createStatement();
+			
 
 			stmt.execute(sql);
 			
@@ -85,7 +86,9 @@ public class MyCarrot {
 		int n;
 		System.out.println("[과제물_1117]");
 		while (true) {
+			System.out.println("----------------------");
 			System.out.println("1.조회\t2.삭제\t9.종료");
+			System.out.println("----------------------");
 			System.out.println("숫자를 입력하세요");
 			n = sc.nextInt();
 			switch (n) {
