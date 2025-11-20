@@ -147,7 +147,7 @@ public class ConnectMyClub {
 		String chp = sc.nextLine();
 		String sql = "update myclub set cname='" + cname + "',caddr='" + caddr + "',cjob='" + cjob + "',chp='" + chp
 				+ "' where cno=" + n;
-		
+
 		try {
 			stmt = conn.createStatement();
 			stmt.executeUpdate(sql);

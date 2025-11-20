@@ -2,6 +2,7 @@ package day1119;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -52,6 +53,29 @@ public class DBConnect {
 	public void dbClose(Statement stmt,Connection conn) {
 		try {
 			stmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void dbClose(ResultSet rs, PreparedStatement pstmt,Connection conn) {
+		try {
+			rs.close();
+			pstmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void dbClose(PreparedStatement pstmt,Connection conn) {
+		try {
+			pstmt.close();
 			conn.close();
 		} catch (SQLException e) {
 			
