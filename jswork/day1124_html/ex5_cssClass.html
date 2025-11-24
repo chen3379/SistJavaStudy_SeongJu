@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cssClass</title>
+    <style>
+      /* CSS영역 class: . , id: # */
+      .happy {
+        /* happy class */
+        color: violet;
+        font-size: 30px;
+      }
+      b.nice {
+        /* b태그이면서 nice class */
+        color: orange;
+        text-decoration: underline;
+      }
+      img {
+        width: 200px;
+        height: 200px;
+        border: 10px inset gray;
+        border-radius: 100px;
+        box-shadow: 10px 10px 10px gray;
+      }
+      .imga {
+        /* imga class */
+        border-color: lightblue;
+        margin-bottom: 50px;
+        margin-top: 20px;
+        transform: rotate(-5deg);
+      }
+      .imgb {
+        /* imgb class */
+        border-color: lightgreen;
+        transform: rotate(5deg);
+        margin-left: 50px;
+      }
+      div.fimg > figure {
+        float: left;
+        transform: rotate(-20deg);
+        margin-left: 100px;
+        border: 5px double palevioletred;
+        border-radius: 120px;
+        border-style: dashed;
+        box-shadow: 10px 10px 10px gray;
+      }
+      div.fimg > figure > figcaption > b {
+        margin-left: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <font size="5" color="red">Font Tag</font>
+    <br />
+    <span style="color: cadetblue; font-size: 2em">Span Tag</span>
+    <br />
+    <span style="border: 3px solid green; font-size: 30pt">Span Tag2</span>
+    <div class="happy">Div Tag</div>
+    <div class="happy nice">Div Tag2</div>
+    <b class="happy nice">B tag(bold 속성 태그)</b>
+    <br />
+    <img
+      src="../image/연예인사진/12.jpg"
+      alt="보영님 없음"
+      title="박보영"
+      class="imga"
+    />
+    <br />
+    <img
+      src="../image/연예인사진/13.jpg"
+      alt="박신혜 없음"
+      title="박신혜"
+      class="imgb"
+    />
+
+    <hr clear="both" />
+    <div class="fimg">
+      <figure>
+        <img src="../image/연예인사진/9.jpg" alt="" />
+        <figcaption><b>강동원</b></figcaption>
+      </figure>
+
+      <figure>
+        <img src="../image/연예인사진/11.jpg" alt="" />
+        <figcaption><b>고준희</b></figcaption>
+      </figure>
+
+      <figure>
+        <img src="../image/연예인사진/19.jpg" alt="" />
+        <figcaption><b>수지</b></figcaption>
+      </figure>
+    </div>
+  </body>
+</html>

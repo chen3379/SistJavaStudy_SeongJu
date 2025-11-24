@@ -1,0 +1,224 @@
+/* --- Global Styles & Variables (White-based "Canvas" Mode) --- */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --heading-color: #000000;
+    --primary-color: #0a0a0a;
+    --secondary-color: #555555;
+    --border-color: #eeeeee;
+    --card-bg: #fdfdfd;
+    --font-body: 'Helvetica Neue', 'Arial', sans-serif;
+    --font-heading: 'Georgia', 'Times New Roman', serif;
+    --font-code: 'Menlo', 'Consolas', 'Monaco', monospace;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--heading-color);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; margin-top: 3rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
+h3 { font-size: 1.5rem; color: var(--primary-color); }
+p { margin-bottom: 1rem; }
+a { color: var(--primary-color); text-decoration: none; }
+
+/* --- Header & Navigation --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid var(--border-color);
+}
+.logo { font-size: 1.5rem; font-weight: 700; font-family: var(--font-heading); }
+header nav { display: flex; gap: 1.5rem; }
+header nav a { font-weight: 500; color: var(--secondary-color); transition: color 0.2s; }
+header nav a:hover { color: var(--primary-color); }
+
+/* --- Mode Toggle Button --- */
+#mode-toggle {
+    background: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+#mode-toggle .icon { margin-right: 0.5rem; }
+
+/* --- Hero Section --- */
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 2rem;
+}
+.hero .subtitle {
+    font-size: 1.25rem;
+    color: var(--secondary-color);
+    font-style: italic;
+}
+
+/* --- The "Creative" Dual-Mode Logic --- */
+.content-section .code-block {
+    display: none; /* Hide code blocks by default */
+}
+
+/* --- Skills (Canvas Mode) --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+.skill-category ul { list-style: none; padding: 0; }
+.skill-category li { background: var(--border-color); padding: 0.5rem; border-radius: 5px; margin-bottom: 0.5rem; }
+
+/* --- Portfolio (Canvas Mode) --- */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.project-card {
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--card-bg);
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    transition: box-shadow 0.3s ease;
+}
+.project-card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+.project-card img { width: 100%; display: block; }
+.project-card h3, .project-card p, .project-card a { padding: 0 1.5rem; }
+.project-card h3 { margin-top: 1rem; }
+.project-card a { margin-bottom: 1.5rem; display: inline-block; margin-right: 0.5rem; }
+
+/* --- Resume (Canvas Mode) --- */
+.timeline-item {
+    border-left: 3px solid var(--primary-color);
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 2rem;
+}
+.timeline-item::before { /* The dot on the timeline */
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: var(--bg-color);
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    position: absolute;
+    left: -9px;
+    top: 0;
+}
+.timeline-sub { display: block; font-weight: 500; color: var(--secondary-color); margin-bottom: 0.5rem; }
+
+/* --- Contact & Footer --- */
+footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 3rem;
+    border-top: 2px solid var(--border-color);
+}
+.social-links { margin-top: 1.5rem; }
+.social-links a { margin: 0 1rem; font-weight: 700; }
+
+/* --- Buttons --- */
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--bg-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-weight: 700;
+    transition: opacity 0.3s;
+}
+.btn-primary:hover { opacity: 0.8; }
+.btn-secondary {
+    background: none;
+    border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+.btn-github { background: none; border: 2px solid #333; color: #333; padding: 0.5rem 1rem; border-radius: 5px; }
+
+
+/*
+=====================================================
+===   THE "CREATIVE" PART: CODE VIEW STYLES   ===
+=====================================================
+*/
+body.code-view {
+    /* "Code Editor" Dark Mode */
+    --bg-color: #1e1e1e;
+    --text-color: #d4d4d4;
+    --heading-color: #d4d4d4;
+    --primary-color: #4ec9b0; /* Teal for links */
+    --secondary-color: #9cdcfe; /* Light blue for secondary text */
+    --border-color: #333333;
+    --card-bg: #2a2a2a;
+    
+    font-family: var(--font-code);
+}
+
+/* --- Show the Code, Hide the Canvas --- */
+body.code-view .content-section .canvas-block {
+    display: none;
+}
+body.code-view .content-section .code-block {
+    display: block;
+    background: #252526;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    overflow-x: auto;
+}
+body.code-view .code-comment {
+    color: #6a9955; /* Green for comments */
+    display: block;
+    margin-bottom: 1rem;
+}
+body.code-view pre.code-content {
+    margin: 0;
+    font-family: var(--font-code);
+    color: var(--text-color);
+}
+
+/* --- Tweak headings for Code Mode --- */
+body.code-view h2 {
+    color: #569cd6; /* Blue for 'function' names */
+}
+body.code-view h2::before { content: 'function '; color: #569cd6; }
+body.code-view h2::after { content: '() {'; color: #d4d4d4; }
+
+body.code-view .hero h1 { color: #4ec9b0; }
+body.code-view .hero .subtitle { color: #6a9955; font-style: normal; }
+body.code-view .hero .subtitle::before { content: '// '; }
+
+/* --- Invert Toggle Button --- */
+body.code-view #mode-toggle {
+    background: #f0f0f0;
+    color: #1e1e1e;
+}

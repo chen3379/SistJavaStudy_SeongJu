@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 나라별 치즈 종류 */
+      ul {
+        float: left;
+      }
+      li {
+        list-style: none;
+      }
+
+      body {
+        font-family: "나눔고딕", sans-serif;
+      }
+      hr {
+        clear: both; /* float 속성 해제 */
+      }
+
+      /* 나라별 음식 종류 */
+      /* menu라는 클래스명을 가진 ul
+      한 칸 떼면 그 하위 전체 */
+      ul.menu li {
+        float: left;
+        width: 200px;
+        height: 60px;
+        border: 1px solid gray;
+        text-align: center;
+        line-height: 60px; /* 세로 가운데 정렬 높이랑 같은 수치*/
+        margin-right: 10px; /* 오른쪽 여백 */
+        background-color: lightpink;
+        border-radius: 30px; /* 둥근 모서리 */
+        box-shadow: 5px 5px 5px gray; /* 안쪽 그림자 */
+      }
+
+      /* 스타일 시트를 활용한 간단한 이벤트 */
+      ul.menu li:hover {
+        background-color: blueviolet;
+        color: white;
+        cursor: pointer;
+      }
+      ul.menu li:active {
+        background-color: orange;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>나라별 치즈 종류</h1>
+    <ul>
+      <li><img src="../image/html_img/cheese1.png" alt="" /></li>
+      <li><img src="../image/html_img/flag01.jpg" alt="" />프랑스</li>
+      <li>브리치즈,까방베르,꽁떼</li>
+    </ul>
+    <ul>
+      <li><img src="../image/html_img/cheese2.png" alt="" /></li>
+      <li><img src="../image/html_img/flag02.jpg" alt="" />영국</li>
+      <li>하드 치즈,블루 치즈</li>
+    </ul>
+    <ul>
+      <li><img src="../image/html_img/cheese3.png" alt="" /></li>
+      <li><img src="../image/html_img/flag03.jpg" alt="" />미국</li>
+      <li>에멘탈,그뤼에르,라클렛</li>
+    </ul>
+    <ul>
+      <li><img src="../image/html_img/cheese4.png" alt="" /></li>
+      <li><img src="../image/html_img/flag04.jpg" alt="" />이탈리아</li>
+      <li>모짜렐라,리코타,마스카포네</li>
+    </ul>
+
+    <hr />
+
+    <h2>나라별 음식 종류_ul을 이용한 간단한 메뉴 만들기</h2>
+    <br />
+    <ul class="menu">
+      <!-- <li><img src="../image/Food/1.jpg" alt="" /></li> -->
+      <li>베트남</li>
+      <!-- <li><img src="../image/Food/2.jpg" alt="" /></li> -->
+      <li>일본</li>
+      <!-- <li><img src="../image/Food/3.jpg" alt="" /></li> -->
+      <li>한국</li>
+      <!-- <li><img src="../image/Food/4.jpg" alt="" /></li> -->
+      <li>중국</li>
+    </ul>
+  </body>
+</html>

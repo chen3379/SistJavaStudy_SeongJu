@@ -6,9 +6,11 @@ select * from mymallipgo;
 
 select * from mymallipgo where sangpum like '%코%';
 
-create table mystudentinfo(stu_no number primary key,
+create table mystudentinfo(
+stu_no number primary key,
 stu_name VARCHAR2(20),
 stu_addr varchar2(20),
 stu_grade number(20),
 stu_blood varchar2(20),
-stu_birth varchar2(20));
+stu_birth varchar2(20),
+writeday date);
