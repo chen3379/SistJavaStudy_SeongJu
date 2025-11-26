@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 400px;
+        height: 250px;
+        border: 1px solid gray;
+        margin-left: 50px;
+        margin-top: 30px;
+        background-size: 50px 70px;
+      }
+      div.a {
+        /*기본이 반복이라 사진을 하나만 채우려면 no repeat
+        background-size 지정시 background 에는 적용 불가*/
+        background-image: url("../image/vaundy.png");
+      }
+      .b {
+        background-image: url("../image/logoImg/a03.png");
+        background-repeat: repeat-x;
+      }
+      .c {
+        background-image: url("../image/html_img/image_04.png");
+        background-repeat: repeat-y;
+      }
+      .d {
+        background-image: url("../image/jquery_img/play.png");
+        background-repeat: no-repeat;
+        background-position: right;
+      }
+      body {
+        background-image: url("../image/Food/1.jpg");
+        background-repeat: no-repeat;
+        background-position: right bottom;
+      }
+      /*  범용 클래스, 모든 태그 가능 */
+      .bg {
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="a"></div>
+    <div class="b bg"></div>
+    <div class="c"></div>
+    <div class="d bg"></div>
+  </body>
+</html>

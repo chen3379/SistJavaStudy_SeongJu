@@ -1,0 +1,36 @@
+/* 너비 높이 글꼴 가운데 그림자 */
+@import url("https://fonts.googleapis.com/css2?family=Chiron+Sung+HK:ital,wght@0,200..900;1,200..900&family=Dokdo&family=Gowun+Batang&family=Jua&family=Nanum+Brush+Script&family=Nanum+Pen+Script&display=swap");
+
+.btn1 {
+  width: 220px;
+  height: 100px;
+  margin-left: 20px;
+  font-size: 40px;
+  font-family: "Gowun Batang", cursive;
+  text-align: center;
+  line-height: 100px;
+  border: 3px solid honeydew;
+  border-radius: 30px;
+  box-shadow: 7px 7px 7px gray;
+}
+.btn1:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 5px gray;
+  background-color: lightgrey;
+}
+.btn1:active {
+  box-shadow: 2px 2px 2px gray;
+  background-color: gray;
+}
+.btn-pink {
+  color: red;
+  background-color: pink;
+}
+.btn-green {
+  color: darkgreen;
+  background-color: lightgreen;
+}
+.btn-black {
+  color: white;
+  background-color: black;
+}

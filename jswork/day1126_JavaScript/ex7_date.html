@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //현재날짜 출력
+      var date = new Date();
+      document.write("현재년도: " + date.getFullYear() + "<br>");
+      document.write("현재월: " + (date.getMonth() + 1) + "<br>");
+      document.write("현재일: " + date.getDate() + "<br>");
+      document.write(
+        "현재시간: " + date.getHours() + " : " + date.getMinutes() + "<br>"
+      );
+      document.write("현재요일: " + date.getDay() + "<br>");
+      document.write(
+        "오늘은 " +
+          date.getFullYear() +
+          "년 " +
+          (date.getMonth() + 1) +
+          "월 " +
+          date.getDate() +
+          "일 입니다<br>"
+      );
+      date.getFullYear;
+
+      // isNaN(Not a Number): 문자면 true, 숫자일 경우 false 반환
+      document.write(isNaN(100) + "<br>"); // false
+      document.write(isNaN("hello") + "<br>"); // true
+      document.write(isNaN("a100") + "<br>"); // true
+      // isNaN에 따옴표 안에 있어도 숫자만 있으면 숫자로 인식
+      document.write(isNaN("100") + "<br>"); // false
+    </script>
+  </body>
+</html>

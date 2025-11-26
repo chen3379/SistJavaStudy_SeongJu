@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .tb1 {
+        width: 500px;
+        border: 5px groove gray;
+        border-collapse: collapse;
+      }
+      /* > : 바로 아래 태그 의미 */
+      .tb1 > thead > tr > th {
+        border: 1px solid gray;
+        background-color: chocolate;
+        color: ivory;
+      }
+
+      .tb1 > tbody > tr > td {
+        border: 1px solid gray;
+        background-color: ivory;
+      }
+      hr {
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
+
+      .tb2 {
+        width: 500px;
+        border: 5px inset sandybrown;
+        border-collapse: collapse;
+      }
+      .tb2 th,
+      .tb2 td {
+        border: 2px solid gray;
+        text-align: center;
+      }
+      .tb2 img {
+        width: 100px;
+      }
+
+      /* 2번째 테이블 1번 열의 너비 조절 */
+      .tb2 td:nth-child(1) {
+        width: 100px;
+      }
+      .tb2 td:nth-child(3) {
+        width: 100px;
+        color: blue;
+        text-align: right;
+      }
+      /* child는 정방향 last-child는 역순 */
+      .tb2 td:nth-last-child(1) {
+        background-color: ivory;
+      }
+    </style>
+  </head>
+  <body>
+    <table class="tb1">
+      <caption>
+        <h2>[표 연습 1]</h2>
+      </caption>
+      <thead>
+        <tr>
+          <th>이름</th>
+          <th>주소</th>
+          <th>연락처</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>고윤정</td>
+          <td>서울시 강서구</td>
+          <td>010-3245-3243</td>
+        </tr>
+        <tr>
+          <td>김다미</td>
+          <td>서울시 강북구</td>
+          <td>010-7367-3565</td>
+        </tr>
+        <tr>
+          <td>조이현</td>
+          <td>서울시 강동구</td>
+          <td>010-7564-2142</td>
+        </tr>
+      </tbody>
+    </table>
+    <hr />
+    <table class="tb2">
+      <h2>
+        <caption>
+          [표 연습 2]
+        </caption>
+      </h2>
+      <thead>
+        <tr>
+          <th>상품명</th>
+          <th>이미지</th>
+          <th>가격</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>검정 구두</td>
+          <td><img src="../image/logoImg/shoe01.png" alt="" /></td>
+          <td>200,000원</td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td>분홍 구두</td>
+          <td><img src="../image/logoImg/shoe02.png" alt="" /></td>
+          <td>300,000원</td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <td>빨강 구두</td>
+          <td><img src="../image/logoImg/shoe03.png" alt="" /></td>
+          <td>100,000원</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>미디어쿼리를활용한반응형</title>
+    <style>
+      body {
+        background: url("../image/div_img/actor1.jpg") no-repeat fixed;
+        background-size: cover;
+      }
+
+      /* 사이즈가 max-width가 되면 사진이 변경된다 */
+      @media screen and (max-width: 1024px) {
+        body {
+          background: url("../image/div_img/beauty1.jpg") no-repeat fixed;
+          background-size: cover;
+        }
+      }
+      @media screen and (max-width: 768px) {
+        body {
+          background: url("../image/div_img/bottle01.jpg") no-repeat fixed;
+          background-size: cover;
+        }
+      }
+      @media screen and (max-width: 320px) {
+        body {
+          background: url("../image/div_img/oneday01.jpg") no-repeat fixed;
+          background-size: cover;
+        }
+      }
+    </style>
+  </head>
+  <body></body>
+</html>

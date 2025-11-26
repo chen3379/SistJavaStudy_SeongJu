@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        border: 2px solid gray;
+        width: 500px;
+        border-collapse: collapse;
+      }
+      tr,
+      th,
+      td {
+        border: 1px dotted gray;
+        font-size: 10pt;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <caption>
+        <b>Radio & Check & Select</b>
+      </caption>
+      <tr height="30">
+        <td>
+          <b>최종학력선택</b>
+
+          <!-- radio는 name이 동일해야한다 -->
+          <input type="radio" name="grade" value="고등학교" />고등학교 &nbsp;
+          <input type="radio" name="grade" value="전문대학" />전문대학 &nbsp;
+          <input type="radio" name="grade" value="학사" />학사 &nbsp;
+          <input type="radio" name="grade" value="석사" />석사 &nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>사용 가능한 프로그램언어</b>
+          <input type="checkbox" name="lang" value="C언어" />C언어&nbsp;
+          <input type="checkbox" name="lang" value="JAVA" />JAVA&nbsp;
+          <input type="checkbox" name="lang" value="JSP" />JSP&nbsp;
+          <input type="checkbox" name="lang" value="ORACLE" />ORACLE&nbsp;
+          <input type="checkbox" name="lang" value="SPRING" />SPRING&nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td><b>이미지선택</b><input type="file" /></td>
+      </tr>
+      <tr>
+        <td><b>색상선택</b><input type="color" /></td>
+      </tr>
+
+      <tr>
+        <td>
+          <b>가장 프로젝트 함께하고 싶은 친구</b
+          ><select>
+            <option value="고윤정">고윤정</option>
+            <option value="조이현">조이현</option>
+            <option value="김다미">김다미</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>당신의 키는 몇cm?</b>
+          <input type="number" min="150" max="210" value="160" step="2" />cm
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>당신의 몸무게는 몇kg?</b>
+          <input type="number" min="40" max="100" value="60" step="1" />
+          kg
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>날짜선택</b>
+          <input type="date" />
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //  prompt = window.prompt 동일
+      // prompt(a,b) b에 입력한 값이 default로 입력되어있음
+      //   var userId = prompt("아이디입력", "chen");
+      //   if (userId == "chen") document.write(userId + "님 환영합니다<br>");
+      //   //   var userPassWord = prompt("비밀번호입력", "password");
+
+      //   var num = prompt("아무 숫자나 입력", "0");
+      //   document.write(num + 10 + "<br>");
+      //   document.write(typeof num + "<br>");
+
+      // var num1 = Number(prompt("숫자1"));
+      // var num2 = Number(prompt("숫자2"));
+      // document.write("총합계는 " + (num1 + num2));
+      //   var num1 = prompt("숫자1");
+      //   var num2 = prompt("숫자2");
+      //   document.write("총합계는 " + (Number(num1) + Number(num2)) + "<br>");
+      //Q. 이름과 신장을 입력 후 표준 몸무게를  구하시오
+      //당신의 이름은? ***
+      //당신의 키는? 180cm
+      //표준몸무게공식: (키 - 100)*0.9
+      //   var name = prompt("당신의 이름은?");
+      //   var hei = Number(prompt("당신의 키는?"));
+      //   var wei = Number(prompt("당신의 몸무게는?"));
+      //   document.write(
+      //     name + "님의 표준몸무게는 " + (hei - 100) * 0.9 + "kg입니다"
+      //   );
+
+      //   // confirm
+      //   var ans = confirm("정말 삭제하시겠어요???");
+      //   // -> if(ans==1 , true)
+      //   // 확인
+      //   if (ans) document.write("삭제되었습니다<br>");
+      //   // 취소
+      //   else document.write("삭제하지 않습니다<br>");
+
+      // for문
+      // 원하는 단을 입력하여 구구단 출력
+      var dan = prompt("단");
+      var i = 1;
+      while (i <= 9) {
+        document.write(dan + "X" + i + "=" + dan * i + "<br>");
+        i++;
+      }
+      document.write("<hr>");
+      for (var j = 1; j <= 9; j++) {
+        document.write(dan + "X" + j + "=" + dan * j + "<br>");
+      }
+    </script>
+  </body>
+</html>

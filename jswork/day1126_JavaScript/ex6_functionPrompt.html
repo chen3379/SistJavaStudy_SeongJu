@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var rightId = "chen";
+      var rightPw = "1111";
+
+      function login(id, pw) {
+        if (id == rightId) {
+          if (pw == rightPw) document.write("로그인 완료<br>");
+          else alert("비밀번호가 틀렸습니다");
+        } else alert("존재하지 않는 아이디입니다");
+      }
+      var userId = prompt("아이디를 입력하세요", "id");
+      var userPw = prompt("비밀번호를 입력하세요", "pw");
+      login(userId, userPw);
+    </script>
+  </body>
+</html>

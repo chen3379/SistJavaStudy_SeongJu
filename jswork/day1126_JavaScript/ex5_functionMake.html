@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      document.write("안녕하세요 a님");
+      document.write("<br>");
+      document.write("안녕하세요 b님");
+      document.write("<br>");
+      document.write("안녕하세요 c님");
+      document.write("<br>");
+      // 중복되는 부분을 함수로 포장한 후
+      // 중복되지 않느느 부분을 파라메타로 만든 후 함수를 호출할 때 값을 넘긴다
+
+      function showName(name) {
+        document.write("안녕하세요 " + name + "님<br>");
+      }
+      showName("a");
+      showName("b");
+      showName("c");
+
+      document.write("<hr>");
+      // Q.안녕하세요
+      // **님의 나이는 **세 입니다
+
+      //안녕하세요
+      //현주님의 나이는 28세 입니다
+      function showInfo(name, age) {
+        document.write(
+          "안녕하세요<br>" + name + "님의 나이는 " + age + "세 입니다<br>"
+        );
+      }
+      showInfo("성주", "26");
+      document.write("<hr>");
+      showInfo("윤정", "28");
+      document.write("<hr>");
+      document.write("리터럴 방식 함수만들기<br>");
+      // 이름:
+      // 키:
+      // 몸무게:
+      showInfo2 = function (name, hei, wei) {
+        document.write(
+          "이름: " +
+            name +
+            "<br>" +
+            "키: " +
+            hei +
+            "cm<br>" +
+            "몸무게: " +
+            wei +
+            "kg<br>"
+        );
+      };
+      showInfo2("김성주", 172, 64);
+    </script>
+  </body>
+</html>
