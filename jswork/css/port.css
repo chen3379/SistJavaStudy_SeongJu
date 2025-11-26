@@ -1,0 +1,34 @@
+* {
+  /* box size를 늘리지 않겠다 */
+  box-sizing: border-box;
+}
+body {
+  /* background-color: ; */
+  background: #222;
+  height: 100%;
+  margin: 0;
+}
+
+#container {
+  position: absolute;
+  width: 900px;
+  height: 100%;
+  background-color: #fff;
+  left: 50%;
+  margin-left: -450px;
+}
+aside {
+  float: left;
+  width: 300px;
+  padding: 50px 50px;
+  /* background-color: rgb(212, 212, 212); */
+  background-color: #eee;
+  height: 100%;
+}
+
+#main {
+  float: left;
+  padding: 30px;
+  width: 600px;
+  height: 100px;
+}

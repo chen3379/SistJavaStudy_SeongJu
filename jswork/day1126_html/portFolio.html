@@ -9,6 +9,7 @@
       table {
         border: 1px solid gray;
         border-collapse: collapse;
+        width: 70%;
       }
       thead {
         background-color: #eee;
@@ -20,6 +21,23 @@
       }
       tr {
         height: 20px;
+      }
+
+      /* a태그 링크에 대한 기본 속성 지정*/
+      /* a태그 */
+      a:link {
+        /*기본속성*/
+        text-decoration: none;
+      }
+      /* 한번이라도 클릭시 속성 */
+      a:visited {
+        color: pink;
+        text-decoration: none;
+      }
+      /* 마우스를 올렸을 때 속성 */
+      a:hover {
+        color: purple;
+        text-decoration: underline;
       }
     </style>
   </head>
@@ -43,6 +61,14 @@
 
         <div id="sns">
           <p>SNS address</p>
+          <ul>
+            <li>
+              <a href="https://www.facebook.com" target="_blank">facebook</a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com" target="_blank">instagram</a>
+            </li>
+          </ul>
         </div>
       </aside>
 
@@ -64,7 +90,7 @@
             <li>
               프론트 엔드 개발
               <ul>
-                <li>Css</li>
+                <li>CSS</li>
                 <li>HTML</li>
                 <li>JavaScript</li>
               </ul>
