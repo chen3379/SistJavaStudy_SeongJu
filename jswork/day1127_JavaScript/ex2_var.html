@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>지역변수 & 전역변수</title>
+  </head>
+  <body>
+    <script>
+      // 전역변수 : 전체 영역에서 사용하는 변수
+      var a = 10;
+      var b = 100;
+
+      function outFunc() {
+        // 지역변수: 지역내에서만 사용하는 변수
+        a = 20;
+
+        document.write("1. 지역변수 a: " + a + "<br>");
+        document.write("2. 지역변수 b: " + b + "<br>");
+      }
+      outFunc();
+      // function 내에서 var a=20; 을 하면
+      // 지역변수로 function 내에서만 a=20이 되지만
+
+      // function 내에서 var 없이 a=20; 을 하면
+      // 전역변수로 전역변수 a 값이 초기화된다
+
+      document.write("1. 전역변수 a: " + a + "<br>");
+      document.write("2. 전역변수 b: " + b + "<br>");
+    </script>
+  </body>
+</html>

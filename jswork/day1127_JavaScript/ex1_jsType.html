@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   var a = "hello";
+      //   var b = 200;
+      //   var c = 12.5;
+      //   var d = "60";
+
+      //   //typeof:데이터의 자료형 알아보기
+      //   document.write(typeof a + "<br>"); //string
+      //   document.write(typeof b + "<br>"); //number
+      //   document.write(typeof c + "<br>"); //string
+      //   document.write(typeof d + "<br>"); //number
+
+      //   document.write(b + 100 + "<br>"); //300
+      //   document.write(d + 100 + "<br>"); //60100
+
+      //   var sum = parseInt(d) + 100; //문자를 형변환후 숫자를 더한 값, Number도 가능
+      //   document.write(sum + 100 + "<br>"); //260
+
+      //   //eval("수식") : 실제 계산해서 출력
+      //   var s = "5*6 + 3";
+      //   document.write(s + "<br>"); //5*6 + 3
+      //   document.write(eval(s) + "<br>"); //33
+
+      //   //isNaN함수 - 숫자가 아닌 값을 찾는 함수
+      //   //isNaN은 NaN이면 true, NaN이 아니면 false를 반환
+      //   document.write(isNaN(456) + "<br>"); //false
+      //   document.write(isNaN("456") + "<br>"); //false
+      //   document.write(isNaN("abc") + "<br>"); //true
+
+      //   var input = prompt("숫자를 입력하시오");
+
+      //   function checkNaN(input) {
+      //     result = Number(input);
+
+      //     if (isNaN(result)) document.write("숫자가 아닙니다");
+      //     else document.write("숫자입니다");
+      //   }
+      //   // isNaN은 "123"도 숫자로 인식하기 때문에
+      //   // 위 아래 결과값이 동일
+      //   function checkNaN(input) {
+      //     result = Number(input);
+
+      //     if (isNaN(input)) document.write("숫자가 아닙니다");
+      //     else document.write("숫자입니다");
+      //   }
+
+      //   checkNaN(input);
+
+      //함수만들기
+      var name = "고윤정";
+      var age = 28; //정수
+      var weight = 5.6; //실수
+
+      //name,age,weight의 값을 화면에 출력하는 함수
+      function showInfo() {
+        document.write(name + "<br>" + age + "<br>" + weight + "<br>");
+      }
+      showInfo();
+    </script>
+  </body>
+</html>

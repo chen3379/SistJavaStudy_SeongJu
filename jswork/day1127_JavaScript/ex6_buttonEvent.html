@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/buttonStyle.css" />
+    <script>
+      function myConfirm() {
+        if (confirm("정말 삭제하시겠습니까?")) alert("네 삭제할게요");
+        else alert("삭제 취소할게요");
+      }
+      // head단에서 dom 객체로 element 접근 불가하므로
+      // window.onload()를 사용하여 수행
+      window.onload = function () {
+        var btn = document.getElementById("btnPrompt");
+        btn.onclick = function () {
+          var name = prompt("당신의 이름은?");
+          if (name != null) alert("내 이름은 " + name + " 입니다");
+          else alert("취소할게요");
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <!-- 우리가 만든 버튼 3개 css로 불러오기-->
+    <!-- 버튼명: alert, confirm, prompt -->
+    <button type="button" class="btn1 btn-pink" onclick="alert('hi')">
+      alert
+    </button>
+    <!-- <input type="button" value="alert"> 와 동일 -->
+    <button type="button" class="btn1 btn-green" onclick="myConfirm()">
+      confirm
+    </button>
+    <button id="btnPrompt" type="button" class="btn1 btn-black">prompt</button>
+  </body>
+</html>

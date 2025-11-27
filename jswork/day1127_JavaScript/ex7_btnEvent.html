@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #out {
+        position: absolute;
+        top: 100px;
+        left: 50px;
+        width: 300px;
+        height: 200px;
+        background-color: aquamarine;
+        border: 2px groove gold;
+        padding: 50px 20px;
+      }
+    </style>
+    <script>
+      //데이터 추가할까요?
+      function myConf() {
+        if (confirm("데이터 추가할까요?"))
+          document.getElementById("out").innerHTML = "추가했어요";
+        else document.getElementById("out").innerHTML = "취소했어요";
+      }
+      window.onload = function () {
+        var btn1 = document.getElementById("btn1");
+        btn1.onclick = function () {
+          var a = prompt("몇 강의장이세요?");
+          document.getElementById("out").innerHTML =
+            "저의 강의장은 " + a + " 강의장 입니다";
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <button onclick="myConf()">confirm_사용자함수</button>
+    <input type="button" value="prompt_자바스크립트" id="btn1" />
+    <div id="out">출력하는 곳...</div>
+  </body>
+</html>

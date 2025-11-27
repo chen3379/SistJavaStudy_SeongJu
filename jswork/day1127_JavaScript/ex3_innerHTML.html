@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>내부HTML</title>
+    <script>
+      // head단에서 js 실행할 경우에는 페이지가 모두 load가 된 후 호출
+      // window.onload() - html의 로딩이 끝나야만 시작
+      // 따라서 head단에서 window.onload()=function 을 통해 수행 가능
+      window.onload = function () {
+        document.getElementById("name").innerHTML = "조이현";
+      };
+    </script>
+  </head>
+  <body>
+    <!-- HTML에 JavaScript 연동할 때 순서에 따라서 작동방식이 달라진다 -->
+    <!-- head tag 안에 넣으면 HTML element를 이용할 수 없다 -->
+    <!-- body tag 안에 넣으면 HTML element를 이용할 수 있다 -->
+    <!-- HTML 출력 -->
+    <div id="name">고윤정</div>
+    <!-- script 내에서는 id에 접근할 때 document.getElementById("id명") 사용 -->
+    <!-- .innerHTML : HTML 안에 접근을 하겠다 -->
+    <!-- div 출력값이 고윤정 -> 조이현으로 바뀜 -->
+    <!-- <script>
+      document.getElementById("name").innerHTML = "조이현";
+    </script> -->
+  </body>
+</html>

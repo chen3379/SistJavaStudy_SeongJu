@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="width: 400px; text-align: center">
+    <button type="button" onclick="alert('안녕하세요')">
+      함수 호출 - 직접 이벤트
+    </button>
+    <button type="button" onclick="hello()">사용자함수 호출 - 이벤트</button>
+    <button type="button" id="btn1">js - 이벤트</button>
+
+    <hr />
+    <h1>오늘 점심메뉴는 정하셨나요?</h1>
+
+    <form action="">
+      <fieldset>
+        <legend>점심메뉴결정</legend>
+        <input type="button" value="예" onclick="yes()" />
+        <input type="button" value="아니오" onclick="no()" />
+      </fieldset>
+    </form>
+
+    <hr />
+
+    <!-- 버튼 클릭시 오늘 이벤트 쉬운가요? 라는 확인창이 나오고
+      확인을 누르면 네 쉬워요 라는 경고창이 나오며
+       취소를 누르면 아니요!!! 라는 경고창이 나오게-->
+    <input type="button" value="여기를 클릭해보세요" onclick="testConfirm()" />
+
+    <script>
+      function testConfirm() {
+        var a = confirm("오늘 이벤트 쉬운가요?");
+        if (a) alert("네 쉬워요");
+        else alert("아니요!!!");
+      }
+
+      function hello() {
+        alert("2번째 버튼 클릭");
+      }
+
+      //btn1에 이벤트주기
+      //   document.getElementById("btn1").onclick = function () {
+      //     alert("3번째 버튼 클릭");
+      //   };
+
+      var b = document.getElementById("btn1");
+      b.onclick = function () {
+        alert("3번째 버튼 클릭");
+      };
+
+      function yes() {
+        alert("예");
+      }
+      function no() {
+        alert("아니오");
+      }
+    </script>
+  </body>
+</html>

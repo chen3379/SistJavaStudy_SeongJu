@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      window.onload = function () {
+        var list = "";
+
+        list += "<ul>";
+        list += "<li>Java</li>";
+        list += "<li>Html</li>";
+        list += "</ul>";
+        // 누적해서 list를 생성해도 되지만, 한 줄로도 구현 가능
+
+        document.getElementById("out").innerHTML = list;
+        // out인 id의 출력을 list로 변경
+        document.getElementById("hi").innerHTML = "Hello";
+      };
+    </script>
+  </head>
+  <body>
+    <div id="out">리스트 출력</div>
+
+    <h1 id="hi">안녕</h1>
+  </body>
+</html>
