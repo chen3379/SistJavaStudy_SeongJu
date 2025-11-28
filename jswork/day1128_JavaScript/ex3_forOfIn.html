@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>배열변수 초기값으로 5개 지정한 후 배열값을 해당색으로 출력_b태그</h3>
+    <script>
+      var colors = new Array();
+      colors[0] = ["red", "빨강"];
+      colors[1] = ["green", "초록"];
+      colors[2] = ["blue", "파랑"];
+      colors[3] = ["black", "검정"];
+      colors[4] = ["purple", "보라"];
+
+      for (var i = 0; i < colors.length; i++) {
+        document.write(
+          "<b style='color:" + colors[i][0] + "'>" + colors[i][1] + "</b><br>"
+        );
+      }
+
+      document.write("<hr>");
+
+      // of: arr1의 배열값이 차례대로 반복해서 꺼내진다
+      // (자바의 확장 for문과 같은 경우)
+      //   for (var n of colors) {
+      //     document.write("<b style='color:" + n + "'>" + n + "<b><br>");
+      //   }
+
+      //   document.write("<hr>");
+
+      //   // in: 배열의 인덱스를 얻고자 할경우
+      //   for (var idx in colors) {
+      //     document.write("<b>" + idx + ":" + colors[idx] + "</b>&nbsp;");
+      //   }
+    </script>
+    <h3>
+      Array(3) 으로 생성하시고 각 배열에 이미지 넣고 출력은 of로 해볼것!!!
+    </h3>
+    <script>
+      var images = new Array(3);
+      images.push("dog1.jpg");
+      images.push("dog2.jpg");
+      images.push("dog3.jpg");
+      images.shift();
+      images.shift();
+      images.shift();
+      for (var n of images) {
+        document.write("<img width=200; src='../image/html_img/" + n + "'>");
+      }
+    </script>
+    <hr />
+    <h3>Q1. Food 안의 모든 이미지를 출력하시오 4열씩만 배치</h3>
+    <script>
+      for (var i = 1; i <= 12; i++) {
+        document.write(
+          "<img width=100; height=80; src='../image/Food/" + i + ".jpg'>"
+        );
+        if (i % 3 == 0) document.write("<br>");
+      }
+    </script>
+    <hr />
+    <h3>
+      Q2. hello 가 h1 tag로 5번 반복되고 각 hello의 색상은 배열의 5가지 색상으로
+      나오게 할 것
+    </h3>
+    <script>
+      var co = new Array();
+      co[0] = "red";
+      co[1] = "green";
+      co[2] = "blue";
+      co[3] = "pink";
+      co[4] = "purple";
+      for (var i = 0; i < 5; i++) {
+        document.write("<h1 style='color:" + co[i] + "'>hello</h1>");
+      }
+    </script>
+    <hr />
+    <h3>
+      Q3_1. 확인 버튼을 누르면 정말 탈퇴하실건가요? 확인시 탈퇴되었습니다 취소시
+      취소됨 이라고 출력창에 나오게
+    </h3>
+
+    <button id="btnQ3_1">Q3_1</button>
+    <hr />
+    <h3>
+      Q3_2. 입력버튼을 누르면 당신이 사는 지역은? 이라고 나온 후 입력한 동네가
+      결과창에 나오게 해주세요(취소시 취소됨 이라고 나옴)
+    </h3>
+    <script>
+      window.onload = function () {
+        var btn = document.getElementById("btnQ3_1");
+        btn.onclick = function () {
+          if (confirm("Q3_1")) alert("탈퇴되었습니다");
+          else alert("취소됨");
+        };
+        var btn2 = document.getElementById("btnQ3_2");
+        btn2.onclick = function () {
+          var addr = prompt("당신이 사는 지역은?");
+          if (addr == null) addr = "취소됨";
+          document.getElementById("result").innerHTML = addr;
+        };
+      };
+    </script>
+
+    <button id="btnQ3_2">Q3_2</button>
+    <div id="result">[출력]</div>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      for (var i = 1; i <= 20; i++) {
+        if (i < 10)
+          document.write(
+            "<img src='../image/만화이미지/0" + i + ".png' width='100'/>"
+          );
+        else
+          document.write(
+            "<img src='../image/만화이미지/" + i + ".png' width='100'/>"
+          );
+      }
+      document.write("<hr>");
+      for (var i = 1; i <= 20; i++) {
+        document.write(
+          "<img src='../image/만화이미지/" +
+            (i < 10 ? "0" : "") +
+            i +
+            ".png' width='100'/>"
+        );
+
+        //4행으로 줄바꿈
+        if (i % 5 == 0) document.write("<br>");
+      }
+    </script>
+
+    <h2>자바스크립트 배열 선언하는 방법</h2>
+    <script>
+      var arr = new Array();
+      arr[0] = "장미";
+      arr[1] = "튤립";
+      arr[2] = "백합";
+      arr[3] = "개나리";
+      arr[4] = "프리지아";
+
+      for (var i = 0; i < arr.length; i++) {
+        document.write(arr[i] + "<br>");
+      }
+    </script>
+    <h2>자바스크립트 배열 선언하는 방법_2</h2>
+    <script>
+      var arr2 = new Array();
+      arr2[0] = "장미";
+      arr2[1] = "튤립";
+      arr2[2] = "백합";
+      arr2[3] = "개나리";
+      arr2[4] = "프리지아";
+
+      for (var i = 0; i < arr2.length; i++) {
+        document.write(arr2[i] + "<br>");
+      }
+    </script>
+    <h2>자바스크립트 2차원 배열 선언하는 방법_3</h2>
+    <script>
+      var arr3 = new Array();
+
+      arr3[0] = ["red", "장미꽃"];
+      arr3[1] = ["yellow", "프리지아"];
+      arr3[2] = ["purple", "안개꽃"];
+      arr3[3] = ["pink", "벚꽃"];
+
+      for (var i = 0; i < arr3.length; i++) {
+        document.write(
+          "<font size='15em' color ='" +
+            arr3[i][0] +
+            "'>" +
+            arr3[i][1] +
+            "</font><br>"
+        );
+      }
+    </script>
+
+    <h2>배열에 요소 추가</h2>
+    <script>
+      var foodName = new Array();
+      foodName.push("햄버거"); // 배열 마지막 요소 삽입
+      console.log(foodName);
+      foodName.push("감자튀김");
+      foodName.push("밀크쉐이크");
+      foodName.push("치즈스틱");
+      foodName.push("콜라");
+
+      // 출력 <h3>
+
+      for (var i = 0; i < foodName.length; i++) {
+        document.write("<h3>" + foodName[i] + "</h3>");
+      }
+
+      foodName.pop(); // 배열 마지막 요소 제거
+      foodName.shift(); // 배열 첫번째 요소 제거
+      //출력문 작성 전에 console.log를 통해 확인 가능
+    </script>
+  </body>
+</html>

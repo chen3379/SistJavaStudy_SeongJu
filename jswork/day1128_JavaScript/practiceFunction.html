@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        var btn = document.getElementById("btnPrompt");
+        btn.onclick = function () {
+          var s = prompt("오늘은 금요일인가요?");
+          document.getElementById("btnA").innerHTML = s;
+        };
+        var con = document.getElementById("btnConfirm");
+        // 함수가 input 데이터에 지정되어 있는게 아니니까
+        // window.onload 안에 구현해야 함
+        con.onclick = function () {
+          var h = confirm("배고파?");
+          if (h) document.getElementById("btnA").innerHTML = "밥 먹어";
+          else document.getElementById("btnA").innerHTML = "ㅇㅋ";
+        };
+        var con2 = document.getElementById("btnConfirm2");
+        con2.onclick = function () {
+          var h2 = confirm("목말라?");
+          if (h2) alert("물 마셔");
+          else alert("ㅇㅋ;");
+        };
+        var cha = document.getElementById("changeBtn2");
+        cha.onclick = function () {
+          document.getElementById("btnConfirm2").value = "바뀜";
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <button type="button" id="btnPrompt">prompt</button>
+    <hr />
+    <input type="button" id="btnConfirm" value="confirm" />
+    <hr />
+    <input type="button" id="btnConfirm2" value="confirm2" />
+    <hr />
+    <input type="button" id="changeBtn2" value="changeBtn2" />
+    <hr />
+    <div type="button" id="btnA">출력하는 곳</div>
+  </body>
+</html>

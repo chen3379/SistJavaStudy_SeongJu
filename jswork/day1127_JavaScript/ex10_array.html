@@ -61,10 +61,21 @@
       <img src="../image/연예인사진/1.jpg" width="100" />를 참고할 것 사이즈가
       크니까 가로 100으로
     </h2>
+
     <script>
       for (var i = 1; i <= 5; i++) {
         document.write(
           "<img src='../image/연예인사진/" + i + ".jpg' width='100'/>"
+        );
+      }
+    </script>
+
+    <h2>icon02.png, ironman,logo,thor,toy04_너비를 100 고정 출력</h2>
+    <script>
+      var images = ["icon02", "ironman", "logo", "thor", "toy04"];
+      for (var i = 0; i < images.length; i++) {
+        document.write(
+          "<img src='../image/logoImg/" + images[i] + ".png' width='100'/>"
         );
       }
     </script>
