@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #out {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        width: 300px;
+        height: 200px;
+        padding: 10px 10px;
+        font-size: 11pt;
+        background-color: lightgreen;
+        border: 1px solid green;
+      }
+      #outImg {
+        position: absolute;
+        top: 100px;
+        left: 400px;
+        width: 120px;
+        height: 150px;
+        border: 1px solid gainsboro;
+      }
+    </style>
+    <script>
+      //event 번호 확인 enter=13
+      //키보드 키를 눌렀을 때 console창에 keyCode 값 출력
+      document.addEventListener("keydown", function (e) {
+        console.log("KeyCode", e.keyCode);
+      });
+
+      //숫자 맞추기
+      var rnd;
+      var cnt = 0;
+      window.onload = function () {
+        rnd = parseInt(Math.random() * 100) + 1;
+      };
+
+      function check(su) {
+        var out = document.getElementById("out");
+        if (su <= 0 || su > 100) {
+          alert("다시 입력바랍니다");
+          return;
+        }
+        //난수와 숫자 비교해서 결과 출력
+        // else document.getElementsByName("outImg");
+
+        cnt++;
+
+        if (su > rnd)
+          out.innerHTML += cnt + "회차: " + su + "보다 작습니다<br>";
+        else if (su < rnd)
+          out.innerHTML += cnt + "회차: " + su + "보다 큽니다<br>";
+        else {
+          out.innerHTML += cnt + "회차: 정답은" + rnd + "입니다";
+          myImg.src = "../image/jquery_img/03.png";
+        }
+
+        //숫자를 회차동안 못 맞출 시
+        if (cnt >= 10) {
+          out.innerHTML = "<h3>다음기회에. . . </h3>";
+          myImg.src = "../image/jquery_img/07.png";
+        }
+        frm.num.value = "";
+      }
+    </script>
+  </head>
+  <body>
+    <!-- 출력공간 입력공간 이미지공간? -->
+    <div class="input">
+      <form action="#" name="frm" onsubmit="return false">
+        <b>숫자: </b>
+        <input
+          type="text"
+          name="num"
+          size="5"
+          onkeydown="if(event.keyCode==13) check(value)"
+        />
+      </form>
+    </div>
+    <div id="out"></div>
+    <div id="outImg"><img src="" alt="" name="myImg" /></div>
+  </body>
+</html>

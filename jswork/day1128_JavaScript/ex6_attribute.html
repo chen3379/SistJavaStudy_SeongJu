@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #img_gallery img {
+        width: 100px;
+        height: 100px;
+      }
+
+      div#img_gallery {
+        position: absolute;
+        left: 600px;
+        top: 100px;
+        cursor: pointer;
+      }
+
+      #result_div {
+        position: absolute;
+        left: 500px;
+        top: 300px;
+      }
+      #result_div img {
+        border: 10px groove gray;
+        width: 500px;
+        height: 450px;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        var btn1 = document.getElementById("img1");
+        var btn2 = document.getElementById("img2");
+        var btn3 = document.getElementById("img3");
+        var btn4 = document.getElementById("img4");
+        var imgResult = document.getElementById("img_result");
+        btn1.onclick = function () {
+          imgResult.setAttribute("src", img1.getAttribute("src"));
+        };
+        btn2.onclick = function () {
+          imgResult.setAttribute("src", img2.getAttribute("src"));
+        };
+        btn3.onclick = function () {
+          imgResult.setAttribute("src", img3.getAttribute("src"));
+        };
+        btn4.onclick = function () {
+          imgResult.setAttribute("src", img4.getAttribute("src"));
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <!-- 속성: src, width, border 
+     setAttribute("src","../image...")
+     getAttribute(변수) -->
+
+    <div id="img_gallery">
+      <img src="../image/jquery_img/01.png" alt="" id="img1" />
+      <img src="../image/jquery_img/02.png" alt="" id="img2" />
+      <img src="../image/jquery_img/03.png" alt="" id="img3" />
+      <img src="../image/jquery_img/04.png" alt="" id="img4" />
+    </div>
+    <div id="result_div"><img id="img_result" /></div>
+  </body>
+</html>
