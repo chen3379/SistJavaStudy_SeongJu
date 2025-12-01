@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 50px;
+        border: 1px solid gray;
+        background-color: lightblue;
+        margin: 5px;
+        color: purple;
+        text-align: center;
+        line-height: 50px;
+      }
+      #pink {
+        color: black;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box" id="pink"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <script>
+      //getElementByClassName
+      var allBox = document.getElementsByClassName("box");
+      for (var i = 0; i < allBox.length; i++) {
+        allBox[i].innerHTML = "item";
+      }
+      //getElementById
+      var pinkBox = document.getElementById("pink");
+      pinkBox.innerHTML = "<b>pinkbox</b>";
+
+      //getElementByTagName..border
+      var boxTag = document.getElementsByTagName("div");
+      for (var i = 0; i < boxTag.length; i++) {
+        boxTag[i].style.border = "5px groove purple";
+      }
+
+      //querySelector
+      var qs = document.querySelector("div"); //첫번째 div 하나만 조회
+      qs.style.backgroundColor = "cyan";
+      //querySelectorAll
+      var qsAll = document.querySelectorAll("div");
+      for (var i = 0; i < qsAll.length; i++) {
+        qsAll[i].innerText = "SIST";
+      }
+    </script>
+  </body>
+</html>

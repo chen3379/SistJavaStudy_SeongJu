@@ -11,24 +11,24 @@
       // 버튼을 누르면 해당 연예인 이미지가 출력
       //  각각의 버튼을 클릭하면 매번 ***님을 출력할까요?
       //  라고 확인해서 확인을 누를 경우에만 이미지 출력
+      var rs;
+
       btnPark = function () {
         if (confirm("박보영님을 출력할까요?"))
-          document.getElementById("result").innerHTML =
-            "<img src='../image/연예인사진/12.jpg'/>";
+          rs.innerHTML = "<img src='../image/연예인사진/12.jpg'/>";
       };
       window.onload = function () {
+        rs = document.getElementById("result");
         var su = document.getElementById("btnSu");
         su.onclick = function () {
           if (confirm("수지님을 출력할까요?"))
-            document.getElementById("result").innerHTML =
-              "<img src='../image/연예인사진/19.jpg'/>";
+            rs.innerHTML = "<img src='../image/연예인사진/19.jpg'/>";
         };
 
         var sin = document.getElementById("btnSin");
         sin.onclick = function () {
           if (confirm("신민아님을 출력할까요?"))
-            document.getElementById("result").innerHTML =
-              "<img src='../image/연예인사진/17.jpg'/>";
+            rs.innerHTML = "<img src='../image/연예인사진/17.jpg'/>";
         };
       };
     </script>

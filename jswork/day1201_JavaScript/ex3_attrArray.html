@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/buttonStyle.css" />
+    <title>Document</title>
+    <style>
+      #result {
+        width: 500px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        border: 2px solid gray;
+        margin-top: 20px;
+        background: url(../image/만화이미지/04.png) no-repeat right bottom;
+        background-size: 50px 60px;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        //div 요소값
+        var r = document.getElementById("result");
+        //img
+        var i = document.getElementById("imgResult");
+
+        //버튼 1 이벤트.. innerHTML, innerText
+        //1번 버튼 누르면 당신의 이름?
+        var btn1 = document.getElementById("btn1");
+        btn1.onclick = function () {
+          var name = prompt("당신의 이름은?");
+          if (name == null)
+            r.innerText = "<u>취소되었습니다</u>"; //태그가 그대로 출력
+          else r.innerHTML = "<u>당신의 이름은 " + name + "이네요</u>"; //태그가 적용되어 출력
+        };
+        //버튼 2 이벤트
+        var btn2 = document.getElementById("btn2");
+        btn2.onclick = function () {
+          var curWidth = i.getAttribute("width");
+          alert(curWidth);
+          var newWidth = prompt("원하는 이미지 너비를 입력", curWidth);
+          if (newWidth == null) r.innerHTML = "<u>이미지 변경하지 않겠다.</u>";
+          else i.setAttribute("width", newWidth);
+        };
+        //버튼 3 이벤트(Food 1~12 또는 연예인 1~20)
+        //출력할 음식 번호를 누르세요
+        //취소 누르면 현재 사진을 변경하지 않겠어요
+        //확인 누르면 해당 사진으로 사진 변경
+        //사진의 범위를 넘어서면 함수 종료
+
+        var btn3 = document.getElementById("btn3");
+        btn3.onclick = function () {
+          var n = prompt("출력할 음식 번호를 누르세요");
+          if (n == null) r.innerHTML = "현재 사진을 변경하지 않겠어요";
+          else if (0 < n && n <= 12)
+            i.setAttribute("src", "../image/Food/" + n + ".jpg");
+          else {
+            alert("1~12 사이 값만 입력하세요");
+            return;
+          }
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <button type="button" class="btn1 btn-black" id="btn1">이벤트#1</button>
+    <button type="button" class="btn1 btn-pink" id="btn2">이벤트#2</button>
+    <button type="button" class="btn1 btn-green" id="btn3">이벤트#3</button>
+    <div id="result"></div>
+    <img src="../image/jquery_img/01.png" width="300" id="imgResult" />
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img src="../image/Food/1.jpg" width="200" id="myImg" />
+    <hr />
+    <button type="button" onclick="attrTest()">속성 알아보기</button>
+    <hr />
+    <button type="button" onclick="setAttr()">속성 적용하기</button>
+    <hr />
+    <img src="" id="someImg" />
+    <script>
+      function attrTest() {
+        var foodPhoto = document.getElementById("myImg");
+
+        //태그의 속성값 가져오기
+        var src = foodPhoto.getAttribute("src");
+        var width = foodPhoto.getAttribute("width");
+        alert(src + "\n" + width);
+      }
+
+      function setAttr() {
+        var foodPhoto = document.getElementById("myImg");
+        var somePhoto = document.getElementById("someImg");
+        somePhoto.setAttribute("src", foodPhoto.getAttribute("src"));
+        somePhoto.setAttribute("width", foodPhoto.getAttribute("width"));
+      }
+    </script>
+  </body>
+</html>

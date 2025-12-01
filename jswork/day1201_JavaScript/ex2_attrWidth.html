@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #one {
+        margin-bottom: 50px;
+        margin-left: 50px;
+      }
+    </style>
+    <script>
+      function photoSmall() {
+        var img1 = document.getElementById("mina");
+        var w1 = img1.getAttribute("width");
+        console.log(typeof w1);
+        // string 타입이더라도 -, *는 숫자로 계산이 가능(+는 불가능)
+        w1 -= 10;
+        img1.setAttribute("width", w1);
+      }
+      function photoLarge() {
+        var img1 = document.getElementById("mina");
+        var w1 = img1.getAttribute("width");
+        console.log(typeof w1);
+        // string 타입이더라도 -, *는 숫자로 계산이 가능(+는 불가능)
+        w1 = parseInt(w1); // width 속성을 int로 형변환 후 다시 w
+        w1 += 10;
+        img1.setAttribute("width", w1);
+      }
+      //   function photoLarge() {
+      //     var img1 = document.getElementById("mina");
+      //     var w1 = img1.getAttribute("width");
+      //     console.log(typeof w1);
+      //     // string 타입이더라도 -, *는 숫자로 계산이 가능(+는 불가능)
+      //     w1 -= -10;
+      //     img1.setAttribute("width", w1);
+      //   }
+    </script>
+  </head>
+  <body>
+    <div id="one">
+      <button type="button" onclick="photoSmall()">점점 작게</button>
+      <button type="button" onclick="photoLarge()">점점 크게</button>
+    </div>
+
+    <img id="mina" src="../image/연예인사진/17.jpg" width="200" />
+    <hr />
+
+    <h3>배열로 이미지를 5개 생성하고, 그 이미지를 출력해보자</h3>
+    <script>
+      var imgs = new Array(5);
+      imgs[0] = "1";
+      imgs[1] = "2";
+      imgs[2] = "3";
+      imgs[3] = "4";
+      imgs[4] = "5";
+      for (var i = 0; i < imgs.length; i++) {
+        document.write(
+          "<img src='../image/연예인사진/" +
+            imgs[i] +
+            ".jpg' width=200 height=250/>"
+        );
+      }
+    </script>
+  </body>
+</html>

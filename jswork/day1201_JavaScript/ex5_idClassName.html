@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #small_photo {
+        position: absolute;
+        left: 100px;
+        top: 100px;
+        width: 400px;
+        height: 500px;
+      }
+
+      .sPhoto {
+        width: 60px;
+        height: 60px;
+        border: 1px solid gray;
+        margin: 5px 5px;
+        cursor: pointer;
+      }
+      #main_img {
+        position: absolute;
+        left: 550px;
+        top: 150px;
+      }
+      #large_photo {
+        width: 400px;
+        height: 500px;
+        border: 10px groove gray;
+      }
+    </style>
+    <script>
+      //쇼핑몰사진 1~35 jpg
+    </script>
+  </head>
+  <body>
+    <div id="small_photo">
+      <script>
+        //쇼핑몰에 있는 1~35까지의 이미지를 가지고 온다 .. 클래스명sPhoto
+        for (var i = 1; i <= 35; i++) {
+          if (i == 23) continue;
+          document.write(
+            "<img src='../image/쇼핑몰사진/" + i + ".jpg' class='sPhoto'/>"
+          );
+        }
+      </script>
+    </div>
+
+    <div id="main_img">
+      <img src="../image/logoImg/images03.jpg" id="large_photo" />
+    </div>
+    <script>
+      //class 배열얻기
+      //방법1: getElementByClassName
+      //방법2: querySelectorAll
+      var sp = document.querySelectorAll(".sPhoto");
+      var lp = document.getElementById("large_photo");
+      for (var i = 0; i < sp.length; i++) {
+        sp[i].onmouseover = function () {
+          lp.setAttribute("src", this.getAttribute("src"));
+        };
+        sp[i].onmouseout = function () {
+          lp.setAttribute("src", this.getAttribute("src"));
+        };
+      }
+    </script>
+  </body>
+</html>
