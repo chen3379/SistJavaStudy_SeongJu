@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #myPhoto {
+        position: absolute;
+      }
+      body {
+        background-image: url(../image/warning.png);
+        background-repeat: no-repeat;
+        background-position: 300px 500px;
+        position: absolute;
+      }
+    </style>
+    <script>
+      var myPhoto;
+      var xPos = 800;
+      var yPos = 300;
+
+      window.onload = function () {
+        myPhoto = document.getElementById("myPhoto");
+        myPhoto.style.top = yPos + "px";
+        myPhoto.style.left = xPos + "px";
+        //키보드의 아스키코드값 확인
+        //왼쪽 37 오른쪽 39 위 38 아래 40 엔터 13
+        window.onkeydown = function (e) {
+          console.log(e.keyCode);
+
+          switch (e.keyCode) {
+            case 38:
+              yPos -= 10;
+              myPhoto.style.top = yPos + "px";
+              break;
+            case 40:
+              yPos += 10;
+              myPhoto.style.top = yPos + "px";
+              break;
+            case 37:
+              xPos -= 10;
+              myPhoto.style.left = xPos + "px";
+              break;
+            case 39:
+              xPos += 10;
+              myPhoto.style.left = xPos + "px";
+              break;
+            case 13:
+              xPos = 800;
+              yPos = 100;
+              myPhoto.style.top = yPos + "px";
+              myPhoto.style.left = xPos + "px";
+          }
+          if (xPos == 100 && yPos == 100) alert("Warning");
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <!-- 초기위치(중앙)에 이미지 하나 두고 방향키 누르면 10씩 이동(좌우 상하) -->
+    <!-- 엔터 누르면 처음 위치로 -->
+    <img src="../image/jquery_img/09.png" id="myPhoto" />
+  </body>
+</html>

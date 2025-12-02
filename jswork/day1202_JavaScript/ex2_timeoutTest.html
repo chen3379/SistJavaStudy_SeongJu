@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #img1 {
+        position: relative;
+        left: 100px;
+        top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="../image/jquery_img/03.png" id="img1" />
+    <script>
+      var img1 = document.getElementById("img1");
+      setTimeout(function () {
+        img1.style.left = "500px";
+        img1.style.top = "200px";
+        img1.style.width = "300px";
+      }, 3000); // 3초 뒤에 함수 호출 - callback함수
+    </script>
+  </body>
+</html>

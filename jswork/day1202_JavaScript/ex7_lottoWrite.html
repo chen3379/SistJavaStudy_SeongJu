@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/lottoStyle.css" />
+    <script>
+      var lotto = new Array(6);
+      document.getElementById("out").setAttribute("class", lotto);
+      //버튼을 누르면 1~45까지의 난수를 구해서 배열에 넣기
+      var btnwrite = document.getElementById("btnwrite");
+      btnwrite.onclick = function () {
+        for (var i = 0; i < lotto.length; i++) {
+          lotto[i] = parseInt(Math.random() * 45) + 1;
+        }
+      };
+      //중복제거
+
+      //오름차순정렬
+    </script>
+  </head>
+  <body>
+    <button type="button" id="btnwrite">로또 숫자 구하기</button>
+    <div id="out">1</div>
+  </body>
+</html>

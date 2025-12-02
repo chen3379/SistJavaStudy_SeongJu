@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #time {
+        font-size: 3em;
+        margin-left: 100px;
+        font-weight: bold;
+      }
+      #myImg {
+        position: absolute;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        //현재시간함수호출
+
+        //1초마다 시간 다시 출력
+        setInterval(function () {
+          curTime();
+        }, 1000);
+        var xPos = 200;
+        var yPos = 300;
+        var myImg;
+
+        myImg = document.getElementById("myImg");
+        //5초 뒤에 딱 한번만 위치 변경하기
+        setTimeout(function () {
+          myImg.style.left = xPos + "px";
+          myImg.style.top = yPos + "px";
+        }, 5000);
+
+        function curTime() {
+          var date = new Date();
+
+          var h = date.getHours();
+          var m = date.getMinutes();
+          var s = date.getSeconds();
+
+          // m s 10 미만일 경우 앞에 0 표시
+          var time =
+            h + ":" + (m > 10 ? m : "0" + m) + ":" + (s > 10 ? s : "0" + s);
+
+          document.getElementById("time").innerHTML = time;
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <h2>setTimeout & setInterval</h2>
+    <img src="../image/만화이미지/01.png" alt="" id="myImg" />
+    <div id="time"></div>
+  </body>
+</html>

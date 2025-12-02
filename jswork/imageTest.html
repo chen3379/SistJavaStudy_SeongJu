@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-image: url(./image/Food/5.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        const img = document.getElementById("myImg");
+        let startX, startY, offsetX, offsetY;
+
+        function startDrag(e) {
+          e.preventDefault();
+          const posX = e.clientX || e.touches[0].clientX;
+          const posY = e.clientY || e.touches[0].clientY;
+
+          startX = posX;
+          startY = posY;
+
+          const rect = img.getBoundingClientRect();
+          offsetX = rect.left - startX;
+          offsetY = rect.top - startY;
+
+          document.addEventListener("mousemove", drag);
+          document.addEventListener("mouseup", endDrag);
+          document.addEventListener("touchmove", drag, { passive: false });
+          document.addEventListener("touchend", endDrag);
+        }
+
+        function drag(e) {
+          e.preventDefault();
+          const posX = e.clientX || e.touches[0].clientX;
+          const posY = e.clientY || e.touches[0].clientY;
+
+          img.style.left = posX + offsetX + "px";
+          img.style.top = posY + offsetY + "px";
+        }
+
+        function endDrag() {
+          document.removeEventListener("mousemove", drag);
+          document.removeEventListener("mouseup", endDrag);
+          document.removeEventListener("touchmove", drag);
+          document.removeEventListener("touchend", endDrag);
+        }
+
+        img.addEventListener("mousedown", startDrag);
+        img.addEventListener("touchstart", startDrag, { passive: false });
+      };
+    </script>
+  </head>
+  <body>
+    <img
+      src="../image/jquery_img/06.png"
+      style="position: absolute; cursor: pointer; left: 0px; top: 0px"
+      id="myImg"
+      draggable="true"
+    />
+  </body>
+</html>
