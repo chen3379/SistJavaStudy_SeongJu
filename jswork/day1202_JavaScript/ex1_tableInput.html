@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        width: 400px;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid gray;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        btn.onclick = function () {
+          var name = document.getElementById("name").value;
+          if (name.length == 0) {
+            alert("이름을 입력해주세요");
+            return;
+          }
+          var java = document.getElementById("java").value;
+          if (isNaN(java)) {
+            alert("숫자만 입력해주세요");
+            return;
+          }
+          var js = document.getElementById("js").value;
+          if (isNaN(js)) {
+            alert("숫자만 입력해주세요");
+            return;
+          }
+          var sum = Number(java) + Number(js);
+          var avg = sum / 2;
+          var v = document.getElementById("driver").checked;
+          var btn = document.getElementById("btn");
+          var result = document.getElementById("out");
+          result.innerHTML =
+            "이름: " +
+            name +
+            "<br>자바: " +
+            java +
+            "<br>js: " +
+            js +
+            "<br>총점: " +
+            sum +
+            "<br>평균: " +
+            avg +
+            "<br>운전면허: " +
+            (v ? "있음" : "없음");
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <table>
+      <caption>
+        <h3>폼태그 Quiz</h3>
+      </caption>
+      <tr>
+        <th>이름</th>
+        <td><input type="text" id="name" size="6" /></td>
+      </tr>
+      <tr>
+        <th>자바점수</th>
+        <td><input type="text" id="java" size="6" /></td>
+      </tr>
+      <tr>
+        <th>자바스크립트점수</th>
+        <td><input type="text" id="js" size="6" /></td>
+      </tr>
+      <tr>
+        <th>운전면허</th>
+        <td><input type="checkbox" id="driver" value="ok" size="6" />있음</td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <button type="button" id="btn">결과확인</button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center" height="150">
+          <div id="out">
+            결과출력...(이름, 자바, js점수, 총점, 평균, 운전면허: 있음, 없음으로
+            표시)
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
