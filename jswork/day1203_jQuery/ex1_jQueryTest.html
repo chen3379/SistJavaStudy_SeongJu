@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQueryTest</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      //jQuery 사용시 window.onload=function() 과 같은 기능 #1_ 거의 사용X
+      //   $(document).ready(function () {
+      //     alert("!!!!!");
+      //   });
+      //jQuery 사용시 window.onload=function() 과 같은 기능 #2
+      $(function () {
+        //1.css스타일변경
+        $("#good").css("color", "red");
+        $("#good").css("backgroundColor", "yellow");
+        // camelCase & - : 둘 다 사용 가능
+
+        //css연속변경
+        $("#good").css("color", "blue").css("background-color", "gray");
+
+        //css항목이 많을 경우
+        $("#good").css({
+          color: "orange",
+          backgroundColor: "cyan",
+          width: "300px",
+          border: "2px solid green",
+        });
+
+        //selector가 복잡할 경우도 처리 가능
+        // > : 바로 아래
+        $("div.hello>div").css({
+          color: "green",
+          "font-size": "3em",
+          "font-weight": "bold",
+        });
+
+        // #good 배경색을 얻어서 div.hello의 글자색으로 적용
+        // var bg = $("#good").css("background-color");
+        // $("div.hello").css("color", bg);
+        $("div.hello").css("color", $("#good").css("background-color"));
+        $("div.sist>img").css("width", "200px");
+
+        //body태그 아래 모든 태그의 글꼴을 Gamja Flower로 변경
+        $("body").css("font-family", "Gamja Flower");
+        $("div.sist").css({
+          border: "5px solid red",
+          position: "absolute",
+          left: "400px",
+          top: "200px",
+          width: "300px",
+          height: "200px",
+        });
+
+        //모든 b태그 글자색변경
+        $("b").css("color", "magenta");
+        //b태그 중에서 1번인덱스,2번인덱스만 변경
+        //eq(0)이 첫번째
+        $("b:eq(1)").css("background-color", "orange"); //방법 #1
+        //인덱스는 0부터 시작하므로 인덱스 1은 2번째
+        $("b").eq(2).css("background-color", "orange"); //방법 #2
+
+        //b태그 중에서 첫번째, 마지막
+        $("b:first").css("border", "2px dotted purple");
+        $("b:last").css("border", "2px dotted purple");
+
+        //gt(3): 3번 이후 lt(3): 3번 이전 gt > , lt <
+        $("b:gt(1)").css("font-size", "3em"); //2번 인덱스부터 모두 변경
+        $("b:lt(1)").css("backgroundColor", "yellow"); //0번 인덱스만
+      });
+    </script>
+  </head>
+  <body>
+    <h2 id="good">h2 id Tag</h2>
+    <h3 class="good2">h3 class</h3>
+    <div class="hello">
+      div class hello
+      <div>hello 바로 아래 div</div>
+    </div>
+    <div class="sist">
+      <b>div class sist 아래 b</b><br />
+      <span>div class sist 아래 span</span><br />
+      <img src="../image/jquery_img/01.png" alt="" /><br />
+    </div>
+    <div class="hello">
+      hello div2
+      <img src="../image/flower_ani/f13.png" alt="" />
+      <div>
+        div hello 바로 아래 div
+        <img src="../image/flower_ani/f14.png" alt="" />
+      </div>
+    </div>
+    <b>b태그 단독 #1</b><br />
+    <b>b태그 단독 #2</b><br />
+    <b>b태그 단독 #3</b>
+  </body>
+</html>

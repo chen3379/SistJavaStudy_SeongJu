@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  </head>
+  <body>
+    <img src="../image/logoImg/captain.png" width="100" irum="캡틴아메리카" />
+    <br />
+    <figure>
+      <img src="../image/logoImg/ironman.png" width="200" />
+      <figcaption>아이언맨</figcaption>
+    </figure>
+    <figure>
+      <img src="../image/logoImg/blackwidow.png" width="200" />
+      <figcaption>블랙위도우</figcaption>
+    </figure>
+    <h3>
+      첫번째 이미지를 클릭하면 아래의 이미지에 카피하기 <br />irum은 여기로 오게
+    </h3>
+    <img src="" alt="" />
+    <img src="" alt="" />
+    <img src="" alt="" />
+    <img src="" alt="" />
+    <script>
+      $("img:eq(0)").click(function () {
+        aSrc = $(this).attr("src");
+        aWidth = $(this).attr("width");
+        aIrum = $(this).attr("irum");
+        $("img:gt(2)").attr({ src: aSrc, width: aWidth });
+        $("h3").html(aIrum);
+      });
+    </script>
+  </body>
+</html>

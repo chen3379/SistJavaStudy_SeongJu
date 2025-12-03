@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h3>
+      이미지 클릭시 src,width 얻어서 hr태그 다음에 같은 속성의 사진을 넣기<br />
+      사진 title 얻어서 div안에 넣고 넣은 글씨 크기 25pt,글꼴 지정
+    </h3>
+    <img src="../image/연예인사진/16.jpg" width="200" title="나는 신민아" />
+    <hr />
+    <div></div>
+    <script>
+      $("img").click(function () {
+        src = $(this).attr("src");
+        width = $(this).css("width");
+        title = $(this).attr("title");
+        $("hr").after("<img src='" + src + "' width='" + width + "'/>");
+        $("div")
+          .css({ "font-size": "25pt", "font-family": "Dongle" })
+          .html(title);
+      });
+    </script>
+  </body>
+</html>

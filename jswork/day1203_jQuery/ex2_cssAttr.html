@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      $(function () {
+        //css(속성): 해당 요소의 속성값 반환
+        //css(속성,값): 속성을 해당값으로 변경
+        //$("selector"): $안에 접근을 위한 요소를 둔다 이를 selector 라고 한다
+
+        //모든 b태그의 글꼴을 20pt로 변경하라
+        $("b").css("font-size", "20pt");
+        //b태그 중 클래스가 happy인 태그의 배경색을 오렌지로 변경하라
+        $("b.happy").css("backgroundColor", "orange");
+
+        //연달아 h2 border , font색상 변경
+        $("h2").css({
+          border: "2px double gray",
+          color: "purple",
+        });
+
+        //속성 : 스타일변경 css 속성변경 attr
+        //attr(속성,값) - setAttr
+        //attr(속성) - getAttr
+        $("img").attr("src", "../image/만화이미지/01.png");
+        $("img").attr("src", "../image/만화이미지/02.png").css({
+          width: "50px",
+          border: "1px solid green",
+        });
+
+        //문제
+        //1. img태그 중에서 클래스명이 likeImg의 이미지를 변경하고
+        //너비,보더,그림자,보더둥글림 변경하라
+        $(".likeImg").attr("src", "../image/만화이미지/03.png").css({
+          width: "200px",
+          border: "6px dotted aquamarine",
+          "box-shadow": "5px 5px 10px gray",
+          borderRadius: "50px",
+        });
+
+        //2. span태그 중 class 가 nice인 태그의 배경색과 글자색 글자크기변경
+        $("span.nice").css({
+          backgroundColor: "pink",
+          color: "ivory",
+          fontSize: "3em",
+        });
+
+        //3. 아이디가 myImg인 이미지와 너비를 변경하고 title을 안녕하세요 로 변경
+        $("#myImg")
+          .attr("src", "../image/만화이미지/04.png")
+          .css("width", "180px");
+
+        //4. 이미지 중 2번째 이미지의 보더를 빨강색으로 표시(eq)
+        $("img:eq(1)").css("border-color", "red");
+
+        //5. happy라는 클래스의 자식 div에만 Dongle글꼴적용,20pt 적용
+        $("div.happy>div").css({ fontFamily: "Dongle", fontSize: "20pt" });
+        $("div.happy>div>div").css({ fontFamily: "none", fontSize: "none" });
+      });
+    </script>
+  </head>
+  <body>
+    <h2>jquery에서 제일 많이 사용하는 함수_css,attr</h2>
+    <b class="happy">B tag class Happy</b><br />
+    <span class="nice">span class nice</span>
+    <br />
+    <h2 class="happy">H tag class Happy</h2>
+
+    <b>내가 좋아하는 이미지들 </b><br />
+    <img src="" alt="" id="myImg" />
+    <img src="" alt="" />
+    <img src="" alt="" class="likeImg" />
+    <img src="" alt="" />
+
+    <div class="happy">
+      happy class div
+      <div>happy의 자식</div>
+      <div>
+        happy의 자식
+        <div>happy의 자식의 자식</div>
+      </div>
+    </div>
+  </body>
+</html>

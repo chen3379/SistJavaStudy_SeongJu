@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  </head>
+  <body>
+    <img src="../image/jquery_img/01.png" alt="" />
+    <img src="../image/jquery_img/02.png" alt="" />
+    <img src="../image/jquery_img/03.png" alt="" />
+
+    <script>
+      //모든 이미지에 마우스를 위에 올리면 다른 이미지로 3개가
+      //바뀌고 마우스가 이미지 벗어나면 다시 원래대로 가기
+      $("img").mouseover(function () {
+        // src = $(this).attr("src");
+        src1 = $("img:eq(0)").attr("src");
+        src2 = $("img:eq(1)").attr("src");
+        src3 = $("img:eq(2)").attr("src");
+        $("img:eq(0)").attr("src", "../image/jquery_img/04.png");
+        $("img:eq(1)").attr("src", "../image/jquery_img/05.png");
+        $("img:eq(2)").attr("src", "../image/jquery_img/06.png");
+      });
+      $("img").mouseout(function () {
+        $("img:eq(0)").attr("src", src1);
+        $("img:eq(1)").attr("src", src2);
+        $("img:eq(2)").attr("src", src3);
+        // $(this).attr("src", src);
+      });
+    </script>
+  </body>
+</html>
