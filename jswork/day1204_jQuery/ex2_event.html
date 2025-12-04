@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  </head>
+  <body>
+    <h3>jQuery event</h3>
+    <div class="photos">
+      <img src="../image/jquery_img/01.png" width="200" />
+      <img src="../image/jquery_img/02.png" width="200" />
+    </div>
+    <script>
+      //첫번째 이미지에 마우스 올리면 icon02로 바뀌고
+      //벗어나면 원래대로
+      $(".photos>img")
+        .eq(0)
+        .mouseover(function () {
+          $(this).attr("src", "../image/logoImg/icon02.png");
+        });
+      $(".photos>img")
+        .eq(0)
+        .mouseout(function () {
+          $(this).attr("src", "../image/jquery_img/01.png");
+        });
+
+      //2번째 이미지로 hover로 올리면 icon02, 벗어나면 원래대로
+      $(".photos>img")
+        .eq(1)
+        .hover(
+          function () {
+            $(this).attr("src", "../image/logoImg/icon02.png");
+          },
+          function () {
+            $(this).attr("src", "../image/jquery_img/02.png");
+          }
+        );
+      //hover로 이미지에 마우스 올리면 보더가 10px로 생기고 벗어나면 원래대로
+      $(".photos>img").hover(
+        function () {
+          $(this).css("border", "10px solid gray");
+        },
+        function () {
+          $(this).css("border", "none");
+        }
+      );
+    </script>
+    <hr />
+    <img src="../image/Food/1.jpg" width="200" class="myphoto" />
+    <script>
+      //.myphoto에 마우스 올리면 이미지변경, 벗어나면 원래대로, 클릭시 경고창
+      //bind : 여러 이벤트 묶어서 한번에 처리
+      $(".myphoto").bind({
+        click: function () {
+          alert("bind 연습중입니다");
+        },
+        mouseover: function () {
+          $(this).attr("src", "../image/Food/2.jpg");
+        },
+        mouseout: function () {
+          $(this).attr("src", "../image/Food/1.jpg");
+        },
+      });
+    </script>
+  </body>
+</html>

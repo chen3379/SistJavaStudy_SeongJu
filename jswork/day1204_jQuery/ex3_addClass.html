@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+      .happy {
+        width: 200px;
+        height: 200px;
+        border: 10px dashed purple;
+        background-color: url("../image/jquery_img/03.png");
+        background-size: 30px 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>addClass,removeClass,toggleClass</h3>
+    <button type="button">스타일 추가</button>
+    <button type="button">스타일 제거</button>
+    <button type="button">스타일 추가/제거</button>
+
+    <div></div>
+
+    <script>
+      $("button:eq(0)").click(function () {
+        $("div").addClass("happy");
+      });
+      $("button:eq(1)").click(function () {
+        $("div").removeClass("happy");
+      });
+      $("button:eq(2)").click(function () {
+        $("div").toggleClass("happy");
+      });
+    </script>
+  </body>
+</html>

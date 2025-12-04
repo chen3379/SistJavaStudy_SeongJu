@@ -32,6 +32,16 @@
         $("img:gt(2)").attr({ src: aSrc, width: aWidth });
         $("h3").html(aIrum);
       });
+      //figure 아래 이미지 누르면 역시 h3에 음식명 그 아래 이미지 나오도록 한다
+      //클릭한 것의 다음태그 next(), 이전태그 prev()
+      //html(): js의 innerHTML , text():js의 innerText와 같다
+      $("figure>img").click(function () {
+        iSrc = $(this).attr("src");
+        iWidth = $(this).attr("width");
+        iIrum = $(this).next().html();
+        $("img:gt(2)").attr({ src: iSrc, width: iWidth });
+        $("h3").html(iIrum);
+      });
     </script>
   </body>
 </html>

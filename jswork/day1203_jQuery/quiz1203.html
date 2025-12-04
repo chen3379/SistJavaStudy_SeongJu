@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  </head>
+  <body>
+    <h3>
+      <b>햄에그 샌드위치</b>
+      <br />
+      <span>../image/Food/1.jpg</span>
+    </h3>
+    <h3>
+      <b>치킨꼬치구이</b>
+      <br />
+      <span>../image/Food/2.jpg</span>
+    </h3>
+    <h3>
+      <b>햄에그 덮밥</b>
+      <br />
+      <span>../image/Food/10.jpg</span>
+    </h3>
+
+    <hr />
+    <img src="" class="foodPhoto" width="300" />
+    <h2></h2>
+    <script>
+      $("b").click(function () {
+        //음식이름을 누르면 이미지경로가 아래 이미지에 나오도록한다
+        //그아래 음식이름이 나온다
+        $("img.foodPhoto").attr("src", $(this).nextAll().text());
+        $("h2").html($(this).html());
+      });
+    </script>
+  </body>
+</html>

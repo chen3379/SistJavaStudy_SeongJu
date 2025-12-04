@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+      $(function () {
+        $("span")
+          .html($("b").text())
+          .css("fontWeight", $("b").css("font-weight"));
+        $("img:eq(1)").attr("src", $("img:eq(0)").attr("src"));
+      });
+    </script>
+  </head>
+  <body>
+    <b>Thursday</b><br />
+
+    <img src="../image/html_img/cheese1.png" alt="" /><br />
+    <span></span><br />
+    <img src="" alt="" />
+  </body>
+</html>
