@@ -1,17 +1,17 @@
 div.lotto {
-  color: rgb(59, 54, 54);
+  color: white;
   font-weight: bold;
-  font-size: 60px;
-  height: 130px;
-  width: 130px;
-
-  line-height: 130px;
+  font-size: 35px;
+  height: 100px;
+  width: 100px;
+  line-height: 100px;
   text-align: center;
-  background-color: rgb(255, 255, 194);
-  border: 3px solid rgb(216, 218, 101);
+  background-color: pink;
+  border: 3px solid plum;
   border-radius: 100px;
   margin-right: 20px;
   box-shadow: 10px 10px 10px gray;
+  margin-bottom: 20px;
 }
 
 div.lotto:hover {

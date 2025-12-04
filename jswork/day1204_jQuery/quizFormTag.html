@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+      $(function () {
+        //출력창에 출력하는데 모든 글꼴을 선택한 글꼴로 출력이 되도록
+
+        $("#btnResult").click(function () {
+          //이름
+          name = $("#name").val();
+          //운전면허
+          lic = $("#chklicense:checked").val();
+          drive = lic == "on" ? "보유" : "미보유";
+          //생년월일
+          birth = $("#mybirth").val();
+          //연령대
+          age = $("input[name='age']:checked").val();
+          //취미
+          hobby = "";
+          hobby += $("input[name='hobby']:checked").length + "개 /&nbsp;";
+          $("input[name='hobby']:checked").each(function (i) {
+            hobby += $(this).val() + "&nbsp;";
+          });
+          //글꼴
+          font = $("#selfont option:selected").text();
+          //출력
+          result =
+            "이름: " +
+            name +
+            "<br>운전면허: " +
+            drive +
+            "<br>생년월일: " +
+            birth +
+            "<br>연령대: " +
+            age +
+            "<br>취미: " +
+            hobby;
+          $("#out").html(result).css("font-family", font);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <fieldset><legend>폼태그 연습</legend></fieldset>
+      <b>이름: </b>
+      <input type="text" id="name" />
+      <br />
+      <b>운전면허: </b>
+      <input type="checkbox" name="" id="chklicense" />운전면허
+      <br />
+      <b>생년월일: </b>
+      <input type="date" name="" id="mybirth" />
+      <br />
+      <b>당신의 연령대?</b>
+      <input type="radio" name="age" id="" value="20대" checked />20대&nbsp;
+      <input type="radio" name="age" id="" value="30대" />30대&nbsp;
+      <input type="radio" name="age" id="" value="40대" />40대&nbsp;
+      <input type="radio" name="age" id="" value="50대" />50대&nbsp;
+      <input type="radio" name="age" id="" value="기타" />기타&nbsp;
+      <br />
+      <b>당신의 취미?</b>
+      <input type="checkbox" name="hobby" value="게임" />게임&nbsp;
+      <input type="checkbox" name="hobby" value="여행" />여행&nbsp;
+      <input type="checkbox" name="hobby" value="공부" />공부&nbsp;
+      <input type="checkbox" name="hobby" value="낚시" />낚시&nbsp;
+      <input type="checkbox" name="hobby" value="유튜브시청" />유튜브시청&nbsp;
+      <br />
+      <b>글꼴 선택?</b>
+      <select name="" id="selfont">
+        <option value="">Dongle</option>
+        <option value="">Gamja Flower</option>
+        <option value="">Nanum Myeongjo</option>
+        <option value="">Nanum Pen Script</option>
+      </select>
+
+      <button type="button" id="btnResult">결과출력</button>
+
+      <div id="out">결과출력하는곳......</div>
+    </div>
+  </body>
+</html>

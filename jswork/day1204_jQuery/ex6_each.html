@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="../css/lottoStyle.css" />
+    <link rel="stylesheet" href="../css/buttonStyle.css" />
+    <style>
+      div.lotto {
+        float: left;
+        margin-right: 10px;
+        border: none;
+      }
+    </style>
+    <script>
+      $(function () {
+        // inter = setInterval(function () {
+        $("div").each(function (index) {
+          $(this).html(index + 1);
+          r = parseInt(Math.random() * 256);
+          g = parseInt(Math.random() * 256);
+          b = parseInt(Math.random() * 256);
+          $(this).css("background-color", "rgb(" + r + "," + g + "," + b + ")");
+        });
+        // }, 1000);
+
+        a = $("");
+        $("div.lotto").mouseover(function () {
+          $("h2")
+            .text($(this).css("background-color"))
+            .css("color", $(this).css("background-color"));
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <!-- 로또공모양으로 1~6까지를 출력하시오 -->
+    <div class="lotto"></div>
+    <div class="lotto"></div>
+    <div class="lotto"></div>
+    <div class="lotto"></div>
+    <div class="lotto"></div>
+    <div class="lotto"></div>
+    <hr style="clear: both" />
+    <!-- rgb컬러 출력 -->
+    <h2></h2>
+  </body>
+</html>
