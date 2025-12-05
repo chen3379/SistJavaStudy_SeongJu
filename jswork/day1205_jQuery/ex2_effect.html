@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+      #msg {
+        font-size: 2em;
+        position: absolute;
+        left: 100px;
+        top: 150px;
+      }
+      #img1 {
+        position: absolute;
+        left: 500px;
+        top: 150px;
+      }
+      button {
+        width: 100px;
+        height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <button type="button" id="btn1">Hide</button>
+    <button type="button" id="btn2">Show</button>
+    <button type="button" id="btn3">Toggle</button>
+    <br />
+    <button type="button" id="btn4">SlideUp</button>
+    <button type="button" id="btn5">SlideDown</button>
+    <button type="button" id="btn6">SlideToggle</button>
+    <br />
+    <button type="button" id="btn7">FadeOut</button>
+    <button type="button" id="btn8">FadeIn</button>
+    <button type="button" id="btn9">FadeToggle</button>
+    <button type="button" id="btn10">FadeTo</button>
+    <br />
+    <img src="../image/jquery_img/c5.png" id="img1" />
+    <div id="msg">오늘은 즐거운 금요일</div>
+
+    <script>
+      $("#btn1").click(function () {
+        $("#img1").hide();
+        $("#msg").hide();
+      });
+      $("#btn2").click(function () {
+        $("#img1").show();
+        $("#msg").show();
+      });
+      $("#btn3").click(function () {
+        $("#img1").toggle();
+        $("#msg").toggle();
+      });
+      $("#btn4").click(function () {
+        $("#img1").slideUp("slow"); //slow 속성 지정: slide 속도가 느려짐
+        $("#msg").slideUp("slow");
+      });
+      $("#btn5").click(function () {
+        $("#img1").slideDown("fast"); //fast 속성 지정: slide 속도가 빨라짐
+        $("#msg").slideDown();
+      });
+      $("#btn6").click(function () {
+        $("#img1").slideToggle();
+        $("#msg").slideToggle();
+      });
+      $("#btn7").click(function () {
+        $("#img1").fadeOut();
+        $("#msg").fadeOut();
+      });
+      $("#btn8").click(function () {
+        $("#img1").fadeIn();
+        $("#msg").fadeIn();
+      });
+      $("#btn9").click(function () {
+        $("#img1").fadeToggle();
+        $("#msg").fadeToggle();
+      });
+
+      //fadeTo : 속성 조절 또는 callBack 지정 가능
+      $("#btn10").click(function () {
+        $("#img1").fadeTo(3000, 0.2, function () {
+          $(this).css("opacity", "1").css("border", "10px dotted pink");
+        });
+        $("#msg").fadeTo(3000, 0.5, function () {
+          $("#msg").css("border", "10px groove gold");
+        });
+      });
+    </script>
+
+    <hr />
+    <button type="button" id="btnA">투명도 30%</button>
+    <button type="button" id="btnB">투명도 100%</button>
+    <br />
+    <br />
+    <br />
+    <h1>여기에 투명도 적용해 보세요</h1>
+    <script>
+      $("#btnA").click(function () {
+        $("h1").fadeTo(0, 0.3);
+      });
+      $("#btnB").click(function () {
+        $("h1").fadeTo(0, 0);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  </head>
+  <body>
+    <div class="one">
+      첫번째 div
+      <div class="hana">div 하나</div>
+      <div>div 둘</div>
+      <div>div 셋</div>
+      <h4>h4 Tag</h4>
+      <h3>h3 Tag</h3>
+    </div>
+    <hr />
+    <div class="two">
+      두번째 div
+      <div class="hana">div 하나</div>
+      <div>div 둘</div>
+      <div>div 셋</div>
+      <h4>h4 Tag</h4>
+      <h3>h3 Tag</h3>
+    </div>
+
+    <script>
+      //parent():부모태그
+      //siblings():형제태그
+      //children():자식태그
+
+      //첫번째 div hana에만 글꼴색변경
+      $("div.one div.hana").css("color", "pink");
+
+      //첫번째 div hana의 형제들
+      $("div.one div.hana").siblings().css("color", "red");
+
+      $("div").children("div.hana").css("text-decoration", "underline");
+
+      //next
+      $("div.hana").next().next().css("backgroundColor", "yellow");
+
+      //find: 찾으려는 대상의 부모태그에서만 사용 가능
+      $("div.two").find("h3").css("border", "2px dotted green");
+
+      //형제에서 find쓸수있을까? 못쓴다...부모태그로 올라간다
+      $("div.two div.hana").parent().find("h4").css("color", "purple");
+
+      //첫번째 부모(div.one)을 클릭시 자식 중에서 div만 숨겨라
+      $("div.one").click(function () {
+        // $(this).children("div").hide();
+
+        //나의 형제태그에서 div를 찾아서 숨김
+        $(this).siblings().find("div").hide();
+      });
+
+      // 두번째 부모 (div.two)를 클릭시 형님네 h3태그를 숨겨라
+      $("div.two").click(function () {
+        $(this).siblings().find("h3").hide();
+      });
+    </script>
+  </body>
+</html>

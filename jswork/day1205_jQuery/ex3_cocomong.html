@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+      #cocos {
+        width: 1000px;
+        margin: 0 auto;
+      }
+      #logo {
+        width: 200px;
+        height: 100px;
+        margin: 0 auto;
+      }
+      ul li {
+        list-style: none;
+        float: left;
+        margin-top: 100px;
+      }
+      ul li img {
+        width: 130px;
+        height: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="logo">
+        <img src="../image/jquery_img/coco_logo.png" alt="" />
+      </div>
+      <div id="cocos">
+        <ul>
+          <li>
+            <img src="../image/jquery_img/image_01.png" alt="" />
+          </li>
+          <li>
+            <img src="../image/jquery_img/image_02.png" alt="" />
+          </li>
+          <li>
+            <img src="../image/jquery_img/image_03.png" alt="" />
+          </li>
+          <li>
+            <img src="../image/jquery_img/image_04.png" alt="" />
+          </li>
+          <li>
+            <img src="../image/jquery_img/image_05.png" alt="" />
+          </li>
+          <li>
+            <img src="../image/jquery_img/image_06.png" alt="" />
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      //아래 코코 이미지를 클릭하면 사라지게 한다
+      $("#cocos img").click(function () {
+        $(this).fadeOut("slow");
+      });
+      //제목을 누르면 다시 코코들이 모두 나타난다
+      $("#logo").click(function () {
+        $("#cocos img").fadeIn("slow").css("border", "1px dotted gray");
+      });
+    </script>
+  </body>
+</html>

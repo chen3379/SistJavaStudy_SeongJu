@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  </head>
+  <body>
+    <img src="../image/jquery_img/c1.png" alt="" />
+    <img src="../image/jquery_img/c2.png" alt="" />
+    <img src="../image/jquery_img/c3.png" alt="" />
+    <img src="../image/jquery_img/c4.png" alt="" />
+    <script>
+      //hover-transform
+      $("img:eq(0)").hover(
+        function () {
+          //45도 회전..deg, rad,grad, turn
+          $(this).css("transform", "rotate(45deg)"); //양수는 시계방향
+        },
+        function () {
+          $(this).css("transform", "none"); //원래대로
+        }
+      );
+      $("img:eq(1)").hover(
+        function () {
+          $(this).css("transform", "rotate(-180deg)"); //음수는 시계반대방향
+        },
+        function () {
+          $(this).css("transform", "none"); //원래대로
+        }
+      );
+      //scale 확대 축소
+      $("img:eq(2)").hover(
+        function () {
+          $(this).css("transform", "scale(2,2)"); //가로세로 모두확대
+        },
+        function () {
+          $(this).css("transform", "none"); //원래대로
+        }
+      );
+
+      //translate 이동
+      $("img:eq(3)").hover(
+        function () {
+          $(this).css("transform", "translate(100px,80px)"); //가로세로 이동
+        },
+        function () {
+          $(this).css("transform", "none");
+        }
+      );
+    </script>
+  </body>
+</html>

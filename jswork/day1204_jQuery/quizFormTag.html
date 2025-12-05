@@ -9,6 +9,18 @@
       rel="stylesheet"
     />
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+      #out {
+        background-color: blanchedalmond;
+        width: 250px;
+        height: 180px;
+        padding-left: 50px;
+        padding-top: 20px;
+      }
+      #mini_out {
+        margin-top: 30px;
+      }
+    </style>
     <script>
       $(function () {
         //출력창에 출력하는데 모든 글꼴을 선택한 글꼴로 출력이 되도록
@@ -31,9 +43,11 @@
           });
           //글꼴
           font = $("#selfont option:selected").text();
+          //글꼴색상
+          fcolor = $("input[name='fcolor']:checked").val();
           //출력
           result =
-            "이름: " +
+            "[개인정보]<br><br>이름: " +
             name +
             "<br>운전면허: " +
             drive +
@@ -43,7 +57,17 @@
             age +
             "<br>취미: " +
             hobby;
-          $("#out").html(result).css("font-family", font);
+          $("#out").html(result).css({ "font-family": font, color: fcolor });
+        });
+        //버튼 클릭시 선택한 이미지 나열
+        $("#btnImg").click(function () {
+          imgs = "";
+          $("input[name='chkimg']:checked").each(function (i) {
+            imgs +=
+              "<img src='../image/jquery_img/" + $(this).val() + ".png'/>";
+          });
+          //출력
+          $("#mini_out").html(imgs);
         });
       });
     </script>
@@ -81,10 +105,27 @@
         <option value="">Nanum Myeongjo</option>
         <option value="">Nanum Pen Script</option>
       </select>
+      <br />
+      <b>글꼴 색상?</b>
+      <input type="radio" name="fcolor" value="green" />초록 &nbsp;
+      <input type="radio" name="fcolor" value="blue" />파랑 &nbsp;
+      <input type="radio" name="fcolor" value="purple" />보라 &nbsp;
+      <input type="radio" name="fcolor" value="magenta" />핑크 &nbsp;
+      <input type="radio" name="fcolor" value="cyan" />연파랑 &nbsp;
 
       <button type="button" id="btnResult">결과출력</button>
 
       <div id="out">결과출력하는곳......</div>
+
+      <br />
+      <b>체크된 이미지 모두 출력_jquery_img/.png</b>
+      <input type="checkbox" name="chkimg" value="03" />춤추는 미니언즈&nbsp;
+      <input type="checkbox" name="chkimg" value="04" />바나나 미니언즈&nbsp;
+      <input type="checkbox" name="chkimg" value="06" />튜브 미니언즈&nbsp;
+      <input type="checkbox" name="chkimg" value="09" />양갈래 미니언즈&nbsp;
+      <br />
+      <button type="button" id="btnImg">이미지 출력</button>
+      <div id="mini_out"></div>
     </div>
   </body>
 </html>
