@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  </head>
+  <body>
+    <img src="" class="largePhoto" id="large" />
+    <div id="show">작은이미지들...</div>
+
+    <script>
+      //figcaption 또는 b Tag
+      var foodInfos = [
+        { foodName: "에그샌드위치", foodSrc: "../image/Food/1.jpg" },
+        { foodName: "꼬치", foodSrc: "../image/Food/2.jpg" },
+        { foodName: "육개장", foodSrc: "../image/Food/3.jpg" },
+        { foodName: "갈비찜", foodSrc: "../image/Food/4.jpg" },
+        { foodName: "콘치즈", foodSrc: "../image/Food/5.jpg" },
+      ];
+
+      //figure태그 이용해서 show에 이미지 넣기
+      f = "";
+      $.each(foodInfos, function (i, foods) {
+        f +=
+          "<figure style='float:left;'><img src='" +
+          foods.foodSrc +
+          "'/><figcaption>" +
+          foods.foodName +
+          "</figcaption></figure>";
+      });
+      $("#show").html(f);
+
+      //이미지 css주기
+      $("#show img").css({ width: "200px", border: "2px solid gray" });
+      $("#large").css({
+        marginTop: "100px",
+        marginLeft: "400px",
+        marginBottom: "150px",
+        border: "5px solid pink",
+      });
+      $("figcaption").css({
+        textAlign: "center",
+        fontWeight: "bold",
+        fontSize: "17pt",
+        color: "gray",
+      });
+      //0번지 이미지를 초기 큰이미지에 넣기
+      $("#large").attr("src", "../image/Food/1.jpg");
+      //작은이미지를 클릭하면 해당이미지가 large에 나온다
+      $(document).on("click", "#show img", function () {
+        $("#large").attr("src", $(this).attr("src"));
+      });
+    </script>
+  </body>
+</html>
