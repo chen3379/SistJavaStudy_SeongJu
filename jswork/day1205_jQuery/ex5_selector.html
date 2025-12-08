@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+      div.one figure {
+        float: left;
+        cursor: pointer;
+      }
+
+      div.two div.box {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        border: 1px solid gray;
+        margin: 5px;
+        float: left;
+      }
+      div.result2 {
+        border: 2px solid gray;
+        margin: 50px 100px;
+      }
+    </style>
+    <script>
+      $(function () {
+        //처음 결과이미지와제목 미리 얻어두기
+        result1 = $(".result1>img").attr("src");
+        title1 = $(".result1>h3").text();
+
+        //figure에 있는 이미지위에 마우스 올리면 아래 결과이미지와 제목에 각각 나오게 한다
+        $(".one figure img").hover(
+          function () {
+            $(".result1>img").attr("src", $(this).attr("src"));
+            // var title=$(this).siblings("figcaption").children("b").text(); //방법1
+            // var title=$(this).siblings("figcaption").find("b").text(); //방법2
+            $(".result1>h3").text($(this).nextAll().text());
+          },
+          //벗어나면 결과이미지는 원래대로돌아간다
+          function () {
+            //result1의 제목에 적용
+            //다시 원래대로
+            //현재위치의 이미지명
+            //result1의 이미지에 적용
+            $(".result1>img").attr("src", result1);
+            //현재위치의 제목
+            $(".result1>h3").text(title1);
+          }
+        );
+        //배경색 result2의 배경색으로 제목,별표는 각자 자리에 나오게
+        //box를 누르면 결과가 나온다 mouseover
+        $(".box").mouseover(function () {
+          $(".result2").css("backgroundColor", $(this).css("backgroundColor"));
+          $("div.result2 h1").text($(this).next().text());
+          $("div.result2 h3").text($(this).next().next().find("span").text());
+        });
+        //현재배경색얻기
+        //result2에적용
+        //메세지얻어서 넣기
+      });
+    </script>
+  </head>
+  <body>
+    <div class="one">
+      <figure>
+        <img src="../image/jquery_img//03.png" alt="" />
+        <figcaption><b>춤추는 미니언즈</b></figcaption>
+      </figure>
+      <figure>
+        <img src="../image/jquery_img//04.png" alt="" />
+        <figcaption><b>바나나 미니언즈</b></figcaption>
+      </figure>
+      <figure>
+        <img src="../image/jquery_img//06.png" alt="" />
+        <figcaption><b>오리튜브 미니언즈</b></figcaption>
+      </figure>
+      <figure>
+        <img src="../image/jquery_img//08.png" alt="" />
+        <figcaption><b>퍼플 미니언즈</b></figcaption>
+      </figure>
+    </div>
+    <hr style="clear: both" />
+    <div class="result1">
+      <img src="../image/jquery_img/01.png" alt="" />
+      <br />
+      <h3>평범한 미니언즈</h3>
+    </div>
+    <hr />
+    <div class="two">
+      <div class="box" style="background-color: aqua"></div>
+      <h3>즐거운 금요일</h3>
+      <div class="msg">
+        <span>☆★</span>
+      </div>
+      <div class="box" style="background-color: pink"></div>
+      <h3>불금에 뭐해</h3>
+      <div class="msg">
+        <span>☆★</span>
+      </div>
+      <div class="box" style="background-color: yellow"></div>
+      <h3>오늘 모임</h3>
+      <div class="msg">
+        <span>***</span>
+      </div>
+      <div class="box" style="background-color: orange"></div>
+      <h3>재밌는 동아리모임</h3>
+      <div class="msg">
+        <span>☆★★★</span>
+      </div>
+    </div>
+
+    <hr style="clear: both" />
+    <div class="result2">
+      <h1>메세지출력</h1>
+      <h3>별표</h3>
+    </div>
+  </body>
+</html>

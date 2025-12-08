@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+      #result > div.box {
+        border: 5px solid orange;
+        width: 300px;
+        height: 130px;
+        padding: 20px 20px;
+        font-size: 1.2em;
+        margin-top: 10px;
+      }
+
+      figure {
+        float: left;
+      }
+
+      figure img {
+        width: 90px;
+      }
+      figure figcaption {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="result"></div>
+    <script>
+      var sawon_infos = [
+        {
+          name: "신민아",
+          hp: "010-222-3333",
+          buseo: "인사부",
+        },
+        {
+          name: "오은영",
+          hp: "010-777-1111",
+          buseo: "경영기획팀",
+        },
+        {
+          name: "박은철",
+          hp: "010-111-5487",
+          buseo: "개발팀",
+        },
+      ];
+
+      s = "";
+      $.each(sawon_infos, function (i, ele) {
+        s +=
+          "<div class='box'>" +
+          "사원명: " +
+          ele.name +
+          "<br>연락처: " +
+          ele.hp +
+          "<br>부서: " +
+          ele.buseo +
+          "</div><br>";
+      });
+      $("#result").html(s);
+    </script>
+
+    <div id="today"></div>
+    <script>
+      var today_home = [
+        {
+          img: "https://prs.ohousecdn.com/apne2/home/shortcut/home_feed_shortcut_sets/v1-443670608568384.png?w=256",
+          title: "올해 Best",
+        },
+        {
+          img: "https://prs.ohousecdn.com/apne2/home/shortcut/home_feed_shortcut_sets/v1-432362057166912.png?w=256",
+          title: "오늘의딜",
+        },
+        {
+          img: "https://prs.ohousecdn.com/apne2/home/shortcut/home_feed_shortcut_sets/v1-425277651230720.png?w=144",
+          title: "집들이",
+        },
+        {
+          img: "https://prs.ohousecdn.com/apne2/home/shortcut/home_feed_shortcut_sets/v1-425277714841728.png?w=144",
+          title: "행운출첵",
+        },
+        {
+          img: "https://prs.ohousecdn.com/apne2/home/shortcut/home_feed_shortcut_sets/v1-428361468133376.png?w=144",
+          title: "패키지할인",
+        },
+        {
+          img: "https://prs.ohousecdn.com/apne2/home/shortcut/home_feed_shortcut_sets/v1-425277885034496.png?w=144",
+          title: "1분집들이",
+        },
+        {
+          img: "https://prs.ohousecdn.com/apne2/home/shortcut/home_feed_shortcut_sets/v1-425277957267520.png?w=144",
+          title: "오마트",
+        },
+        {
+          img: "https://prs.ohousecdn.com/apne2/home/shortcut/home_feed_shortcut_sets/v1-424889463009280.png?w=144",
+          title: "원하는날도착",
+        },
+      ];
+
+      $.each(today_home, function (idx, ele) {
+        a = "";
+        a +=
+          "<figure><img src='" +
+          ele.img +
+          "'/><figcaption>" +
+          ele.title +
+          "</figcaption></figure>";
+        $("#today").append(a);
+      });
+    </script>
+  </body>
+</html>

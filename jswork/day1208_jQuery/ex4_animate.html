@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  </head>
+  <body>
+    <button type="button">애니메이션1</button>
+    <button type="button">애니메이션2</button>
+    <button type="button">애니메이션3</button>
+    <button type="button">애니메이션4</button>
+    <div id="box"></div>
+
+    <script>
+      $("#box").css({
+        width: "100px",
+        height: "100px",
+        border: "1px solid orange",
+        position: "relative",
+      });
+      $("button:eq(0)").click(function () {
+        $("#box").animate(
+          {
+            width: "+=100px",
+            borderWidth: "10px",
+            opacity: "0.5",
+            marginLeft: "300px",
+          },
+          3000
+        );
+      });
+      $("button:eq(1)").click(function () {
+        $("#box").animate(
+          {
+            width: "-=100px",
+            borderWidth: "1px",
+            opacity: "1",
+            marginLeft: "0px",
+          },
+          3000
+        );
+      });
+    </script>
+
+    <hr />
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <!-- <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div> -->
+    <script>
+      $(".box2").css({
+        position: "relative",
+        width: "60px",
+        height: "60px",
+        backgroundColor: "tomato",
+        marginTop: "5px",
+      });
+
+      //   $(".box2").each(function (i, elt) {
+      //     $(this)
+      //       .delay(i * 500)
+      //       .animate({ left: "+=300px" }, "slow");
+      //   });
+    </script>
+    <hr />
+    <img src="../image/jquery_img/01.png" alt="" id="img1" />
+    <script>
+      $("button:eq(2)").click(function () {
+        $("#img1").slideUp(2000).delay(1000).slideDown(2000);
+      });
+
+      $("button:eq(3)").click(function () {
+        $("#img1").animate(
+          { width: "300px", height: "300px", opacity: "0.5" },
+          3000,
+          function () {
+            $(this).css({ width: "100px", height: "100px", opacity: "1" });
+            $(this).after("<h3>애니메이션 연습 끝</h3>");
+          }
+        );
+      });
+    </script>
+  </body>
+</html>

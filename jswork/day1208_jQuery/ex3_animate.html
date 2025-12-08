@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+      #box {
+        width: 50px;
+        height: 50px;
+        background-color: orange;
+        border: 1px solid pink;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="../image/만화이미지/01.png" id="img1" width="100" />
+    <hr />
+    <div id="box"></div>
+    <script>
+      //   $("#img1").animate({ width: "200px", opacity: "0.5" }, 3000); //slow,fast,3000 시간 지정 가능
+      $("#img1").animate(
+        { width: "300", opacity: "0.3" },
+        "slow",
+        "linear",
+        function () {
+          //애니메이션이 끝난 후 처리할 일들
+          //   alert("끝났어요");
+          $(this).after("<b>The End</b>");
+        }
+      );
+      //div box
+      $("#box")
+        .animate({ left: "+=50" }, 2000)
+        .animate({ borderWidth: "10px" }, 2000)
+        .animate({ width: "120px" }, 2000)
+        .animate({ height: "120px" }, 2000);
+    </script>
+  </body>
+</html>

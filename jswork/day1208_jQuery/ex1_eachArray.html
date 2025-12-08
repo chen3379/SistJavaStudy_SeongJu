@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      div.a {
+        width: 120px;
+        height: 70px;
+        border: 1px solid black;
+        float: left;
+        margin-right: 10px;
+        text-align: center;
+        line-height: 70px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      div.out > div {
+        width: 400px;
+        height: 100px;
+        line-height: 100px;
+        font-size: 2em;
+        border: 2px solid gray;
+        text-align: center;
+      }
+    </style>
+    <script>
+      $(function () {
+        //7개의 색상을 배열
+        var colors = [
+          "red",
+          "#ffcccc",
+          "green",
+          "blue",
+          "orange",
+          "#cc00ff",
+          "lightCyan",
+        ];
+        //$.each : 배열로 반복문을 돌리고 싶을 때
+        //idx:0,1,2 ... item:red,#ffcccc...(인덱스번호,배열요소)
+        $.each(colors, function (idx, item) {
+          $("div.a")
+            .eq(idx)
+            .text(idx + ":" + item)
+            .css("backgroundColor", item);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <hr style="clear: both" />
+    <h3>배열반복시 사용 $.each</h3>
+    <script>
+      var colors = [
+        "red",
+        "#ffcccc",
+        "green",
+        "blue",
+        "orange",
+        "#cc00ff",
+        "lightCyan",
+      ];
+
+      //colors를 이용하여 <h2>태그에 해당색상으로 출력해보자
+      $.each(colors, function (i, elt) {
+        var s = "<h2 style='color:" + elt + "; width:200px;'>" + elt + "</h2>";
+        document.write(s);
+      });
+    </script>
+    <hr />
+    <h3>배열반복시 사용 $.each_jquery_img</h3>
+    <script>
+      var images = ["03", "a", "a02", "c5", "a05"];
+      $.each(images, function (j, img) {
+        var a =
+          "<img style='width:70px; height:70px;' src='../image/jquery_img/" +
+          img +
+          ".png'/>";
+        document.write(a);
+      });
+    </script>
+    <h3>배열안에 객체형태</h3>
+    <div class="out"></div>
+    <script>
+      var array = [
+        {
+          font: "Dongle",
+          bcolor: "pink",
+          fcolor: "purple",
+        },
+        {
+          font: "Gamja Flower",
+          bcolor: "yellow",
+          fcolor: "gray",
+        },
+        {
+          font: "Nanum Myeongjo",
+          bcolor: "lightcyan",
+          fcolor: "black",
+        },
+      ];
+
+      a = "";
+      $.each(array, function (idx, data) {
+        a +=
+          "<div style='font-family:" +
+          data.font +
+          "; background-color:" +
+          data.bcolor +
+          "; color:" +
+          data.fcolor +
+          ";'>abc</div><br>";
+      });
+      $("div.out").html(a);
+    </script>
+  </body>
+</html>

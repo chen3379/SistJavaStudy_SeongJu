@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+      div {
+        position: absolute;
+        width: 500px;
+        height: 300px;
+        font-size: 20pt;
+        font-family: Nanum Pen Script;
+        border: 0px solid gray;
+      }
+      #one {
+        left: 100px;
+        top: 100px;
+      }
+      #two {
+        left: 550px;
+        top: 100px;
+      }
+      #three {
+        left: 1000px;
+        top: 100px;
+      }
+      #result {
+        left: 300px;
+        top: 450px;
+        text-align: center;
+        width: 800px;
+        height: 300px;
+        border: 10px inset gray;
+      }
+      button {
+        width: 150px;
+        height: 50px;
+        font-size: 1.5em;
+        font-family: Nanum Pen Script;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+      #three h3:hover {
+        cursor: pointer;
+        background-color: beige;
+      }
+    </style>
+    <script>
+      $(function () {
+        //전역변수
+        var theater = "";
+        var movie = "";
+
+        // one에 버튼추가 영화예매
+        var b =
+          "<button type='button' id='btn1' class='btn btn-info'>영화예매</button>";
+        $("#one").append(b);
+
+        //버튼1이벤트
+        $("#btn1").click(function () {
+          var b2 =
+            "<button type='button' id='btn2' class='btn btn-warning'>극장선택</button>";
+          b2 +=
+            "&nbsp;&nbsp;<button type='button' id='btn3' class='btn btn-success'>영화선택</button>";
+          $("#two").html(b2);
+        });
+
+        //버튼2는 이벤트로 향후에 생겨났으므로 동적이벤트만 가능 on이벤트
+        $(document).on("click", "#btn2", function () {
+          var s = "<h3 class='theater'>CGV 강남</h3>";
+          s += "<h3 class='theater'>CGV 수원</h3>";
+          s += "<h3 class='theater'>CGV 청담</h3>";
+          s += "<h3 class='theater'>메가박스 코엑스</h3>";
+          s += "<h3 class='theater'>메가박스 종로</h3>";
+          s += "<h3 class='theater'>메가박스 명동</h3>";
+          $("#three").html(s);
+        });
+
+        $(document).on("click", "#btn3", function () {
+          var s = "<h3 class='movie'>아바타: 불과 재</h3>";
+          s += "<h3 class='movie'>주토피아 2</h3>";
+          s += "<h3 class='movie'>룩백</h3>";
+          s += "<h3 class='movie'>반지의 제왕: 2개의 탑</h3>";
+          s += "<h3 class='movie'>정보원</h3>";
+          s += "<h3 class='movie'>여행과 나날</h3>";
+          $("#three").html(s);
+        });
+
+        $(document).on("click", "#three h3", function () {
+          var selone = $(this).attr("class");
+          if (selone == "theater") {
+            theater = $(this).text();
+          } else {
+            movie = $(this).text();
+          }
+
+          $("#result").html(
+            "선택한 극장: " + theater + "<br>선택한 영화: " + movie
+          );
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+    <div id="result"></div>
+  </body>
+</html>
