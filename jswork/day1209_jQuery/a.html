@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+      div {
+        border: 1px solid gray;
+        border-radius: 50px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4"></div>
+    <div id="div5"></div>
+    <div id="div6"></div>
+    <div id="div7"></div>
+    <div id="div8"></div>
+    <div id="div9"></div>
+    <script>
+      $("#div1").animate({ left: "+=500", top: "+=500" }, 5000);
+      $("#div2").animate({ left: "+=500", top: "+=400" }, 5000);
+      $("#div3").animate({ left: "+=550", top: "+=450" }, 5000);
+      $("#div4").animate({ left: "+=600", top: "+=500" }, 5000);
+      $("#div5").animate({ left: "+=550", top: "+=550" }, 5000);
+      $("#div6").animate({ left: "+=500", top: "+=600" }, 5000);
+      $("#div7").animate({ left: "+=450", top: "+=550" }, 5000);
+      $("#div8").animate({ left: "+=400", top: "+=500" }, 5000);
+      $("#div9").animate({ left: "+=450", top: "+=450" }, 5000);
+    </script>
+  </body>
+</html>

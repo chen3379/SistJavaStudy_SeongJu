@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      div#wall {
+        position: absolute;
+        width: 200px;
+        height: 300px;
+        background-image: url("../image/jquery_img/bg2.png");
+        z-index: 2; /*z-index는 큰값요소가 위에 올라온다..연속숫자아니어도 상관없다*/
+      }
+      img {
+        position: absolute;
+        left: 140px;
+        top: 90px;
+        z-index: 1;
+      }
+      #file {
+        position: absolute;
+        top: 500px;
+      }
+      #cam {
+        position: absolute;
+        top: 550px;
+        font-size: 3em;
+      }
+    </style>
+    <script>
+      $(function () {
+        $("#img1").click(function () {
+          $(this).animate({ width: "0px" }, "slow", function () {
+            $(this).animate({ width: "130px" }, "slow");
+          });
+        });
+
+        //trigger:어떤 이벤트를 강제 발생
+        //3초마다 click이벤트를 실행하는 효과
+        setInterval(function () {
+          $("#img1").trigger("click");
+        }, 3000);
+      });
+    </script>
+  </head>
+  <body>
+    <div id="wall"></div>
+    <img src="../image/jquery_img/01.png" id="img1" />
+    <br /><br />
+    <hr />
+    <!-- 파일에 trigger -->
+    <!-- visibility: hidden 비가시 -->
+    <input type="file" id="file" style="visibility: hidden" />
+    <i class="bi bi-camera-fill" id="cam"></i>
+
+    <script>
+      //카메라 모양을 눌렀을 때 file이 강제 클릭되는 효과를 만들기 위해서
+      $("#cam").click(function () {
+        $("#file").trigger("click");
+      });
+    </script>
+  </body>
+</html>
