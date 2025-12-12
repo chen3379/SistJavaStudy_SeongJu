@@ -22,4 +22,4 @@ insert into myclub values(seq1.nextval,'조이현','강동','배우','010-4286-2
 insert into myclub values(seq1.nextval,'고경표','부산','배우','010-2485-2852',sysdate);
 insert into myclub values(seq1.nextval,'임우일','구리','개그맨','010-9752-1456',sysdate);
 
-update myclub set cname='조이현',caddr=LA,cjob=배우,chp=010-3245-4366 where cno=10;
+update myclub set cname='조이현',caddr='LA',cjob='배우',chp=010-3245-4366 where cno=10;
