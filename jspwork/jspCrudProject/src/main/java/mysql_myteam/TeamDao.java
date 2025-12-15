@@ -106,8 +106,8 @@ public class TeamDao {
 
 	try {
 	    pstmt = conn.prepareStatement(sql);
-	    rs = pstmt.executeQuery();
 	    pstmt.setString(1, num);
+	    rs = pstmt.executeQuery();
 	    if (rs.next()) {
 		dto.setNum(rs.getString("num"));
 		dto.setName(rs.getString("name"));

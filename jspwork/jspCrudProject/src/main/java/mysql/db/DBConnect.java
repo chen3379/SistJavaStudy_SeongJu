@@ -16,10 +16,10 @@ public class DBConnect {
 
 	try {
 	    Class.forName(MYSQLDRIVER);
-	    System.out.println("# MYSQL 드라이버 성공");
+	    System.out.println("#MYSQL 드라이버 성공");
 	} catch (ClassNotFoundException e) {
 
-	    System.out.println("# MYSQL 드라이버 실패");
+	    System.out.println("#MYSQL 드라이버 실패");
 	    e.printStackTrace();
 	}
     }
