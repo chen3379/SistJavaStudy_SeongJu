@@ -34,8 +34,8 @@ ShopDto dto = dao.getOneSangpum(num);
         <tr>
           <th style="text-align: center;" class="table-secondary" width="100">상품사진</th>
           <td>기존 사진: <img alt="" src="../image/쇼핑몰사진/<%=dto.getPhoto()%>" style="width: 50px; height: 50px;"><br>
-            <input type="file" name="photo" class="form-control" style="width: 200px;" required="required"> <input type="hidden"
-            name="oldPhoto" value="<%=dto.getPhoto()%>"></td>
+            <input type="file" name="photo" class="form-control" style="width: 200px;" required="required"> <input
+            type="hidden" name="oldPhoto" value="<%=dto.getPhoto()%>"></td>
         </tr>
         <tr>
           <th style="text-align: center;" class="table-secondary" width="100">상품가격</th>
