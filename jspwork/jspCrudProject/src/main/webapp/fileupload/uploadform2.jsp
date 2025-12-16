@@ -20,15 +20,22 @@
       </caption>
       <tr>
         <th width="100" class="table-secondary">작성자</th>
-        <td><input type="text" name="writer" class="form-control" style="width: 200px;"></td>
+        <td>
+          <input type="text" name="writer" class="form-control" style="width: 200px;">
+        </td>
       </tr>
       <tr>
         <th width="100" class="table-secondary">이미지</th>
-        <td><input type="file" name="photo1" class="form-control"> <input type="file" name="photo2"
-          class="form-control"> <input type="file" name="photo3" class="form-control"></td>
+        <td>
+          <input type="file" name="photo1" class="form-control">
+          <input type="file" name="photo2" class="form-control">
+          <input type="file" name="photo3" class="form-control">
+        </td>
       </tr>
       <tr>
-        <td colspan="2" align="center"><button type="submit" class="btn btn-danger">서버에 전송</button></td>
+        <td colspan="2" align="center">
+          <button type="submit" class="btn btn-danger">서버에 전송</button>
+        </td>
       </tr>
 
     </table>

@@ -33,12 +33,13 @@
     String writer = multi.getParameter("writer");
 
     //파일타입이 여러개인 경우
-    Enumeration forNames = multi.getFileNames(); //file타입만
+    Enumeration<String> forNames = multi.getFileNames(); //file타입만
 
     while (forNames.hasMoreElements()) {
 
       //파일태그의 name을 얻기
-      String fileName = (String) forNames.nextElement();
+      //기존 data type: object -> (String) 붙여줌으로써 형변환해줘야 함
+      String fileName = forNames.nextElement();
       System.out.println("file type의 name: " + fileName);
 
       //실제업로드된 파일명
@@ -50,15 +51,14 @@
   %>
   <figure>
     <img width="200" src="../photo/<%=uploadFileName%>">
-    <figcaption><b><%=uploadFileName %></b></figcaption>
+    <figcaption>
+      <b><%=uploadFileName%></b>
+    </figcaption>
   </figure>
 
   <%
   }
   }
-
-
-
   } catch (Exception e) {
   e.printStackTrace();
   }
