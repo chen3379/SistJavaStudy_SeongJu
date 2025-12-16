@@ -12,5 +12,33 @@
 </head>
 <body>
 
+<div style="width: 600px; margin: 100px 150px;">
+    <form action="addProc.jsp" method="post" name="frm">
+      <table class="table table-bordered">
+      <caption align="top"><a>상품입고등록</a></caption>
+        <tr>
+          <th style="text-align: center;" class="table-secondary" width="100">상품명</th>
+          <td ><input type="text" name="sangpum" class="form-control" style="width: 120px;" required="required"></td>
+        </tr>
+        <tr>
+          <th style="text-align: center;" class="table-secondary" width="100">상품사진</th>
+          <td> <input type="file" name="photo" class="form-control" style="width: 200px;" required="required"></td>
+        </tr>
+        <tr>
+          <th style="text-align: center;" class="table-secondary" width="100">상품가격</th>
+          <td><input type="number" name="price" class="form-control" pattern="[0~9]" style="width: 120px;" required="required"></td>
+        </tr>
+        <tr>
+          <th style="text-align: center;" class="table-secondary" width="100">입고일자</th>
+          <td><input type="date" name="ipgoday" class="form-control" style="width: 120px;" required="required"></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center"><button type="submit" class="btn btn-outline-info" style="width: 100px">등록</button>
+            <button type="button" class="btn btn-outline-info" style="width: 100px" onclick="location='shopList.jsp'">목록</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
 </body>
 </html>

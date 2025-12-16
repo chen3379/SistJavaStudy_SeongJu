@@ -24,7 +24,7 @@ public class ShopDao {
       pstmt = conn.prepareStatement(sql);
       pstmt.setString(1, dto.getSangpum());
       pstmt.setString(2, dto.getPhoto());
-      pstmt.setString(3, dto.getPrice());
+      pstmt.setInt(3, dto.getPrice());
       pstmt.setString(4, dto.getIpgoday());
 
       pstmt.execute();
@@ -41,7 +41,7 @@ public class ShopDao {
 
   // select
   // 전체목록
-  public List<ShopDto> selectAll() {
+  public List<ShopDto> getAllSangpums() {
     List<ShopDto> list = new Vector<ShopDto>();
 
     Connection conn = db.getDBConnect();
@@ -59,7 +59,7 @@ public class ShopDao {
         dto.setNum(rs.getString("num"));
         dto.setSangpum(rs.getString("sangpum"));
         dto.setPhoto(rs.getString("photo"));
-        dto.setPrice(rs.getString("price"));
+        dto.setPrice(rs.getInt("price"));
         dto.setIpgoday(rs.getString("ipgoday"));
         dto.setWriteday(rs.getTimestamp("writeday"));
         list.add(dto);
@@ -76,7 +76,7 @@ public class ShopDao {
   }
 
   // 하나의 데이터.. 1.디테일페이지 2.수정폼
-  public ShopDto getOneData(String num) {
+  public ShopDto getOneSangpum(String num) {
     ShopDto dto = new ShopDto();
 
     Connection conn = db.getDBConnect();
@@ -91,11 +91,11 @@ public class ShopDao {
       rs = pstmt.executeQuery();
 
 
-      while (rs.next()) {
+      if (rs.next()) {
         dto.setNum(rs.getString("num"));
         dto.setSangpum(rs.getString("sangpum"));
         dto.setPhoto(rs.getString("photo"));
-        dto.setPrice(rs.getString("price"));
+        dto.setPrice(rs.getInt("price"));
         dto.setIpgoday(rs.getString("ipgoday"));
         dto.setWriteday(rs.getTimestamp("writeday"));
       }
@@ -110,6 +110,52 @@ public class ShopDao {
 
 
     return dto;
+  }
+
+  public void deleteShop(String num) {
+    Connection conn = db.getDBConnect();
+    PreparedStatement pstmt = null;
+
+    String sql = "delete from myshop where num=" + num;
+
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.execute();
+
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } finally {
+      db.dbClose(pstmt, conn);
+    }
+
+  }
+
+  public ShopDto updateShop(ShopDto dto) {
+
+    Connection conn = db.getDBConnect();
+    PreparedStatement pstmt = null;
+
+    String sql = "update myshop set sangpum=?,photo=?,price=?,ipgoday=? where num=?";
+
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, dto.getSangpum());
+      pstmt.setString(2, dto.getPhoto());
+      pstmt.setInt(3, dto.getPrice());
+      pstmt.setString(4, dto.getIpgoday());
+      pstmt.setString(5, dto.getNum());
+
+      pstmt.execute();
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } finally {
+      db.dbClose(pstmt, conn);
+    }
+
+    return dto;
+
   }
 
 }
