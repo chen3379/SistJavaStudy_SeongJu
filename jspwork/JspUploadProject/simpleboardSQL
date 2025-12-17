@@ -1,0 +1,11 @@
+CREATE TABLE `simpleboard` (
+  `num` int NOT NULL AUTO_INCREMENT,
+  `writer` varchar(20) DEFAULT NULL,
+  `subject` varchar(100) DEFAULT NULL,
+  `content` varchar(2000) DEFAULT NULL,
+  `imgname` varchar(50) DEFAULT NULL,
+  `pass` varchar(20) DEFAULT NULL,
+  `readcount` int DEFAULT NULL,
+  `writeday` datetime DEFAULT NULL,
+  PRIMARY KEY (`num`)
+)
