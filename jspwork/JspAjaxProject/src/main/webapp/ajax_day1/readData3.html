@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link
+  href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap"
+  rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<title>title</title>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+</head>
+<body>
+  <button type="button" class="btn btn-outline-primary" id="btn1">data3 XML 읽기</button>
+  <button type="button" class="btn btn-outline-primary" id="btn2">data3 JSON 읽기</button>
+
+  <div id="out"></div>
+  <script type="text/javascript">
+      $("#btn1").click(function() {
+        $.ajax({
+          type : "get",
+          url : "data3.xml",
+          dataType : "xml",
+
+          success : function(res) {
+            var s = "";
+            $(res).find("stu").each(function(i, ele) {
+              var n = $(ele);
+              s += "<div style='margin:50px 50px; background-color:ivory; font-family: Dongle; width:250px; font-size:1.9em;'>";
+              s += "번호: " + (i + 1) + "<br>";
+              s += "이름: " + n.attr("name") + "<br>";
+              s += "java: " + n.find("java").text() + "점<br>";
+              s += "html: " + n.find("html").text() + "점<br>";
+              s += "ajax: " + n.find("ajax").text() + "점<br>";
+              s += "</div><br>";
+            })
+            $("#out").html(s);
+          }
+        })
+      })
+
+      $("#btn2").click(function() {
+        $.ajax({
+          type : "get",
+          url : "data3.json",
+          dataType : "json",
+
+          success : function(res) {
+            var a = "";
+            $.each(res, function(i, ele) {
+              a += "<div style='margin:50px 50px; background-color:aqua; font-family: Dongle; width:250px; font-size:1.9em;'>";
+              a += "번호: " + (i + 1) + "<br>";
+              a += "name: " + ele.name + "<br>";
+              a += "hobby: " + ele.hobby + "<br>";
+              a += "hp: " + ele.hp + " 	<br>";
+              a += "</div><br>";
+            })
+            $("#out").html(a);
+          }
+        })
+      })
+    </script>
+</body>
+</html>

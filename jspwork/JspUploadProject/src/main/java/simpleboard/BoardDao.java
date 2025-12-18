@@ -46,7 +46,7 @@ public class BoardDao {
     PreparedStatement pstmt = null;
     ResultSet rs = null;
 
-    String sql = "select * from simpleboard order by num";
+    String sql = "select * from simpleboard order by num desc";
 
     try {
       pstmt = conn.prepareStatement(sql);

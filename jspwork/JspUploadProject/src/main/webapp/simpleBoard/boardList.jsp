@@ -29,11 +29,13 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         <b>게시판형 목록 보기</b>
         <button class="btn btn-outline-primary" type="button" onclick="location='addForm.jsp'">글쓰기</button>
         <br> <br>
-        <h6><%=list.size()%>개의 글
-        </h6>
+        <span style="font-size: 0.9em;"><%=list.size()%>개의 글
+        </span><br>
+        <a ><i class="bi bi-list-ul"></i></a> <a href="imageList.jsp"><i class="bi bi-images"></i></a>
       </caption>
       <tr style="text-align: center" class="table-secondary">
-        <th colspan="2" width="400px">제목</th>
+        <th width="50px">번호</th>
+        <th width="400px">제목</th>
         <th width="120px" align="center">작성자</th>
         <th width="120px" align="center">작성일</th>
         <th width="70px" align="center">조회수</th>

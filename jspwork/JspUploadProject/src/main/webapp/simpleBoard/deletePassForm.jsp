@@ -20,21 +20,21 @@ String pass =request.getParameter("pass");
 BoardDao dao = new BoardDao();
 %>
 <body>
-  <div style="margin: 100px 100px; width: 350px;">
+  <div style="margin: 400px 400px; width: 350px;">
     <form action="deletePassProc.jsp" method="post">
       <input type="hidden" name="num" value="<%=num%>">
       <table class="table table-bordered">
         <caption align="top">삭제하시려면 비밀번호를 입력해주세요</caption>
         <tr >
-          <th style="text-align: center;" class="table-secondary">비밀번호</th>
+          <th style="text-align: center; line-height: 35px;" class="table-secondary"><i class="bi bi-lock-fill"></i>&nbsp;비밀번호</th>
           <td>
-            <input type="password" placeholder="ex)1234" name="pass">
+            <input type="password" placeholder="ex)1234" name="pass" class="form-control" required="required">
           </td>
         </tr>
         <tr>
-          <td colspan="2" align="center">
+          <td colspan="2" align="center" >
             <button type="submit" class="btn btn-primary">확인</button>
-            <button type="button" class="btn btn-warning" onclick="location='detailView.jsp?num=<%=num%>'">취소</button>
+            <button type="button" class="btn btn-warning" onclick="history.back()">취소</button>
           </td>
         </tr>
       </table>
