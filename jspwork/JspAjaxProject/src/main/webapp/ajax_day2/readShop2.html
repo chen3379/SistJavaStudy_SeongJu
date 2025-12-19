@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link
+  href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap"
+  rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<title>title</title>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<style type="text/css">
+.a {
+	width: 500px;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+  <button type="button" id="btn1" class="btn btn-info">shop json 읽기</button>
+  <div id="result"></div>
+  <script type="text/javascript">
+      $("#btn1").click(function() {
+
+        $.ajax({
+          type : "get",
+          url : "shopToJson.jsp",
+          dataType : "json",
+          success : function(res) {
+            var s = "<table class='a table table-bordered'>";
+            s += "<caption align='top'><h4>Shop Json 읽어오기</h4></caption>"
+            s += "<tr class=' table-secondary'>"
+            s += "<th width=40>번호</th>";
+            s += "<th width=80>상품명</th>";
+            s += "<th width=80>가격</th>";
+            s += "<th width=40>색상</th>";
+            s += "<th width=120>상품이미지</th>";
+            s += "</tr>";
+            $.each(res, function(i, e) {
+              s += "<tr>";
+              s += "<td width=50>" + e.num + "</td>";
+              s += "<td>" + e.sangname + "</td>";
+              s += "<td>" + e.price + "</td>";
+              s += "<td style='background-color:"+e.col+";'></td>";
+              s += "<td align=center><img style='display: block; width:25px;' src='" + e.photo+ "'></td>";
+              s += "</tr>"
+            })
+            s += "</table>";
+            $("#result").html(s);
+          }
+        })
+      })
+    </script>
+</body>
+</html>

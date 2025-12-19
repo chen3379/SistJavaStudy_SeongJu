@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link
+  href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap"
+  rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<title>title</title>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<style type="text/css">
+.a {
+	margin: 10px;
+	width: 220px;
+	height: 220px;
+}
+#result{
+display:flex;
+flex-wrap: wrap;
+}
+</style>
+</head>
+<body>
+  <button type="button" id="btn1" class="btn btn-info">shop json 읽기</button>
+  <div id="result"></div>
+  <script type="text/javascript">
+      $("#btn1").click(function() {
+
+        $.ajax({
+          type : "get",
+          url : "shopToJson.jsp",
+          dataType : "json",
+          success : function(res) {
+            var s = "";
+            $.each(res, function(i, e) {
+              s += "<div class='a alert alert-info'>";
+              s += "상품명: " + e.sangname+ "<br>";
+              s += "가격: " + e.price + "<br>";
+              s += "색상:<div style='background-color:"+e.col+"; width:30px; height:30px;'></div><br>";
+              s += "<img style='display: block; width:70px;' src='" + e.photo+ "'>";
+              s += "</div>";
+            })
+            $("#result").html(s);
+          }
+        })
+      })
+    </script>
+</body>
+</html>

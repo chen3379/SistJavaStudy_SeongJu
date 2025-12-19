@@ -9,84 +9,84 @@ import java.sql.Statement;
 
 public class DBConnect {
 
-    static final String MYSQLDRIVER = "com.mysql.cj.jdbc.Driver";
-    static final String MYSQL_URL = "jdbc:mysql://localhost:3306/coffee";
+  static final String MYSQLDRIVER = "com.mysql.cj.jdbc.Driver";
+  static final String MYSQL_URL = "jdbc:mysql://localhost:3306/test";
 
-    public DBConnect() {
+  public DBConnect() {
 
-	try {
-	    Class.forName(MYSQLDRIVER);
-	    System.out.println("#MYSQL 드라이버 성공");
-	} catch (ClassNotFoundException e) {
+    try {
+      Class.forName(MYSQLDRIVER);
+      System.out.println("#MYSQL 드라이버 성공");
+    } catch (ClassNotFoundException e) {
 
-	    System.out.println("#MYSQL 드라이버 실패");
-	    e.printStackTrace();
-	}
+      System.out.println("#MYSQL 드라이버 실패");
+      e.printStackTrace();
+    }
+  }
+
+  // 오라클서버연결메서드(Connection)
+  public Connection getDBConnect() {
+    Connection conn = null;
+    try {
+      conn = DriverManager.getConnection(MYSQL_URL, "chen", "admin");
+      System.out.println("#MYSQL 서버연결 성공");
+    } catch (SQLException e) {
+      System.out.println("#MYSQL 서버연결 실패");
+
+      e.printStackTrace();
+    }
+    return conn;
+  }
+
+  // close메서드
+  public void dbClose(ResultSet rs, Statement stmt, Connection conn) {
+    try {
+      rs.close();
+      stmt.close();
+      conn.close();
+    } catch (SQLException e) {
+
+      e.printStackTrace();
     }
 
-    // 오라클서버연결메서드(Connection)
-    public Connection getDBConnect() {
-	Connection conn = null;
-	try {
-	    conn = DriverManager.getConnection(MYSQL_URL, "chen", "admin");
-	    System.out.println("#MYSQL 서버연결 성공");
-	} catch (SQLException e) {
-	    System.out.println("#MYSQL 서버연결 실패");
+  }
 
-	    e.printStackTrace();
-	}
-	return conn;
+  public void dbClose(Statement stmt, Connection conn) {
+    try {
+      stmt.close();
+      conn.close();
+    } catch (SQLException e) {
+
+      e.printStackTrace();
     }
 
-    // close메서드
-    public void dbClose(ResultSet rs, Statement stmt, Connection conn) {
-	try {
-	    rs.close();
-	    stmt.close();
-	    conn.close();
-	} catch (SQLException e) {
+  }
 
-	    e.printStackTrace();
-	}
+  public void dbClose(ResultSet rs, PreparedStatement pstmt, Connection conn) {
+    try {
+      rs.close();
+      pstmt.close();
+      conn.close();
+    } catch (SQLException e) {
 
+      e.printStackTrace();
     }
 
-    public void dbClose(Statement stmt, Connection conn) {
-	try {
-	    stmt.close();
-	    conn.close();
-	} catch (SQLException e) {
+  }
 
-	    e.printStackTrace();
-	}
+  public void dbClose(PreparedStatement pstmt, Connection conn) {
+    try {
+      pstmt.close();
+      conn.close();
+    } catch (SQLException e) {
 
+      e.printStackTrace();
     }
 
-    public void dbClose(ResultSet rs, PreparedStatement pstmt, Connection conn) {
-	try {
-	    rs.close();
-	    pstmt.close();
-	    conn.close();
-	} catch (SQLException e) {
+  }
 
-	    e.printStackTrace();
-	}
+  public static void main(String[] args) {
+    DBConnect db = new DBConnect();
 
-    }
-
-    public void dbClose(PreparedStatement pstmt, Connection conn) {
-	try {
-	    pstmt.close();
-	    conn.close();
-	} catch (SQLException e) {
-
-	    e.printStackTrace();
-	}
-
-    }
-
-    public static void main(String[] args) {
-	DBConnect db = new DBConnect();
-
-    }
+  }
 }
