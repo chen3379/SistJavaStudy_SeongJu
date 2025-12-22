@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link
+  href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap"
+  rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<title>title</title>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+</head>
+<body>
+  <div style="margin: 50px;">
+    <b>이미지 선택: </b> <select id="selImage">
+      <option value="1" selected="selected">에그샌드위치</option>
+      <option value="2">닭꼬치</option>
+      <option value="3">육개장</option>
+      <option value="4">소고기스튜</option>
+      <option value="12">순두부라면</option>
+    </select> <br> <br>
+    <input type="text" id="like">
+    <br>
+    <br>
+
+    <button type="button" class="btn btn-success" id="btn">데이터 전송</button>
+    <br> <br>
+
+    <div id="result">선택한 점심메뉴이미지와 음식명과 점수</div>
+  </div>
+
+  <script type="text/javascript">
+      $("#btn").click(function() {
+
+        var img = $("#selImage").val();
+        var imgName = $("#selImage option:selected").text();
+        var like = $("#like").val();
+
+        $.ajax({
+          type : "get",
+          url : "ex3_read.jsp",
+          dataType : "json",
+          data : {
+            "img" : img,
+            "imgName" : imgName,
+            "like" : like
+          },
+          success : function(res) {
+            var s = "음식명: " + res.imgName + "<br>";
+            s += "점수: " + res.like + "<br>";
+            s += "<br> <img width=200 src='../image/Food/"+res.img+".jpg'><br>";
+
+            $("#result").html(s);
+          }
+        })
+      })
+    </script>
+</body>
+</html>
