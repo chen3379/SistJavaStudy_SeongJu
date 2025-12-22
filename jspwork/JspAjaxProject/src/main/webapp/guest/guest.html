@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link
+  href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap"
+  rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<title>title</title>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<style type="text/css">
+div.guest {
+	position: absolute;
+	border: 0px solid gray;
+	font-family: Dongle;
+	font-size: 2.2em;
+}
+
+div.button {
+	left: 150px;
+	top: 50px;
+	width: 500px;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+}
+
+div.addform, div.updateform {
+	left: 100px;
+	top: 170px;
+	width: 550px;
+	height: 400px;
+	padding: 20px 20px;
+}
+
+div.list {
+	left: 800px;
+	top: 100px;
+	width: 600px;
+	height: 800px;
+	padding: 20px 20px;
+  font-size: 1.2em;
+}
+
+img.emot {
+	cursor: pointer;
+}
+
+img.select {
+	border: 3px solid red;
+}
+</style>
+<script type="text/javascript">
+  $(function() {
+
+    //처음 로드시 리스트 출력
+    list();
+
+    //추가폼 없다가 인사말 추가버튼 누르면 생기게
+    $("div.addform").hide();
+    $("div.updateform").hide();
+
+    $("#btnadd").click(function() {
+
+      $("div.addform").toggle();
+    });
+
+    //이모티콘 2번인덱스에 select 클래스 추가
+    $("img.emot:eq(2)").addClass("select");
+
+    //이모티콘 2번의 인덱스의 src경로를 얻어서 input태그에 넣어주기
+    $("#emot").val($("img.emot").eq(2).attr("src"));
+
+    //이모티콘 값 변경하기
+    $("img.emot").click(function() {
+      //클릭안한 형제태그 select 지우기
+      $(this).siblings().removeClass("select");
+      //현재 클릭한 곳 select
+      $(this).addClass("select");
+      //현재 클릭한 이미지경로를 input에 경로로 변경해주기
+      $("#emot").val($(this).attr("src"));
+    });
+    
+    //저장..post
+    $("#dbsave").click(function() {
+      
+      var data=$("#addfrm").serialize();
+      
+      $.ajax({
+        type:"post",
+        url:"guestInsert.jsp",
+        data:data,
+        success : function(res) {
+          
+          list();
+        }
+        
+      })
+    })
+
+  })
+
+  function list() {
+    
+    $.ajax({
+      type:"post",
+      url:"guestList.jsp",
+      success: function(res) {
+ 
+        $("#list").html(res);
+      }
+    })
+
+  }
+</script>
+</head>
+<body>
+  <div class="guest button">
+    <button type="button" class="btn btn-danger" id="btnadd">인사말추가</button>
+  </div>
+  <div class="guest addform">
+    <form id="addfrm">
+      <table class="table table-bordered">
+        <caption align="top">
+          <b>인사말 남기기</b>
+        </caption>
+        <tr>
+          <th width="100" class="table-success">작성자</th>
+          <td>
+            <input type="text" class="form-control" name="nickname" id="nickname" style="width: 120px;">
+          </td>
+        </tr>
+        <tr>
+          <th width="100" class="table-success">인사말</th>
+          <td>
+            <textarea style="width: 400px; height: 80px;" class="form-control" name="content" id="content"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <th width="100" class="table-success">이모티콘</th>
+          <td>
+            <input type="hidden" name="emot" id="emot">
+            <script type="text/javascript">
+                          /*  b1~b10.png까지 */
+                          var s = "";
+                          for (var i = 1; i <= 10; i++) {
+                            s += "<img src='../image/avata/b"+i+".png' width='40' class='emot'>";
+
+                          }
+                          document.write(s);
+                        </script>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <button type="button" class="btn btn-secondary" id="dbsave">DB에 저장하기</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <div class="guest updateform">update</div>
+  <div class="guest list" id="list">list</div>
+</body>
+</html>
