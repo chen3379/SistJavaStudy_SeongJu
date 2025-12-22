@@ -17,4 +17,6 @@ dto.setEmot(emot);
 
 GuestDao dao=new GuestDao();
 dao.insertGuest(dto);
+
+out.print("success");
 %>
