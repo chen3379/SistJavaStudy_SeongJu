@@ -41,7 +41,7 @@ div.list {
 	width: 600px;
 	height: 800px;
 	padding: 20px 20px;
-  font-size: 1.2em;
+	font-size: 1.2em;
 }
 
 img.emot {
@@ -50,6 +50,23 @@ img.emot {
 
 img.select {
 	border: 3px solid red;
+}
+
+span.nick {
+	font-weight: bold;
+}
+
+span.day {
+	float: right;
+	color: gray;
+}
+
+i {
+	cursor: pointer;
+}
+
+img {
+	cursor: pointer;
 }
 </style>
 <script type="text/javascript">
@@ -82,38 +99,153 @@ img.select {
       //현재 클릭한 이미지경로를 input에 경로로 변경해주기
       $("#emot").val($(this).attr("src"));
     });
-    
+
     //저장..post
     $("#dbsave").click(function() {
-      
-      var data=$("#addfrm").serialize();
-      
+
+      //var data=$("#addfrm").serialize();
+      var nickname = $("#nickname").val();
+      var content = $("#content").val();
+      var emot = $("#emot").val();
+
       $.ajax({
-        type:"post",
-        url:"guestInsert.jsp",
-        data:data,
+        type : "post",
+        url : "guestInsert.jsp",
+        dataType : "json",
+        data : {
+          "nickname" : nickname,
+          "content" : content,
+          "emot" : emot
+        },
         success : function(res) {
-          
-          list();
+
+          if (res.result === "success") {
+            list();
+          }
+
+          $("#nickname").val("");
+          $("#content").val("");
+
+          $("img.emot").removeClass("select");
+          $("img.emot").eq(2).addClass("select");
+          $("#emot").val($("img.emot").eq(2).attr("src"));
         }
-        
+
       })
     })
 
-  })
+    $(document).on("click", "i.del", function() {
 
-  function list() {
-    
-    $.ajax({
-      type:"post",
-      url:"guestList.jsp",
-      success: function(res) {
- 
-        $("#list").html(res);
-      }
+      var num = $(this).attr("num");
+      $.ajax({
+        type : "get",
+        url : "guestDelete.jsp",
+        dataType : "html",
+        data : {
+          "num" : num
+        },
+        success : function() {
+          list();
+        }
+      })
+    });
+
+    $("img.uemot").click(function() {
+      //클릭안한 형제태그 select 지우기
+      $(this).siblings().removeClass("select");
+      //현재 클릭한 곳 select
+      $(this).addClass("select");
+      //현재 클릭한 이미지경로를 input에 경로로 변경해주기
+      $("#uemot").val($(this).attr("src"));
+    });
+
+    $(document).on("click", "i.mod", function() {
+
+      var num = $(this).attr("num");
+      $("#unum").val(num);
+
+      $.ajax({
+        type : "get",
+        url : "guestOneData.jsp",
+        dataType : "json",
+        data : {
+          "num" : num
+        },
+        success : function(res) {
+
+          if (res.result === "success") {
+            list();
+          }
+
+          $("#num").val(res.num);
+          $("#unickname").val(res.nickname);
+          $("#ucontent").val(res.content);
+          $("#uemot").val(res.emot);
+
+          $("div.addform").hide();
+          $("div.updateform").show();
+          $("img.uemot").each(function(i, ele) {
+
+            if ($(this).attr("src") == res.emot)
+              $(this).addClass("select");
+            else
+              $(this).removeClass("select");
+          })
+        }
+
+      })
+    });
+
+    $("#dbupdate").click(function() {
+
+      var data = $("#updatefrm").serialize();
+
+      $.ajax({
+        type : "post",
+        url : "guestUpdate.jsp",
+        dataType : "html",
+        data :data,
+        success : function(res) {
+
+          list();
+        }
+
+      })
     })
 
-  }
+    function list() {
+
+      $.ajax({
+        type : "get",
+        url : "guestList.jsp",
+        dataType : "json",
+        success : function(data) {
+
+          var s = "";
+          /* $("div.list").html(s); */
+          if (data.length == 0) {
+            s += "<h4 class='alert alert-success'>방문객이 없습니다</h4>";
+
+          } else {
+            $.each(data, function(i, e) {
+              s += "<i class='bi bi-pencil-square mod' num="+e.num+"></i>&nbsp;";
+              s += "<i class='bi bi-trash3 del' num="+e.num+"></i>";
+              s += "<table class='table table-bordered'>";
+              s += "<tr height='100'><td>";
+              s += "<span class='nick'>작성자: " + e.nickname + "</span>";
+              s += "<span class='day'>작성일: " + e.writeday + "</span>";
+              s += "<br>";
+              s += "<pre>" + e.content;
+              s += "<img src='"+e.emot+"' width='80' align='right'></pre>";
+              s += "</td></tr></table>";
+            })
+          }
+          $("div.list").html(s);
+        }
+      })
+
+    }
+  });
 </script>
 </head>
 <body>
@@ -162,7 +294,48 @@ img.select {
     </form>
   </div>
 
-  <div class="guest updateform">update</div>
-  <div class="guest list" id="list">list</div>
+  <div class="guest updateform">
+    <form id="updatefrm">
+      <input type="hidden" name="unum" id="unum">
+      <table class="table table-bordered">
+        <caption align="top">
+          <b>인사말 수정</b>
+        </caption>
+        <tr>
+          <th width="100" class="table-success">작성자</th>
+          <td>
+            <input type="text" class="form-control" name="unickname" id="unickname" style="width: 120px;">
+          </td>
+        </tr>
+        <tr>
+          <th width="100" class="table-success">인사말</th>
+          <td>
+            <textarea style="width: 400px; height: 80px;" class="form-control" name="ucontent" id="ucontent"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <th width="100" class="table-success">이모티콘</th>
+          <td>
+            <input type="hidden" name="uemot" id="uemot">
+            <script type="text/javascript">
+                          /*  b1~b10.png까지 */
+                          var s = "";
+                          for (var i = 1; i <= 10; i++) {
+                            s += "<img src='../image/avata/b"+i+".png' width='40' class='uemot'>";
+
+                          }
+                          document.write(s);
+                        </script>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <button type="button" class="btn btn-warning" id="dbupdate">DB수정하기</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div class="guest list">list</div>
 </body>
 </html>

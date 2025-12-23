@@ -69,4 +69,80 @@ public class GuestDao {
 
     return list;
   }
+
+  public void deleteGuest(String num) {
+
+    Connection conn = db.getDBConnect();
+    PreparedStatement pstmt = null;
+
+    String sql = "delete from guest where num=" + num;
+
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.execute();
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } finally {
+      db.dbClose(pstmt, conn);
+    }
+
+
+
+  }
+
+  public GuestDto getData(String num) {
+
+    GuestDto dto = new GuestDto();
+    Connection conn = db.getDBConnect();
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+
+    String sql = "select * from guest where num=" + num;
+
+    try {
+      pstmt = conn.prepareStatement(sql);
+      rs = pstmt.executeQuery();
+
+      while (rs.next()) {
+        dto.setNum(rs.getString("num"));
+        dto.setNickname(rs.getString("nickname"));
+        dto.setContent(rs.getString("content"));
+        dto.setEmot(rs.getString("emot"));
+        dto.setWriteday(rs.getTimestamp("writeday"));
+      }
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } finally {
+      db.dbClose(rs, pstmt, conn);
+    }
+    return dto;
+  }
+
+  public void updateGuest(GuestDto dto) {
+
+
+
+    Connection conn = db.getDBConnect();
+    PreparedStatement pstmt = null;
+
+    String sql = "update guest set nickname=?,content=?,emot=? where num=?";
+
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, dto.getNickname());
+      pstmt.setString(2, dto.getContent());
+      pstmt.setString(3, dto.getEmot());
+      pstmt.setString(4, dto.getNum());
+      pstmt.execute();
+
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } finally {
+      db.dbClose(pstmt, conn);
+    }
+  }
+
 }

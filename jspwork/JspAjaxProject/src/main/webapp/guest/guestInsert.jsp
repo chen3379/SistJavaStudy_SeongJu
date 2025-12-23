@@ -3,6 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+request.setCharacterEncoding("utf-8");
+
 String name=request.getParameter("nickname");
 String cont=request.getParameter("content");
 String emot=request.getParameter("emot");
@@ -18,5 +20,6 @@ dto.setEmot(emot);
 GuestDao dao=new GuestDao();
 dao.insertGuest(dto);
 
-out.print("success");
+out.print("{\"result\":\"success\"}");
+//out.print("success");
 %>
