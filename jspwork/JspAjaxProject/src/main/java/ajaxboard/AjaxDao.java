@@ -70,4 +70,82 @@ public class AjaxDao {
 
     return list;
   }
+
+  public AjaxDto getData(String num) {
+    AjaxDto dto = new AjaxDto();
+
+    Connection conn = db.getDBConnect();
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+
+    String sql = "select * from ajaxboard where num=" + num;
+
+    try {
+      pstmt = conn.prepareStatement(sql);
+      rs = pstmt.executeQuery();
+
+      if (rs.next()) {
+
+        dto.setNum(rs.getString("num"));
+        dto.setWriter(rs.getString("writer"));
+        dto.setSubject(rs.getString("subject"));
+        dto.setContent(rs.getString("content"));
+        dto.setAvata(rs.getString("avata"));
+        dto.setWriteday(rs.getTimestamp("writeday"));
+
+      }
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } finally {
+      db.dbClose(rs, pstmt, conn);
+    }
+
+    return dto;
+  }
+
+  public void deleteAjax(String num) {
+
+    Connection conn = db.getDBConnect();
+    PreparedStatement pstmt = null;
+
+    String sql = "delete from ajaxboard where num=" + num;
+
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.execute();
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } finally {
+      db.dbClose(pstmt, conn);
+    }
+
+  }
+
+  public void updateAjax(AjaxDto dto) {
+
+    Connection conn = db.getDBConnect();
+    PreparedStatement pstmt = null;
+
+    String sql = "update ajaxboard set writer=?,subject=?,content=?,avata=? where num=?";
+
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, dto.getWriter());
+      pstmt.setString(2, dto.getSubject());
+      pstmt.setString(3, dto.getContent());
+      pstmt.setString(4, dto.getAvata());
+      pstmt.setString(5, dto.getNum());
+      pstmt.execute();
+
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } finally {
+      db.dbClose(pstmt, conn);
+    }
+
+  }
+
 }
