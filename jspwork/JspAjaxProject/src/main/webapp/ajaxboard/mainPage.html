@@ -203,7 +203,7 @@ span.day {
     //수정
     $(document).on("click", ".btnupdate", function() {
 
-      var num = $(this).attr("unum");
+      var num = $(this).attr("num");
 
       $.ajax({
         type : "get",
@@ -221,6 +221,7 @@ span.day {
           $("#uavata").val(res.avata);
 
           //디테일페이지 안보이게
+          $(".addform").hide();
           $("div.detail").hide();
           $(".updateform").show();
 
@@ -240,9 +241,10 @@ span.day {
         data : data,
         success : function() {
 
-          $("div.detail").hide();
           list();
-          $("div.list").show();
+          $(".updateform").hide();
+          //$("div.list").show();
+          $("div.detail").show();
 
         }
       })

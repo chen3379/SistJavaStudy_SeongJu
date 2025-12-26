@@ -104,6 +104,7 @@ public class AjaxDao {
     return dto;
   }
 
+  // 삭제
   public void deleteAjax(String num) {
 
     Connection conn = db.getDBConnect();
@@ -123,6 +124,7 @@ public class AjaxDao {
 
   }
 
+  // 수정
   public void updateAjax(AjaxDto dto) {
 
     Connection conn = db.getDBConnect();
