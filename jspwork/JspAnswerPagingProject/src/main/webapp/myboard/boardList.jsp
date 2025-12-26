@@ -15,13 +15,25 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <title>title</title>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<style type="text/css">
+body *{
+font-family:Gamja Flower;
+}
+
+a:link, a:visited {
+text-decoration: none;
+color: black;
+}
+a:hover {
+	text-decoration: underline;
+}
+</style>
 </head>
 <%
 BoardDao dao = new BoardDao();
 List<BoardDto> list = dao.getAllDatas();
 
 int count = dao.getTotalCount();
-
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 %>
 <body>
@@ -58,7 +70,9 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
       %>
       <tr>
         <td><%=count - i%></td>
-        <td><%=dto.getSubject()%></td>
+        <td>
+          <a href="contentView.jsp?num=<%=dto.getNum()%>"><%=dto.getSubject()%></a>
+        </td>
         <td><%=dto.getWriter()%></td>
         <td><%=sdf.format(dto.getWriteday())%></td>
         <td><%=dto.getReadcount()%></td>

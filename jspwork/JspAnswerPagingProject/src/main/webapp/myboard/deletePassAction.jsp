@@ -13,24 +13,25 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
 <body>
-<%
-request.setCharacterEncoding("utf-8");
+ <%
+  String num = request.getParameter("num");
+  String pass = request.getParameter("pass");
 
-String writer=request.getParameter("writer");
-String subject=request.getParameter("subject");
-String content =request.getParameter("content");
-String pass=request.getParameter("pass");
+  BoardDao dao = new BoardDao();
 
-BoardDto dto=new BoardDto();
-dto.setWriter(writer);
-dto.setSubject(subject);
-dto.setContent(content);
-dto.setPass(pass);
+  Boolean flag = dao.isEqualPass(num, pass);
+  if (flag) {
+    dao.deleteBoard(num);
 
-BoardDao dao=new BoardDao();
-dao.insertBoard(dto);
-
-response.sendRedirect("boardList.jsp");
-%>
+    response.sendRedirect("boardList.jsp");
+  } else {
+  %>
+  <script type="text/javascript">
+      alert("비밀번호가 틀렸습니다");
+      history.back();
+    </script>
+  <%
+  }
+  %>
 </body>
 </html>

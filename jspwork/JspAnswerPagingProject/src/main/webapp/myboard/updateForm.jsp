@@ -1,3 +1,5 @@
+<%@page import="myboard.BoardDao"%>
+<%@page import="myboard.BoardDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,39 +14,38 @@
 <title>title</title>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
+<%
+String num = request.getParameter("num");
+BoardDao dao = new BoardDao();
+BoardDto dto = dao.getOneData(num);
+%>
 <body>
   <div style="margin: 50px 100px; width: 500px;">
-    <form action="insertAction.jsp" method="post">
+    <form action="updateAction.jsp" method="post">
+      <input type="hidden" name="num" value="<%=num%>">
       <table class="table table-bordered">
-      <caption align="top"><b>등록</b></caption>
+      <caption align="top"><b>수정</b></caption>
         <tr>
           <th width="100" class="table-secondary">작성자</th>
           <td>
-            <input type="text" name="writer" class="form-control" style="width: 120px;" required="required">
+            <input type="text" name="writer" class="form-control" style="width: 120px;" value="<%=dto.getWriter()%>">
           </td>
         </tr>
         <tr>
           <th width="100" class="table-secondary">제목</th>
           <td>
-            <input type="text" name="subject" class="form-control" style="width: 350px;" required="required">
-          </td>
-        </tr>        
-        <tr>
-        <tr>
-          <th width="100" class="table-secondary">비밀번호</th>
-          <td>
-            <input type="password" name="pass" class="form-control" style="width: 150px;" required="required">
+            <input type="text" name="subject" class="form-control" style="width: 350px;" value="<%=dto.getSubject()%>">
           </td>
         </tr>
         <tr>
+        <tr>
           <td colspan="2">
-            <textarea style="width: 480px; height: 80px;" name="content" class="form-control" required="required"
-              placeholder="제목에 기반한 상세한 내용을 입력해주세요"></textarea>
+            <textarea style="width: 480px; height: 80px;" name="content" class="form-control"><%=dto.getContent()%></textarea>
           </td>
         </tr>
         <tr>
           <td colspan="2" align="center">
-            <button type="submit" class="btn btn-outline-primary">저장하기</button>
+            <button type="submit" class="btn btn-outline-primary">수정하기</button>
             <button type="button" class="btn btn-outline-warning" onclick="location='boardList.jsp'">목록가기</button>
           </td>
         </tr>
