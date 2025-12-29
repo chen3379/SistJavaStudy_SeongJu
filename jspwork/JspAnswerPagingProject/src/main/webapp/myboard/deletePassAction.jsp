@@ -19,11 +19,12 @@
 
   BoardDao dao = new BoardDao();
 
-  Boolean flag = dao.isEqualPass(num, pass);
+  boolean flag = dao.isEqualPass(num, pass);
   if (flag) {
     dao.deleteBoard(num);
 
     response.sendRedirect("boardList.jsp");
+    //location.href='boardList.jsp'; - script 안에서 사용
   } else {
   %>
   <script type="text/javascript">

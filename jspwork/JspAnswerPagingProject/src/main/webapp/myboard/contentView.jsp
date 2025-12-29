@@ -37,7 +37,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
       </tr>
       <tr height="200">
         <td>
-          <%=dto.getContent().replace("\n", "<br>")%>
+          <pre><%=dto.getContent()%></pre>
         </td>
       </tr>
       <tr>
