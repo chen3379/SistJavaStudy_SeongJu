@@ -129,10 +129,10 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         <ul class="pagination justify-content-center">
 
           <%
-          //이전
+          //이전 - perBlock을 넘겼을 때 표시가 된다 (1,2,3,4,5 일 땐 previous가 표시가 안 되고 Next로 6 이후부터 표시된다)
           if (startPage > 1) {
           %>
-          <li class="page-item"><a class="page-link" href="boardList.jsp?currentPage=<%=startPage-1%>">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="boardList.jsp?currentPage=<%=startPage - 1%>">Previous</a></li>
           <%
           }
           for (int pp = startPage; pp <= endPage; pp++) {
