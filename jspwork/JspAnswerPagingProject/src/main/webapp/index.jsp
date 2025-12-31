@@ -16,7 +16,7 @@
   <%
   String path = request.getContextPath();
   %>
-  여기가 시작입니다
+  답글 테스트 <br><br>
   <button type="button" class="btn btn-info" onclick="location.href='<%=path%>/reboard/boardList.jsp'">답변형게시판</button>
   
 </body>
