@@ -9,4 +9,6 @@ num smallint,
 nickname varchar(30),
 comment varchar(1000),
 writeday date,
-foreign key(num) references myboard(num);
+foreign key(num) references myboard(num) on delete cascade);
+
+select * from myboardanswer  where num=39 order by idx desc;
