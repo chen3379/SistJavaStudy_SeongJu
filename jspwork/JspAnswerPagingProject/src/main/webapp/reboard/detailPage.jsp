@@ -18,6 +18,7 @@
 <body>
   <%
   String num = request.getParameter("num");
+  String currentPage = request.getParameter("currentPage");
   ReboardDao dao = new ReboardDao();
   //dto얻기
   ReboardDto dto = dao.getOneData(num);
@@ -35,15 +36,9 @@
           <h4>
             <b><%=dto.getSubject()%></b>
           </h4>
-          <span>
-            <b><%=dto.getWriter()%></b>
-          </span>
-          <span>
-            <b><%=sdf.format(dto.getWriteday())%></b>
-          </span>
-          &nbsp;
-          <span>
-            조회:<%=dto.getReadcount()%></span>
+          <span> <b><%=dto.getWriter()%></b>
+          </span> <span> <b><%=sdf.format(dto.getWriteday())%></b>
+          </span> &nbsp; <span> 조회:<%=dto.getReadcount()%></span>
         </td>
       </tr>
       <tr height="200px;">
@@ -56,14 +51,18 @@
           <div style="float: right;">
             <button type="button" class="btn btn-outline-info" onclick="location.href='addForm.jsp'">글쓰기</button>
             <button type="button" class="btn btn-outline-info"
-              onclick="location.href='addForm.jsp?num=<%=num%>&regroup=<%=dto.getRegroup()%>&restep=<%=dto.getRestep()%>&relevel=<%=dto.getRelevel()%>'">답글</button>
-            <button type="button" class="btn btn-outline-info" onclick="location.href='updateForm.jsp'">수정</button>
-            <button type="button" class="btn btn-outline-info" onclick="location.href='deleteForm.jsp'">삭제</button>
-            <button type="button" class="btn btn-outline-info" onclick="location.href='boardList.jsp'">목록</button>
+              onclick="location.href='addForm.jsp?num=<%=num%>&regroup=<%=dto.getRegroup()%>&restep=<%=dto.getRestep()%>&relevel=<%=dto.getRelevel()%>&currentPage=<%=currentPage%>'">답글</button>
+            <button type="button" class="btn btn-outline-info" onclick="location.href='updatePassForm.jsp?num=<%=num%>&currentPage=<%=currentPage%>'">수정</button>
+            <button type="button" class="btn btn-outline-info" onclick="location.href='deletePassForm.jsp?num=<%=num%>&currentPage=<%=currentPage%>'">삭제</button>
+            <button type="button" class="btn btn-outline-info" onclick="location.href='boardList.jsp?currentPage=<%=currentPage%>'">목록</button>
           </div>
         </td>
       </tr>
     </table>
   </div>
+  <pre>
+  num=<%=num%>
+  currentPage=<%=currentPage%>
+  </pre>
 </body>
 </html>

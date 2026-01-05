@@ -244,4 +244,82 @@ public class ReboardDao {
     return tot;
   }
 
+  // 비번이 맞을 경우 true 반환
+  public boolean isEqualPass(String num, String pass) {
+    boolean flag = false;
+
+    Connection conn = db.getDBConnect();
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+
+    String sql = "select count(*) from reboard where num=? and pass=?";
+
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, num);
+      pstmt.setString(2, pass);
+
+      rs = pstmt.executeQuery();
+
+      if (rs.next()) {
+        if (rs.getInt(1) == 1) // 비번이 맞으면 1,틀리면 0
+          flag = true;
+      }
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } finally {
+      db.dbClose(rs, pstmt, conn);
+    }
+    return flag;
+  }
+
+  // 수정..writer, subject, content
+  public void updateReboard(ReboardDto dto) {
+
+    Connection conn = db.getDBConnect();
+    PreparedStatement pstmt = null;
+
+    String sql = "update reboard set writer=?,subject=?,content=? where num=?";
+
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, dto.getWriter());
+      pstmt.setString(2, dto.getSubject());
+      pstmt.setString(3, dto.getContent());
+      pstmt.setString(4, dto.getNum());
+
+      pstmt.execute();
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } finally {
+      db.dbClose(pstmt, conn);
+    }
+
+
+  }
+
+
+  // 삭제
+  public void deleteReboard(String num) {
+
+    Connection conn = db.getDBConnect();
+    PreparedStatement pstmt = null;
+
+    String sql = "delete from reboard where num=" + num;
+
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.execute();
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } finally {
+      db.dbClose(pstmt, conn);
+    }
+
+  }
+
+
 }

@@ -22,10 +22,15 @@
   <%
   //insert
   dao.insertReboard(dto);
+  //페이지 번호 읽기
+  String currentPage = request.getParameter("currentPage");
   //insert된 num값 얻기
   int num = dao.getMaxNum();
+
+  if (currentPage == null)
+    currentPage = "1";
   //이동
-  response.sendRedirect("detailPage.jsp?num=" + num);
+  response.sendRedirect("detailPage.jsp?num=" + num + "&currentPage=" + currentPage);
   %>
 </body>
 </html>

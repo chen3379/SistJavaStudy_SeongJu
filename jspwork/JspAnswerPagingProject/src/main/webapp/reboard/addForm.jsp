@@ -18,7 +18,7 @@
 //답글일 경우 읽어야할 것들 처리하기
 String num = request.getParameter("num");
 //새글 null, 답글은 원글의 num이 넘어온다
-String regroup = "", relevel = "", restep = "", subject = "";
+String regroup = "", relevel = "", restep = "", subject = "", currentPage = "";
 //dao
 ReboardDao dao = new ReboardDao();
 
@@ -26,6 +26,7 @@ if (num != null) { //답글인 경우
   regroup = request.getParameter("regroup");
   relevel = request.getParameter("relevel");
   restep = request.getParameter("restep");
+  currentPage = request.getParameter("currentPage");
 
   //원글의 제목
   subject = "[답글]" + dao.getOneData(num).getSubject();
@@ -39,6 +40,7 @@ if (num != null) { //답글인 경우
       <%
       if (num != null) {
       %>
+      <input type="hidden" name="currentPage" value="<%=currentPage%>">
       <input type="hidden" name="num" value="<%=num%>">
       <input type="hidden" name="regroup" value="<%=regroup%>">
       <input type="hidden" name="restep" value="<%=restep%>">

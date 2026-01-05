@@ -34,7 +34,7 @@ a:hover {
   //총갯수
   int totalCount = dao.getTotalCount(); //전체 글갯수
   int perPage = 4; //한페이지에 보여질 글갯수
-  int perBlock = 1; //한블럭에 보여질 페이지갯수
+  int perBlock = 2; //한블럭에 보여질 페이지갯수
   int startNum; //db에서 가져올 글의 시작번호(mysql이므로 첫글이 0, oracle은 1)
   int startPage; //각블럭당 보여질 시작페이지
   int endPage; //각블럭당 보여질 끝페이지
@@ -122,7 +122,7 @@ a:hover {
           }
           %>
 
-          <a href="detailPage.jsp?num=<%=dto.getNum()%>"> <%=dto.getSubject()%>
+          <a href="detailPage.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>"> <%=dto.getSubject()%>
           </a>
 
 
