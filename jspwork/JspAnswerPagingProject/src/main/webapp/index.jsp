@@ -16,9 +16,15 @@
   <%
   String path = request.getContextPath();
   %>
-  답글 테스트 <br><br>
-  <button type="button" class="btn btn-info" onclick="location.href='<%=path%>/reboard/boardList.jsp'">답변형게시판</button>
-  
+  답글 테스트
+  <br>
+  <br>
+  <div style="margin: 200px 200px;">
+    <button type="button" class="btn btn-info" onclick="location.href='<%=path%>/reboard/boardList.jsp'">답변형게시판</button><br><br>
+    <button type="button" class="btn btn-info" onclick="location.href='<%=path%>/login/loginForm.jsp'">로그인</button><br><br>
+    <button type="button" class="btn btn-info" onclick="location.href='<%=path%>/memguest/guestList.jsp'">회원방명록</button>
+  </div>
+
 </body>
 
 </html>

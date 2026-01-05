@@ -120,6 +120,16 @@ a:hover {
           <img alt="" src="../image/re.png">
           <%
           }
+          //원글이 없을 경우
+          boolean flag = dao.isGroupStep(dto.getRegroup());
+
+          if (dto.getRestep() > 0) { //답글이 있다면
+          if (!flag) {//원글이 없다면
+          %>
+          <span style="color: red;">[원글이 삭제된 답글]</span>
+          <%
+          }
+          }
           %>
 
           <a href="detailPage.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>"> <%=dto.getSubject()%>

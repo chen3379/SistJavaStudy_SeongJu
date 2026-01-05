@@ -37,7 +37,6 @@ public class ReboardDao {
       db.dbClose(rs, pstmt, conn);
     }
 
-
     return max;
   }
 
@@ -320,6 +319,39 @@ public class ReboardDao {
     }
 
   }
+
+  // 원글이 삭제되었을 때 답글의 맨 앞에 빨간색으로 [원글이삭제된답글] 출력
+  // 원글이 있는지 검사 - 있을경우 true
+  public boolean isGroupStep(int regroup) {
+
+    boolean flag = false;
+
+    Connection conn = db.getDBConnect();
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+
+    String sql = "select * from reboard where regroup=? and restep=0";
+
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setInt(1, regroup);
+
+      rs = pstmt.executeQuery();
+
+      if (rs.next()) {
+        flag = true;
+      }
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } finally {
+      db.dbClose(rs, pstmt, conn);
+    }
+
+
+    return flag;
+  }
+
 
 
 }
