@@ -1,3 +1,5 @@
+<%@page import="memanswer.AnswerDao"%>
+<%@page import="memanswer.AnswerDto"%>
 <%@page import="login.LoginDao"%>
 <%@page import="memguest.MemGuestDto"%>
 <%@page import="java.util.List"%>
@@ -118,18 +120,25 @@ int totalCount = dao.getTotalCount(); //전체 글갯수
       </div>
       <br>
       <br>
-      <img src="../save/<%=dto.getPhoto()%>">
+      <%
+      if (!dto.getPhoto().equals("no")) {
+      %><img src="../save/<%=dto.getPhoto()%>">
+      <%
+      }
+      %>
       <br>
       <br>
       <pre class="content"><%=dto.getContent()%></pre>
       <br>
+
       <%
       String loginok = (String) session.getAttribute("loginok");
       String sessionId = (String) session.getAttribute("idok");
       if (loginok != null && sessionId.equals(dto.getMyid())) {
       %>
       <div class="d-flex justify-content-end gap-2 btn-area">
-        <button type="button" class="btn btn-outline-primary btn-sm rounded-circle icon-btn">
+        <button type="button" onclick="location='updateForm.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>'"
+          class="btn btn-outline-primary btn-sm rounded-circle icon-btn">
           <i class="bi bi-pencil"></i>
         </button>
         <button type="button" onclick="location='delete.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>'"
@@ -139,8 +148,46 @@ int totalCount = dao.getTotalCount(); //전체 글갯수
       </div>
       <%
       }
+      AnswerDao dao2 = new AnswerDao();
+      List<AnswerDto> list2 = dao2.getAnswerList(dto.getNum());
       %>
+      <div class="answer">
+        <b>댓글 <%=list2.size()%></b>
+      </div>
+      <div class="list">
+        <%
+        for (AnswerDto dto2 : list2) {
+        %>
+        <div>
+          <b><%=dto2.getMyid()%></b> <span><%=dto2.getMemo()%></span> <span class="write-day"><%=dto2.getWriteday()%>
+          </span>
+          <button type="button">수정</button>
+          <button type="button" onclick="location='../memanswer/delete.jsp'">삭제</button>
+        </div>
+        <%
+        }
+        %>
+        <br>
+        <%
+        if (loginok != null) {
+        %>
+        <form action="../memanswer/answerAddAction.jsp" method="post">
+          <div class="input-group">
+            <input type="hidden" name="myid" value="<%=dto.getMyid()%>">
+            <input type="hidden" name="num" value="<%=dto.getNum()%>">
+            <input type="hidden" name="currentPage" value="<%=currentPage%>">
+            <input type="text" name="memo" class="form-control" required="required" placeholder="댓글을 입력하세요"
+              style="width: 300px;">
+            &nbsp;&nbsp;&nbsp;
+            <button type="submit" class="btn btn-outline-primary">저장</button>
+          </div>
+        </form>
+        <%
+        }
+        %>
+      </div>
     </div>
+
     <%
     }
     %>

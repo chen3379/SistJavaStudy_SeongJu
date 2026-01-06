@@ -13,3 +13,6 @@ photo varchar(50),
 content varchar(1000),
 writeday datetime
 );
+
+select * from memguest;
+delete from memguest where num=1;
