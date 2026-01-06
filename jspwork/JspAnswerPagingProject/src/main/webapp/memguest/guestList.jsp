@@ -1,3 +1,8 @@
+<%@page import="login.LoginDao"%>
+<%@page import="memguest.MemGuestDto"%>
+<%@page import="java.util.List"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="memguest.MemGuestDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,9 +16,169 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <title>title</title>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<style type="text/css">
+div #divA {
+	border: 1px solid gray;
+	width: 500px;
+	margin-bottom: 10px;
+	padding: 20px 20px;
+	margin-bottom: 10px;
+}
+
+img {
+	width: 80px;
+}
+
+.icon-btn {
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.icon-btn:hover {
+	background-color: #f8f9fa;
+}
+
+.title-area {
+	display: flex;
+	justify-content: space-between; /* 좌우 정렬 */
+	align-items: center;
+}
+
+.write-day {
+	color: gray;
+	font-size: 0.7em;
+}
+
+.content {
+	font-family: Dongle;
+	font-size: 1.5em;
+}
+</style>
 </head>
+<%
+//dao
+MemGuestDao dao = new MemGuestDao();
+LoginDao logindao = new LoginDao();
+//총갯수
+int totalCount = dao.getTotalCount(); //전체 글갯수
+%>
 <body>
   <jsp:include page="guestForm.jsp" />
   <hr>
+  <div style="margin-left: 100px; width: 500px;">
+    <b>총 <%=totalCount%>개의 방명록 글이 있습니다
+    </b>
+  </div>
+  <%
+  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+  int perPage = 2; //한페이지에 보여질 글갯수
+  int perBlock = 2; //한블럭에 보여질 페이지갯수
+  int startNum; //db에서 가져올 글의 시작번호(mysql이므로 첫글이 0, oracle은 1)
+  int startPage; //각블럭당 보여질 시작페이지
+  int endPage; //각블럭당 보여질 끝페이지
+  int currentPage; //현재페이지
+  int totalPage; //총페이지
+
+  int no; //각페이지당 출력할 시작번호
+
+  if (request.getParameter("currentPage") == null)
+    currentPage = 1;
+  else
+    currentPage = Integer.parseInt(request.getParameter("currentPage"));
+
+  totalPage = totalCount / perPage + (totalCount % perPage == 0 ? 0 : 1);
+
+  startPage = (currentPage - 1) / perBlock * perBlock + 1;
+  endPage = startPage + perBlock - 1;
+
+  if (endPage > totalPage)
+    endPage = totalPage;
+
+  startNum = (currentPage - 1) * perPage;
+
+  no = totalCount - (currentPage - 1) * perPage;
+
+  List<MemGuestDto> list = dao.getPagingList(startNum, perPage);
+  %>
+  <div style="margin: 10px 100px;" class="form">
+    <button type="button" class="btn btn-secondary" onclick="location.href='../index.jsp'">처음으로</button>
+  </div>
+  <div style="margin: 30px 100px; width: 900px;">
+    <%
+    for (MemGuestDto dto : list) {
+    %>
+    <div id="divA">
+      <div class="title-area">
+        <b><%=logindao.getName(dto.getMyid())%> <span class="write-day">(<%=dto.getMyid()%>)
+        </span></b> <span class="write-day"><%=dto.getWriteday()%></span>
+      </div>
+      <br>
+      <br>
+      <img src="../save/<%=dto.getPhoto()%>">
+      <br>
+      <br>
+      <pre class="content"><%=dto.getContent()%></pre>
+      <br>
+      <%
+      String loginok = (String) session.getAttribute("loginok");
+      String sessionId = (String) session.getAttribute("idok");
+      if (loginok != null && sessionId.equals(dto.getMyid())) {
+      %>
+      <div class="d-flex justify-content-end gap-2 btn-area">
+        <button type="button" class="btn btn-outline-primary btn-sm rounded-circle icon-btn">
+          <i class="bi bi-pencil"></i>
+        </button>
+        <button type="button" onclick="location='delete.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>'"
+          class="btn btn-outline-danger btn-sm rounded-circle icon-btn">
+          <i class="bi bi-trash"></i>
+        </button>
+      </div>
+      <%
+      }
+      %>
+    </div>
+    <%
+    }
+    %>
+    <br>
+    <!-- 페이지 번호 출력 -->
+    <div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+
+          <%
+          //이전 - perBlock을 넘겼을 때 표시가 된다 (1,2,3,4,5 일 땐 previous가 표시가 안 되고 Next로 6 이후부터 표시된다)
+          if (startPage > 1) {
+          %>
+          <li class="page-item"><a class="page-link" href="guestList.jsp?currentPage=<%=startPage - 1%>">Previous</a></li>
+          <%
+          }
+          for (int pp = startPage; pp <= endPage; pp++) {
+          if (pp == currentPage) { //현재페이지와 같을 경우 active css클래스 추가
+          %>
+          <li class="page-item active"><a href="guestList.jsp?currentPage=<%=pp%>" class="page-link"><%=pp%></a></li>
+          <%
+          } else {
+          %>
+          <li class="page-item"><a href="guestList.jsp?currentPage=<%=pp%>" class="page-link"><%=pp%></a></li>
+          <%
+          }
+          }
+
+          //다음
+          if (endPage < totalPage) {
+          %>
+          <li class="page-item"><a class="page-link" href="guestList.jsp?currentPage=<%=endPage + 1%>">Next</a></li>
+          <%
+          }
+          %>
+        </ul>
+      </nav>
+    </div>
+  </div>
 </body>
 </html>

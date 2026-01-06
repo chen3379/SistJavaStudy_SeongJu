@@ -1,3 +1,4 @@
+<%@page import="login.LoginDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="reboard.ReboardDto"%>

@@ -19,7 +19,7 @@
 
 </head>
 <body>
-	<h2>여러데이터 전송하기_get&post</h2>
+	<h2>여러 데이터 전송하기 get&post</h2>
 	<form action="ex3_action.jsp" method="post">
 		<table class="table table-bordered" style="width: 300px;">
 			<tr>
