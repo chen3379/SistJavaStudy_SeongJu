@@ -89,4 +89,35 @@ public class AnswerDao {
 
   }
 
+  // idx에 따른 memo 반환
+  // 댓글 수정 시 댓글 내용을 가져와야 하므로
+  public String getMemo(String idx) {
+
+    String memo = "";
+
+    Connection conn = db.getDBConnect();
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+
+    String sql = "select memo from memanswer where idx=" + idx;
+
+    try {
+      pstmt = conn.prepareStatement(sql);
+      rs = pstmt.executeQuery();
+
+      if (rs.next()) {
+        memo = rs.getString("memo");
+      }
+
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } finally {
+      db.dbClose(rs, pstmt, conn);
+    }
+    return memo;
+  }
+
+  // 수정
+
 }

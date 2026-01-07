@@ -18,6 +18,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <title>title</title>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+  integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
 <style type="text/css">
 div #divA {
 	border: 1px solid gray;
@@ -53,13 +56,77 @@ img {
 .write-day {
 	color: gray;
 	font-size: 0.7em;
+	margin-right: 6px;
+	white-space: nowrap;
 }
 
 .content {
 	font-family: Dongle;
 	font-size: 1.5em;
 }
+
+.comment-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 6px;
+}
+
+.comment-left {
+	display: flex;
+	gap: 8px;
+}
+
+.comment-right {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin-right: 6px;
+	white-space: nowrap;
+}
 </style>
+<script type="text/javascript">
+  $(function() {
+
+    $(document).on("click", ".aDelBtn", function() {
+
+      const idx = $(this).attr("idx");
+
+      if (!confirm("댓글을 삭제하시겠습니까?"))
+        return;
+
+      $.ajax({
+        type : "get",
+        dataType : "html",
+        url : "../memanswer/answerDelete.jsp",
+        data : {
+          idx : idx
+        },
+        success : function() {
+
+          swal("삭제성공", "You clicked the button!", "success").then(function() {
+            location.reload();
+
+          })
+
+        },
+        error : function() {
+          alert("댓글 삭제 실패");
+        }
+      });
+
+    });
+
+    $(document).on("click", ".aUpdateBtn", function() {
+
+      var idx = $(this).attr("idx");
+      //alert(idx);
+      //$("#updateAnsModal").modal('show');
+
+    });
+
+  });
+</script>
 </head>
 <%
 //dao
@@ -116,7 +183,7 @@ int totalCount = dao.getTotalCount(); //전체 글갯수
     <div id="divA">
       <div class="title-area">
         <b><%=logindao.getName(dto.getMyid())%> <span class="write-day">(<%=dto.getMyid()%>)
-        </span></b> <span class="write-day"><%=dto.getWriteday()%></span>
+        </span></b> <span class="write-day"><%=sdf.format(dto.getWriteday())%></span>
       </div>
       <br>
       <br>
@@ -158,12 +225,30 @@ int totalCount = dao.getTotalCount(); //전체 글갯수
         <%
         for (AnswerDto dto2 : list2) {
         %>
-        <div>
-          <b><%=dto2.getMyid()%></b> <span><%=dto2.getMemo()%></span> <span class="write-day"><%=dto2.getWriteday()%>
-          </span>
-          <button type="button">수정</button>
-          <button type="button" onclick="location='../memanswer/delete.jsp'">삭제</button>
+        <div class="comment-row">
+          <div class="comment-left">
+            <b><%=logindao.getName(dto2.getMyid())%></b> <span><%=dto2.getMemo()%></span>
+          </div>
+
+          <div class="comment-right">
+            <span class="write-day"><%=sdf.format(dto2.getWriteday())%></span>
+            <%
+            if (sessionId.equals(dto2.getMyid())) {
+            %>
+            <button type="button" class="btn btn-outline-primary btn-sm rounded-circle icon-btn aUpdateBtn"
+              idx="<%=dto2.getIdx()%>">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button type="button" class="btn btn-outline-danger btn-sm rounded-circle icon-btn aDelBtn"
+              idx="<%=dto2.getIdx()%>">
+              <i class="bi bi-trash"></i>
+            </button>
+            <%
+            }
+            %>
+          </div>
         </div>
+
         <%
         }
         %>
@@ -173,7 +258,7 @@ int totalCount = dao.getTotalCount(); //전체 글갯수
         %>
         <form action="../memanswer/answerAddAction.jsp" method="post">
           <div class="input-group">
-            <input type="hidden" name="myid" value="<%=dto.getMyid()%>">
+            <input type="hidden" name="myid" value="<%=sessionId%>">
             <input type="hidden" name="num" value="<%=dto.getNum()%>">
             <input type="hidden" name="currentPage" value="<%=currentPage%>">
             <input type="text" name="memo" class="form-control" required="required" placeholder="댓글을 입력하세요"
@@ -225,6 +310,23 @@ int totalCount = dao.getTotalCount(); //전체 글갯수
           %>
         </ul>
       </nav>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="updateAnsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">...</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
     </div>
   </div>
 </body>
