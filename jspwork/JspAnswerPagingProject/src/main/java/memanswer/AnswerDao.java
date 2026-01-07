@@ -119,5 +119,25 @@ public class AnswerDao {
   }
 
   // 수정
+  public void updateMemo(AnswerDto dto) {
+    Connection conn = db.getDBConnect();
+    PreparedStatement pstmt = null;
+
+    String sql = "update memanswer set memo=? where idx=?";
+
+    try {
+
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, dto.getMemo());
+      pstmt.setString(2, dto.getIdx());
+      pstmt.execute();
+
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } finally {
+      db.dbClose(pstmt, conn);
+    }
+  }
 
 }

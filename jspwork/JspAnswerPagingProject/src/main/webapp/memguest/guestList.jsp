@@ -121,8 +121,48 @@ img {
 
       var idx = $(this).attr("idx");
       //alert(idx);
-      //$("#updateAnsModal").modal('show');
 
+      //댓글 수정폼의 hidden idx에 idx 넣어주기
+      $("#idx").val(idx);
+
+      $.ajax({
+        type : "get",
+        dataType : "json",
+        url : "../memanswer/answerMemo.jsp",
+        data : {
+          idx : idx
+        },
+        success : function(res) {
+
+          $("#memo").val(res.memo);
+        }
+      })
+      //모달창 띄우기
+      $("#updateAnsModal").modal('show');
+
+    });
+
+    $(document).on("click", "#btnUpdate", function() {
+
+      var idx = $("#idx").val();
+      var memo = $("#memo").val();
+
+      $.ajax({
+        type : "get",
+        dataType : "html",
+        url : "../memanswer/answerUpdate.jsp",
+        data : {
+          idx : idx,
+          memo: memo
+        },
+        success : function() {
+
+          swal("수정성공", "You clicked the button!", "success").then(function() {
+            location.reload();
+
+          })
+        }
+      })
     });
 
   });
@@ -229,7 +269,6 @@ int totalCount = dao.getTotalCount(); //전체 글갯수
           <div class="comment-left">
             <b><%=logindao.getName(dto2.getMyid())%></b> <span><%=dto2.getMemo()%></span>
           </div>
-
           <div class="comment-right">
             <span class="write-day"><%=sdf.format(dto2.getWriteday())%></span>
             <%
@@ -318,13 +357,16 @@ int totalCount = dao.getTotalCount(); //전체 글갯수
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">댓글 수정</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">...</div>
+        <div class="modal-body">
+          <input type="hidden" id="idx">
+          <input type="text" class="form-control" id="memo">
+        </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+          <button type="button" class="btn btn-primary" id="btnUpdate">댓글 수정하기</button>
         </div>
       </div>
     </div>
