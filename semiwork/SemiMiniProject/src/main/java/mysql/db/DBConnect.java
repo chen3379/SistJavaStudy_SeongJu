@@ -10,7 +10,7 @@ import java.sql.Statement;
 public class DBConnect {
 
   static final String MYSQLDRIVER = "com.mysql.cj.jdbc.Driver";
-  static final String MYSQL_URL = "jdbc:mysql://myhee.che2a2mk0gqm.ap-northeast-2.rds.amazonaws.com:3306/test";
+  static final String MYSQL_URL = "jdbc:mysql://localhost:3306/test";
 
   public DBConnect() {
 
