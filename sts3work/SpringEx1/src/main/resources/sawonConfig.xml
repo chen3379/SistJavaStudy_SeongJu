@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<!-- SawonData설정..사원명은 생성자주입, 급여입사일은 setter주입 -->
+	<bean name="sdata" class="spring.ex3.di.SawonData">
+	<constructor-arg value="김이라"/>
+	<property name="pay" value="200000"/>
+	<property name="ipsaday" value="20.02.20"/>
+	</bean>
+	
+	<bean name="saw" class="spring.ex3.di.Sawon">
+	<constructor-arg ref="sdata"/>
+	</bean>
+
+	<!-- 2 -->
+	<bean name="sdata2" class="spring.ex3.di.SawonData">
+	<constructor-arg value="이라"/>
+	<property name="pay" value="300000"/>
+	<property name="ipsaday" value="20.03.20"/>
+	</bean>
+	
+	<bean name="saw2" class="spring.ex3.di.Sawon">
+	<constructor-arg ref="sdata2"/>
+	</bean>
+</beans>
