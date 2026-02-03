@@ -15,7 +15,7 @@ public class HomeController {
 		return "home";
 	}
 
-	@GetMapping("/dragon/sist")
+	@GetMapping("/dragon/sist.do") //sist 뒤에 .do, .nhn 뭐를 붙이든 다 호출 가능
 	public String hello1(Model model) {
 
 		// model: request에 데이터를 저장하는 클래스

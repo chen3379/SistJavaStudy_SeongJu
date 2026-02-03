@@ -13,8 +13,15 @@
 <body>
 <h2>매핑 주소 연습</h2>
 <hr>
-<button type="button" onclick="location.href='dragon/sist'">result1</button>
+<button type="button" onclick="location.href='dragon/sist.do'">result1</button>
 <button type="button" onclick="location.href='naver/shop'">result2</button>
+<button type="button" onclick="location.href='apple/list'">result3</button>
+<button type="button" onclick="location.href='kakao/list'">result4</button>
+
+<h2>이미지 출력 연습</h2>
+<button type="button" onclick="location.href='shop/detail'">이미지 출력_1</button>
+<button type="button" onclick="location.href='admin/shop/mypage'">이미지 출력_2</button>
+<button type="button" onclick="location.href='myshop'">이미지 출력_3</button>
 
 </body>
 </html>
