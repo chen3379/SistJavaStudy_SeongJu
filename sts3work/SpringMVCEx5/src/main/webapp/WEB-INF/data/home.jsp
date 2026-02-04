@@ -14,5 +14,6 @@
 </head>
 <body>
 <button type="button" class="btn btn-info" onclick="location.href='data/myform'">입력폼 연습</button>
+<button type="button" class="btn btn-info" onclick="location.href='quiz/form'">과제폼 연습</button>
 </body>
 </html>

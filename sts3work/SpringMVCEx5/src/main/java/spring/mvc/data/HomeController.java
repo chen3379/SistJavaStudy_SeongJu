@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import data.dto.SawonDto;
 import data.dto.TestDto;
 
 @Controller
 public class HomeController {
 
-	@GetMapping("/")
+	//@GetMapping("/")
 	public String home() {
 		return "data/home";
 	}
@@ -62,4 +63,6 @@ public class HomeController {
 		
 		return mav;
 	}
+
+	
 }
