@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +21,29 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<h3>총 ${count }개의 상품이 입고중입니다</h3>
+	<c:if test="${count==0 }">
+		<h3>입고된 상품이 없습니다</h3>
+	</c:if>
+	<c:if test="${count!=0 }">
+		<h3>총 ${count}개의 상품이 입고중입니다</h3>
+	</c:if>
+	<table class="table table-bordered" style="width: 600px;">
+		<tr>
+			<th>번호</th>
+			<th>상품명</th>
+			<th>가격</th>
+			<th>입고일</th>
+		</tr>
+		<c:forEach var="dto" items="${list}" varStatus="i">
+			<tr style="line-height: 50px;">
+				<td>${i.count }</td>
+				<td><a href="detail?num=${dto.num }">${dto.sangpum}</a></td>
+				<td><fmt:formatNumber value="${dto.price}" type="currency" /></td>
+				<td>${dto.ipgoday}</td>
+			</tr>
+		</c:forEach>
+	</table>
+	<br>
+	<button type="button" onclick="location.href='addform'">입력폼</button>
 </body>
 </html>

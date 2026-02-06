@@ -16,4 +16,16 @@ public class MyshopDao {
 		
 		return session.selectList("getAllOfMyshop");
 	}
+	
+	public void insertMyshop(MyshopDto dto) {
+		session.insert("db.sts.sist.MyshopDao.insertOfMyshop",dto);
+	}
+	
+	public MyshopDto getData(int num) {
+		return session.selectOne("getOneOfMyshop",num);
+	}
+	
+	public void deleteMyshop(int num) {
+		session.delete("db.sts.sist.MyshopDao.deleteOfMyshop",num);
+	}
 }

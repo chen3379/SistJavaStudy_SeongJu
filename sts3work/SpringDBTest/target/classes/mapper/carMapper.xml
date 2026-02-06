@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="db.data.car.CarDao">
+	<select id="totalCountOfCarInfo" resultType="int">
+		select count(*) from cinfo order by num desc
+	</select>
+	<insert id="insertCar" parameterType="cdto">
+	insert into cinfo (cname,ccolor,cprice,cguip) values(#{cname},#{ccolor},#{cprice},#{cguip})
+	</insert>
+	<select id="totalListOfCar" resultType="cdto">
+	select * from cinfo order by num desc
+	</select>
+	<delete id="deleteCar" parameterType="int">
+	delete from cinfo where num=#{num}
+	</delete>
+	<select id="selectCar" parameterType="int" resultType="cdto">
+		select * from cinfo where num=#{num}
+	</select>
+	<update id="updateCar" parameterType="cdto">
+	update cinfo set cname=#{cname},ccolor=#{ccolor},cprice=#{cprice},cguip=#{cguip} where num=#{num}
+	</update>
+</mapper>

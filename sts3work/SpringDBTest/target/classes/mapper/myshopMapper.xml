@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="db.sts.sist.MyshopDao">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="db.sts.sist.MyshopDao,db.data.car.CarDao">
 	<select id="getAllOfMyshop" resultType="mdto">
 	select * from myshop order by num desc
 	</select>
+	<select id="getOneOfMyshop" parameterType="int" resultType="mdto">
+	select * from myshop where num=#{num}
+	</select>
+	<insert id="insertOfMyshop" parameterType="mdto">
+	insert into myshop (sangpum, photo, price, ipgoday, writeday) values(#{sangpum},#{photo}, #{price},#{ipgoday},now())
+	</insert>
+	<delete id="deleteOfMyshop" parameterType="int">
+	delete from myshop where num=#{num}
+	</delete>
+	<select id="getAllOfCarInfo" resultType="cdto">
+	select * from cinfo order by num desc
+	</select>
+	
 </mapper>

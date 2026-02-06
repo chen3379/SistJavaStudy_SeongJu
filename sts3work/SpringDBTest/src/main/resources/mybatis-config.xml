@@ -3,5 +3,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="db.sts.sist.MyshopDto" alias="mdto" />
+		<typeAlias type="db.data.car.CarDto" alias="cdto" />
+		<typeAlias type="db.data.carmember.CarMemberDto" alias="memdto" />
 	</typeAliases>
 </configuration>

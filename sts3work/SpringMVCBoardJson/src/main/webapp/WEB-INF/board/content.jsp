@@ -1,0 +1,230 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시글 상세</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+<style>
+    /* 배경 설정: 은은한 그라데이션 */
+    body {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+        padding: 50px 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    /* 메인 컨테이너: 종이 질감의 흰색 박스 */
+    .content-container {
+        max-width: 850px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 80px 100px; /* 넉넉한 여백 */
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+    }
+
+    /* 상단 메타 정보 (날짜, 번호) */
+    .meta-top {
+        font-size: 0.85rem;
+        color: #999;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    /* 제목 스타일: 명조체, 굵게 */
+    .subject-title {
+        font-family: 'Nanum Myeongjo', serif;
+        font-size: 2.8rem;
+        font-weight: 800;
+        color: #111;
+        margin-bottom: 40px;
+        line-height: 1.3;
+        word-break: keep-all; /* 단어 단위 줄바꿈 */
+        letter-spacing: -1px;
+    }
+
+    /* 작성자 정보 영역 */
+    .author-info {
+        padding: 20px 0;
+        border-top: 1px solid #f0f0f0;
+        border-bottom: 1px solid #f0f0f0;
+        margin-bottom: 60px;
+    }
+
+    .author-avatar {
+        width: 45px;
+        height: 45px;
+        background-color: #2c3e50;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-right: 15px;
+    }
+
+    /* 본문 텍스트 */
+    .main-text {
+        font-size: 1.15rem;
+        line-height: 2.1; /* 읽기 편한 줄간격 */
+        color: #333;
+        margin-bottom: 60px;
+        white-space: pre-wrap; /* 줄바꿈/띄어쓰기 유지 */
+        letter-spacing: -0.2px;
+    }
+
+    /* 이미지 갤러리 섹션 */
+    .image-gallery {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        margin-bottom: 60px;
+    }
+
+    .image-wrapper {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .content-image {
+        width: 100%;
+        display: block;
+        transition: transform 0.4s ease;
+    }
+
+    .content-image:hover {
+        transform: scale(1.02);
+    }
+
+    /* 하단 버튼 영역 */
+    .footer-divider {
+        margin: 0 0 40px;
+        border-top: 2px solid #f0f0f0;
+    }
+
+    .btn-custom-list {
+        background-color: #111;
+        color: #fff;
+        border: none;
+        padding: 12px 40px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+
+    .btn-custom-list:hover {
+        background-color: #333;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn-group-action .btn {
+        border-radius: 50px;
+        padding: 8px 25px;
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    /* 모바일 대응 */
+    @media (max-width: 768px) {
+        .content-container {
+            padding: 40px 25px;
+            margin: 0 15px;
+        }
+        .subject-title {
+            font-size: 2rem;
+        }
+        .main-text {
+            font-size: 1.05rem;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="content-container">
+        
+        <div class="meta-top d-flex justify-content-between align-items-center">
+            <span>Issue No. ${dto.num}</span>
+            <span>
+                <i class="bi bi-clock"></i> 
+                <fmt:formatDate value="${dto.writeday}" pattern="yyyy.MM.dd HH:mm" />
+            </span>
+        </div>
+
+        <h1 class="subject-title">${dto.subject}</h1>
+
+        <div class="author-info d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <div class="author-avatar">
+                    ${dto.writer.substring(0,1)}
+                </div>
+                <div>
+                    <span class="fw-bold d-block text-dark" style="font-size:1.1rem;">${dto.writer}</span>
+                    <span class="text-muted small">Editor</span>
+                </div>
+            </div>
+            <div class="text-muted small">
+                <span class="bg-light px-3 py-1 rounded-pill">
+                    <i class="bi bi-eye-fill me-1"></i> ${dto.readcount} reads
+                </span>
+            </div>
+        </div>
+
+        <div class="main-content-wrapper">
+            <div class="main-text">
+                ${dto.content}
+            </div>
+
+            <c:if test="${dto.photo != 'no-image'}">
+                <div class="image-gallery">
+                    <c:forTokens var="p" items="${dto.photo}" delims=",">
+                        <div class="image-wrapper">
+                            <img src="../photo/${p}" class="content-image" alt="Article Image">
+                        </div>
+                    </c:forTokens>
+                </div>
+            </c:if>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="action-buttons d-flex justify-content-between align-items-center">
+            <div class="btn-group-action">
+                <button type="button" class="btn btn-outline-secondary me-2" 
+                        onclick="location.href='updateform?num=${dto.num}&currentPage=${currentPage}'">
+                    Edit
+                </button>
+                <button type="button" class="btn btn-outline-danger" 
+                        onclick="location.href='delete?num=${dto.num}&currentPage=${currentPage}'">
+                    Delete
+                </button>
+            </div>
+
+            <button type="button" class="btn btn-custom-list" 
+                    onclick="location.href='list?currentPage=${currentPage}'">
+                Back to List
+            </button>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
