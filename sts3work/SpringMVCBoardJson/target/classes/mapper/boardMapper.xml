@@ -1,16 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="board.data.BoardDao">
+	<!-- 글 전체 개수 -->
 	<select id="TotalCountBoard" resultType="int">
-		select count(*) from board
+		select count(*) from
+		board
 	</select>
+	<!-- 게시글 등록 -->
 	<insert id="insertBoard" parameterType="bdto">
-	insert into board (writer,pass,subject,content,photo,writeday) values (#{writer},#{pass},#{subject},#{content},#{photo},now())
+		insert into board (writer,pass,subject,content,photo,writeday) values
+		(#{writer},#{pass},#{subject},#{content},#{photo},now())
 	</insert>
+	<!-- 전체 게시글 조회(페이징 처리) -->
 	<select id="selectBoard" resultType="bdto">
-	select * from board order by num desc
+		select * from board order by num desc limit #{start},#{perpage}
 	</select>
+	<!-- 게시글 세부 정보 조회 -->
 	<select id="selectContent" parameterType="int" resultType="bdto">
-	select * from board where num=#{num}
+		select * from board where num=#{num}
+	</select>
+	<!-- 조회수 처리 -->
+	<update id="ReadCountBoard" parameterType="int">
+		update board set readcount=readcount+1 where num=#{num}
+	</update>
+	<!-- 게시글 삭제 -->
+	<delete id="deleteBoard" parameterType="int">
+		delete from board where num=#{num}
+	</delete>
+	<!-- 게시글 수정 -->
+	<update id="updateBoard" parameterType="bdto">
+		update board set
+		writer=#{writer},subject=#{subject},content=#{content}
+		<if test="photo!=null">
+		 ,photo=#{photo}		
+		</if>
+		where num=#{num}
+	</update>
+	<!-- 수정 삭제에 필요한 비밀번호 체크(num,pass가 맞으면 1 아니면 0 -->
+	<select id="checkPassBoard" parameterType="HashMap"
+		resultType="int">
+		select count(*) from board where num=#{num} and pass=#{pass}
 	</select>
 </mapper>

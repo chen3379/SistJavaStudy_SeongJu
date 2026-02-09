@@ -40,4 +40,33 @@ public class BoardDao implements BoardDaoInter {
 		return sqlSession.selectOne("selectContent",num);
 	}
 
+	@Override
+	public void updateReadcount(int num) {
+		// TODO Auto-generated method stub
+		sqlSession.update("ReadCountBoard",num);
+	}
+
+	@Override
+	public void deleteBoard(int num) {
+		// TODO Auto-generated method stub
+		sqlSession.delete("deleteBoard",num);
+	}
+
+	@Override
+	public void updateBoard(BoardDto dto) {
+		// TODO Auto-generated method stub
+		sqlSession.update("updateBoard",dto);
+	}
+
+	@Override
+	public int getCheckPass(int num, int pass) {
+		// TODO Auto-generated method stub
+		HashMap<String, Integer> map=new HashMap<String, Integer>();
+		map.put("num", num);
+		map.put("pass", pass);
+		return sqlSession.selectOne("checkPassBoard",map);
+	}
+
+	
+
 }
