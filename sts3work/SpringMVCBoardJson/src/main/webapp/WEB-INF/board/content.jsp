@@ -94,7 +94,8 @@ body {
 
 /* 이미지 갤러리 섹션 */
 .image-gallery {
-	display: flex; flex-direction : column;
+	display: flex;
+	flex-direction: column;
 	gap: 40px;
 	margin-bottom: 60px;
 	flex-direction: column;
@@ -109,7 +110,8 @@ body {
 
 .content-image {
 	width: 30%;
-	height: 30%; display : block;
+	height: 30%;
+	display: block;
 	transition: transform 0.4s ease;
 	display: block;
 }
@@ -209,6 +211,39 @@ body {
 				</c:if>
 			</div>
 
+			<!-- 댓글 -->
+			<div id="aList">
+
+				<b>댓글 ${acount }</b><br> <br>
+				<c:forEach var="a" items="${aList}">
+			${a.nickname }:${a.content } &nbsp; &nbsp;
+			<span style="color: gray; font-size: 0.6em;"><fmt:formatDate
+							value="${a.writeday }" pattern="yyyy-MM-dd" /></span>
+					<i class="amod bi bi-pencil-square" style="cursor: pointer;"
+						idx="${a.idx}"></i>
+					<i class="adel bi bi-file-earmark-x" style="cursor: pointer;"
+						idx="${a.idx}"></i>
+					<br>
+				</c:forEach>
+			</div>
+			<div class="footer-divider"></div>
+			<form action="aInsert" method="post">
+				<input type="hidden" name="num" value="${dto.num }"> <input
+					type="hidden" name="currentPage" value="${currentPage }">
+				<div class="action-buttons d-flex align-items-center">
+					<input type="text" placeholder="닉네임 입력" name="nickname"
+						class="form-control" style="width: 120px;"> &nbsp;<input
+						type="password" placeholder="비밀번호 입력" name="pass"
+						class="form-control" style="width: 120px;">
+				</div>
+				<br>
+				<div class="action-buttons d-flex align-items-center">
+					<input type="text" name="content" class="form-control"
+						style="width: 500px;" placeholder="댓글 입력"> &nbsp;
+					<button type="submit" class="btn btn-outline-secondary me-2">등록</button>
+				</div>
+				<br>
+			</form>
 			<div class="footer-divider"></div>
 
 			<div
@@ -217,13 +252,13 @@ body {
 					<button type="button" class="btn btn-outline-secondary me-2"
 						onclick="location.href='updatepassform?num=${dto.num}&currentPage=${currentPage}'">
 						수정</button>
-<%-- 					<button type="button" class="btn btn-outline-secondary me-2"
+					<%-- 					<button type="button" class="btn btn-outline-secondary me-2"
 						onclick="location.href='updateform?num=${dto.num}&currentPage=${currentPage}'">
 						수정</button> --%>
 					<button type="button" class="btn btn-outline-danger"
 						onclick="location.href='deletepassform?num=${dto.num}&currentPage=${currentPage}'">
 						삭제</button>
-<%-- 					<button type="button" class="btn btn-outline-danger"
+					<%-- 					<button type="button" class="btn btn-outline-danger"
 						onclick="location.href='delete?num=${dto.num}&currentPage=${currentPage}'">
 						삭제</button> --%>
 				</div>
@@ -235,6 +270,37 @@ body {
 
 		</div>
 	</div>
+<script type="text/javascript">
+$(".adel").click(function() {
+	
+	var idx=$(this).attr("idx");
+	var pass=prompt("비밀번호를 입력해주세요");
+	
+	if (pass==null) return;
+	
+	$.ajax({
+		type:"get",
+		url:"adelete",
+		dataType:"json",
+		data:{
+			"idx":idx,
+			"pass":pass
+		},
+		success: function(res) {
+					if(res.check==1){
+						location.reload();
+					}else{
+						alert("비밀번호가 틀렸습니다");
+					}
+						
+				},
+				error: function(){
+					alert("서버 통신 오류");
+				}
+				
+		
+	});
+});
 
-</body>
+</script></body>
 </html>

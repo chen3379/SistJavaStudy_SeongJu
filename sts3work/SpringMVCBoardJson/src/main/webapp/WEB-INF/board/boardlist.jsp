@@ -73,12 +73,12 @@
 </style>
 <body>
 	<div class="container mt-5" style="max-width: 800px;">
-	<div class="alert alert-success">
-		<h4>
-			<b> 총 ${totalCount }개의 게시글이 있습니다 </b>
-		</h4>
-	</div>
-	<br>
+		<div class="alert alert-success">
+			<h4>
+				<b> 총 ${totalCount }개의 게시글이 있습니다 </b>
+			</h4>
+		</div>
+		<br>
 		<button type="button" class="btn btn-outline-primary"
 			onclick="location='addform'">글쓰기</button>
 		<c:forEach var="dto" items="${list}" varStatus="status">
@@ -88,6 +88,9 @@
 
 				<div class="post-title">
 					${dto.subject}
+					<c:if test="${dto.acount!=0 }">
+					 <span style="color: blue; font-size: 0.8em; font-weight: lighter;">(${dto.acount })</span>
+					</c:if>
 					<c:if test="${dto.photo != 'no-image'}">
 						<small><i class="bi bi-image text-primary ms-2"></i></small>
 					</c:if>

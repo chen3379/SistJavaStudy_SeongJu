@@ -12,6 +12,15 @@ public class BoardDto {
 	private String photo;
 	private int readcount;
 	private Timestamp writeday;
+	private int acount; // 댓글갯수
+
+	public int getAcount() {
+		return acount;
+	}
+
+	public void setAcount(int acount) {
+		this.acount = acount;
+	}
 
 	public int getNum() {
 		return num;

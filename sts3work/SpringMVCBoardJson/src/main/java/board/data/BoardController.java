@@ -17,11 +17,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import board.answer.data.AnswerDao;
+import board.answer.data.AnswerDto;
+
 @Controller
 public class BoardController {
 
 	@Autowired
 	BoardDao dao;
+	@Autowired
+	AnswerDao adao;
 
 	@GetMapping("/board/list")
 	public ModelAndView list(@RequestParam(value = "currentPage", defaultValue = "1") int currentPage) {
@@ -59,6 +64,12 @@ public class BoardController {
 		no = totalCount - (currentPage - 1) * perPage;
 
 		List<BoardDto> list = dao.selectBoard(startNum, perPage);
+		
+		for(BoardDto d:list) {
+			d.setAcount(adao.selectAll(d.getNum()).size());
+		}
+			
+			
 		mav.addObject("list", list);
 		mav.addObject("totalCount", totalCount);
 		mav.addObject("totalPage", totalPage);
@@ -121,6 +132,13 @@ public class BoardController {
 		model.addAttribute("dto", dto);
 		model.addAttribute("currentPage", currentPage);
 
+		//num에 해당하는 댓글을 db에서 가져와서 request에 저장
+		List<AnswerDto> aList=adao.selectAll(num);
+		
+		//댓글이 있을 때만 보낸다
+		model.addAttribute("aList",aList);
+		model.addAttribute("acount",aList.size());
+		
 		return "board/content";
 	}
 
@@ -137,12 +155,26 @@ public class BoardController {
 	}
 
 	@PostMapping("/board/deletepass")
-	public ModelAndView deleteBoard(@RequestParam int num, @RequestParam int pass) {
+	public ModelAndView deleteBoard(@RequestParam int num, @RequestParam int pass, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		int check = dao.getCheckPass(num, pass);
 
 		if (check == 1) {
-			// 맞으면 dto 얻어서 포워드
+			// photo폴더 사진삭제
+			String oldphoto = dao.selectContent(num).getPhoto();
+			if (!oldphoto.equals("no-image")) {
+				// ,로 분리해서 배열에 담기
+				String[] fName = oldphoto.split(",");
+
+				// 실제업로드
+				String path = session.getServletContext().getRealPath("/WEB-INF/photo");
+
+				for (String f : fName) {
+					File file = new File(path + "\\" + f);
+					file.delete();
+				}
+			}
+
 			dao.deleteBoard(num);
 			mav.setViewName("redirect:list");
 		} else {
