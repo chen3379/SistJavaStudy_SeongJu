@@ -1,0 +1,6 @@
+com\gisa\quiz\domain\Quiz.class
+com\gisa\quiz\controller\QuizController.class
+com\gisa\quiz\service\QuizService.class
+com\gisa\quiz\repository\QuizRepository.class
+com\gisa\quiz\DataLoader.class
+com\gisa\quiz\GisaQuizApplication.class

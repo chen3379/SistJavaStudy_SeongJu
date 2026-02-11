@@ -219,8 +219,7 @@ body {
 			${a.nickname }:${a.content } &nbsp; &nbsp;
 			<span style="color: gray; font-size: 0.6em;"><fmt:formatDate
 							value="${a.writeday }" pattern="yyyy-MM-dd" /></span>
-					<i class="amod bi bi-pencil-square" style="cursor: pointer;"
-						idx="${a.idx}"></i>
+					<i class="amod bi bi-pencil-square" style="cursor: pointer;"></i>
 					<i class="adel bi bi-file-earmark-x" style="cursor: pointer;"
 						idx="${a.idx}"></i>
 					<br>
@@ -270,37 +269,37 @@ body {
 
 		</div>
 	</div>
-<script type="text/javascript">
-$(".adel").click(function() {
-	
-	var idx=$(this).attr("idx");
-	var pass=prompt("비밀번호를 입력해주세요");
-	
-	if (pass==null) return;
-	
-	$.ajax({
-		type:"get",
-		url:"adelete",
-		dataType:"json",
-		data:{
-			"idx":idx,
-			"pass":pass
-		},
-		success: function(res) {
-					if(res.check==1){
+	<script type="text/javascript">
+		$(".adel").click(function() {
+
+			var idx = $(this).attr("idx");
+			var pass = prompt("비밀번호를 입력해주세요");
+
+			if (pass == null)
+				return;
+
+			$.ajax({
+				type : "get",
+				url : "adelete",
+				dataType : "json",
+				data : {
+					"idx" : idx,
+					"pass" : pass
+				},
+				success : function(res) {
+					if (res.check == 1) {
 						location.reload();
-					}else{
+					} else {
 						alert("비밀번호가 틀렸습니다");
 					}
-						
+
 				},
-				error: function(){
+				error : function() {
 					alert("서버 통신 오류");
 				}
-				
-		
-	});
-});
 
-</script></body>
+			});
+		});
+	</script>
+</body>
 </html>
