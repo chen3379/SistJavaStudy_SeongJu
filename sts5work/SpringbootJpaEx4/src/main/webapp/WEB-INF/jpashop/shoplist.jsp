@@ -24,11 +24,11 @@ body * {
 <body>
 	<div style="margin: 30px 50px;">
 		<h2>상품 목록</h2>
-		<hr>
+		<hr width="700px;">
 		<h5>총 ${count}개의 상품이 있습니다.</h5>
 
 		<table class="table table-bordered" style="width: 700px;">
-			<tr class="table-light">
+			<tr class="table-light" valign="middle" align="center">
 				<th width="60">번호</th>
 				<th width="200">상품명</th>
 				<th width="120">사진</th>
@@ -38,7 +38,7 @@ body * {
 			</tr>
 
 			<c:forEach var="dto" items="${list}" varStatus="i">
-				<tr>
+				<tr align="center" valign="middle">
 					<td>${i.count}</td>
 					<td>${dto.sangpum}</td>
 					<td><img src="../image/logoImg/${dto.photo}" width="50"
@@ -52,7 +52,6 @@ body * {
 							class="btn btn-outline-secondary">수정</button>
 						<button type="button" onclick="location='/myjpa/delete?num=${dto.num}'"
 							class="btn btn-outline-secondary">삭제</button>
-					</td>
 					</td>
 				</tr>
 			</c:forEach>

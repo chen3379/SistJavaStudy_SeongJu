@@ -20,7 +20,7 @@ public class JpaShopDao {
 	}
 	
 	public ShopDto getSangpum(int num) {
-		return inter.getById(num);		
+		return inter.getReferenceById(num);		
 	}
 	
 	public void deleteShop(int num) {

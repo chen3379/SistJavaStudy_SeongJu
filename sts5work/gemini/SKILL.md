@@ -38,3 +38,7 @@ Before creating any new files, features, or components, you **must** perform the
     *   Clearly state which plan you recommend.
     *   Provide a detailed and thorough explanation for why you believe it is the better approach.
 3.  **Await Approval:** Do not proceed with creating any files or writing any code until you receive explicit permission from the user to implement one of the proposed plans.
+
+### 3. Communication Rules
+
+1.  **Language:** All questions, requests, or proposals directed to the user must be in Korean.
