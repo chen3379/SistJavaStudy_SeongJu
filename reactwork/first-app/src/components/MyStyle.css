@@ -1,0 +1,14 @@
+h2.line {
+  width: 500px;
+  border: 5px solid gold;
+  text-align: center;
+}
+.inP {
+  width: 500px;
+  text-align: left;
+}
+.outP {
+  width: 200px;
+  text-align: left;
+  border: 1px solid gray;
+}
