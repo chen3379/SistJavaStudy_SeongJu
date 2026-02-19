@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+<h5 class="alert alert-secondary">Shop 전체 목록</h5>
+<table class="table table-bordered" style="width: 500px;">
+  <tr>  
+    <th width="80">index</th>
+    <th width="80">번호</th>
+    <th width="180">상품명</th>
+    <th width="100">수량</th>
+    <th width="150">단가</th>
+    <th width="120">색상</th>
+  </tr>
+  <tr th:each="dto,iter:${list}">
+    <td><span th:text="${iter.index}"></span>
+    <span th:text="${iter.count}"></span></td>
+    <td><span th:text="${dto.num}"></span></td>
+    <td><a style="text-decoration: none;" th:href="@{/detail(index=${iter.index})}"><span th:text="${dto.sangpum}"></span></a></td>
+    <td><span th:text="${dto.su}"></span></td>
+    <td><span th:text="${#numbers.formatInteger(dto.dan,0,'COMMA')}"></span></td>
+    <td><span th:text="${dto.color}"></span></td>
+  </tr>
+</table>
+</body>
+</html>

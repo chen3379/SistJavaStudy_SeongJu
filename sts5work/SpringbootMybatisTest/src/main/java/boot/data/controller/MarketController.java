@@ -160,16 +160,17 @@ public class MarketController {
 	// 삭제
 	@GetMapping("market/delete")
 	public String delete(@RequestParam String num, HttpSession session) {
-		
+
 		String path = session.getServletContext().getRealPath("/photo");
 
 		String delphoto = mapper.getSangpum(num).getPhotoname();
-		
-		mapper.deleteMarket(num);
 
 		File file = new File(path + "\\" + delphoto);
 		// 파일 삭제
 		file.delete();
+
+		mapper.deleteMarket(num);
+
 		return "redirect:list";
 	}
 }

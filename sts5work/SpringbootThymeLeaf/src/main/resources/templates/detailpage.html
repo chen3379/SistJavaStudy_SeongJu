@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+<h3 class="alert alert-warning">상세페이지</h3>
+<div th:object="${dto}" style="margin: 30px 30px;">
+<h4>
+번호: <span th:text="*{num}"></span><br>
+상품명: <span th:text="*{sangpum}"></span><br>
+수량: <span th:text="*{su}"></span><br>
+단가: <span th:text="*{dan}"></span><br>
+색상: <span th:text="*{color}"></span><br>
+</h4>
+<div th:style="|background-color:*{color}; width:30px; height: 30px;|"></div>
+</div>
+<div th:object="${dto}" style="margin: 30px 30px;">
+<h4>
+번호: [[*{num}]]<br>
+상품명: [[*{sangpum}]]<br>
+수량: [[*{su}]]<br>
+단가: [[*{dan}]]<br>
+색상: [[*{color}]]<br>
+</h4>
+<div th:style="|background-color:*{color}; width:30px; height: 30px;|"></div>
+</div>
+<div style="margin: 30px 30px;">
+<h4>
+번호: [[${dto.num}]]<br>
+상품명: [[${dto.sangpum}]]<br>
+수량: [[${dto.su}]]<br>
+단가: [[${dto.dan}]]<br>
+색상: [[${dto.color}]]<br>
+</h4>
+<div th:style="|background-color:${dto.color}; width:30px; height: 30px;|"></div>
+</div>
+</body>
+</html>
