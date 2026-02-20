@@ -1,0 +1,78 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<header th:fragment="header" class="clean-header">
+    
+    <style>
+        /* 헤더 컨테이너: 화이트 배경, 하단 라인 */
+        .clean-header {
+            display: flex;
+            justify-content: space-between; /* 양 끝 정렬 */
+            align-items: center; /* 수직 중앙 정렬 */
+            height: 70px; /* 헤더 높이 고정 */
+            padding: 0 50px; /* 좌우 여백 */
+            background-color: #ffffff; /* 완전한 흰색 */
+            border-bottom: 1px solid #e5e5e5; /* 옅은 회색 라인 */
+            box-sizing: border-box; /* 패딩 포함 크기 계산 */
+        }
+
+        /* 로고 영역 스타일 */
+        .clean-header .logo-area {
+            font-size: 1.4rem;
+            font-weight: 800; /* 두꺼운 폰트 */
+            color: #111; /* 진한 검정 */
+            text-decoration: none;
+            letter-spacing: -0.5px; /* 자간을 좁혀서 단단한 느낌 */
+        }
+
+        /* 네비게이션 메뉴 그룹 */
+        .clean-header .nav-menu {
+            display: flex;
+            gap: 40px; /* 메뉴 간 넓은 간격으로 여유로움 */
+        }
+
+        /* 메뉴 링크 스타일 */
+        .clean-header .nav-item {
+            color: #666; /* 기본은 회색 */
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative; /* 밑줄 애니메이션 기준점 */
+            transition: color 0.3s;
+        }
+
+        /* 마우스 호버 시 효과 */
+        .clean-header .nav-item:hover {
+            color: #000; /* 검정색으로 변경 */
+        }
+
+        /* 밑줄 애니메이션 (중앙에서 퍼지는 효과) */
+        .clean-header .nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: #000;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .clean-header .nav-item:hover::after {
+            width: 100%; /* 마우스 올리면 밑줄 꽉 채움 */
+        }
+    </style>
+
+    <a th:href="@{/}" class="logo-area">
+        ThymeLeaf
+    </a>
+
+    <nav class="nav-menu">
+        <a th:href="@{/}" class="nav-item">HOME</a>
+        <a th:href="@{/list}" class="nav-item">SHOP</a>
+        <a th:href="@{/hello1}" class="nav-item">hello1</a>
+        <a th:href="@{/hello2(name='고윤정',age=27)}" class="nav-item">hello2</a>
+    </nav>
+
+</header>
+</html>
