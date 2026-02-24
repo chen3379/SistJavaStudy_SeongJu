@@ -1,0 +1,21 @@
+server:
+  port: 9001
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+  devtools:
+    livereload:
+      enabled: true
+#mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring
+    username: chen
+    password: admin
+#mybatis
+mybatis:
+  type-aliases-package: boot.data.*
+  mapper-locations:
+  - /mapper/**/*.xml

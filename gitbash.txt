@@ -1,0 +1,16 @@
+(gitbash설치후 딱한번)
+git config --global user.name "soo"
+git config --global user.email "lsy971028@gmail.com"
+
+git사이트가서 플젝만들고 주소복사
+폴더에 가서 gitbash열기
+
+$ git init
+$ git remote add origin https://github.com/lee971028/jspgit.git
+
+혹시 이미설치되어있다고 할땐 origin을 지워준다(remote 저장소 삭제후 재설정)
+git remote rm origin
+
+$ git add .
+$ git commit -m "soo"
+$ git push origin master
