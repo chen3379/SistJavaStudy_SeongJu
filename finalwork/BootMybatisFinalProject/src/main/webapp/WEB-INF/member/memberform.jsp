@@ -99,7 +99,7 @@
 
 		//중복체크
 		if ($(".idsuccess").text() != "사용 가능한 아이디입니다") {
-			alert('아아디 중복체크해주세요');
+			alert('아이디 중복체크해주세요');
 			return false;
 
 		}
@@ -113,6 +113,8 @@
 </script>
 </head>
 <body>
+<jsp:include page="../../layout/title.jsp"></jsp:include>
+
 	<div class="container" style="width: 500px;">
 		<form action="insert" method="post" enctype="multipart/form-data"
 			onsubmit="return check()">
