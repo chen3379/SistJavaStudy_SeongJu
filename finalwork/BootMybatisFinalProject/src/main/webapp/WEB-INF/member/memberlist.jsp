@@ -24,28 +24,28 @@
 		$("#allcheck").click(function() {
 
 			//체크값 얻기
-			var chk=$(this).is(":checked");
-/* 			console.log(chk); */
-			
+			var chk = $(this).is(":checked");
+			/* 			console.log(chk); */
+
 			//얻은 체크를 글 앞의 체크에 일괄전달
-			$(".del").prop("checked",chk);
+			$(".del").prop("checked", chk);
 		})
-		
-		$("#deletebtn").click(function(){
+
+		$("#deletebtn").click(function() {
 
 			var cnt = $(".del:checked").length;
-			
-			if(cnt==0){
+
+			if (cnt == 0) {
 
 				alert("최소 한 개는 선택해주세요");
 				return;
 			}
-			
-			$(".del:checked").each(function(i,elt){
 
-				var num=$(this).attr("num");
+			$(".del:checked").each(function(i, elt) {
+
+				var num = $(this).attr("num");
 				//alert(num);
-				
+
 				$.ajax({
 
 					type : "get",
@@ -54,16 +54,15 @@
 					data : {
 						"num" : num
 					},
-					success:function(){
+					success : function() {
 
 						location.reload();
 					}
-				
+
 				})
 
-			
 			})
-		
+
 		})
 
 	})
@@ -80,9 +79,9 @@ a {
 	<div class="container">
 		<!-- 번호 회원명 아이디 이메일 -->
 		<table class="table table-bordered" style="width: 700px;">
-			<caption align="top">
-				<b>회원목록(총 ${count }명의 회원이 있습니다)</b>
-			</caption>
+				<caption align="top">
+					<b>회원목록(총 ${count }명의 회원이 있습니다)</b>
+				</caption>			
 			<tr align="center" class="table-secondary">
 				<th width="60">번호</th>
 				<th width="110">회원명</th>
@@ -101,7 +100,7 @@ a {
 				</tr>
 			</c:forEach>
 		</table>
-		<button type="button" id="deletebtn">Delete</button>
+				<button type="button" id="deletebtn">Delete</button>
 	</div>
 </body>
 </html>

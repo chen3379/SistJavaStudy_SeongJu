@@ -1,0 +1,17 @@
+server:
+  port: 9001
+spring:
+  devtools:
+    livereload:
+      enabled: true
+#mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bootfinal
+    username: root
+    password: 1234
+#mybatis
+mybatis:
+  type-aliases-package: boot.data.*
+  mapper-locations:
+  - /mapper/**/*.xml
